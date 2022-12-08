@@ -14,37 +14,24 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float rayOffsetY = 0.5f;
     [SerializeField] private float rayOffsetZ = 0.5f;
 
-    [Header("3D Movement Params")]
-    [SerializeField] private FloatingJoystick joystick;
-    [SerializeField] private float moveSpeed2 = 2f;
-    [SerializeField] private float rotateSpeed = 2f;
-
-    private Rigidbody rb;
     private Vector3 startPos;
     private Vector3 targetPos;
-    private Vector3 moveVector;
     private bool moving;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-        if (gridMovement) GridMove();
-        else JoystickMove();
+       GridMove();
     }
 
     private void GridMove()
     {
-        rb.useGravity = false;
-        joystick.gameObject.SetActive(false);
-        swipeControl.gameObject.SetActive(true);
 
         if (moving)
         {
@@ -114,22 +101,22 @@ public class PlayerMovement : MonoBehaviour
         return true;
     }
 
-    private void JoystickMove()
-    {
-        rb.useGravity = false;
+    //private void JoystickMove()
+    //{
+    //    rb.useGravity = false;
 
-        moveVector = Vector3.zero; 
-        moveVector.x = joystick.Horizontal * moveSpeed2 * Time.deltaTime;
-        moveVector.z = joystick.Vertical * moveSpeed2 * Time.deltaTime;
+    //    moveVector = Vector3.zero; 
+    //    moveVector.x = joystick.Horizontal * moveSpeed2 * Time.deltaTime;
+    //    moveVector.z = joystick.Vertical * moveSpeed2 * Time.deltaTime;
 
-        if(joystick.Horizontal !=0 || joystick.Vertical != 0)
-        {
-            Vector3 direction = Vector3.RotateTowards(transform.forward, moveVector, rotateSpeed * Time.deltaTime, 0.0f);
-            transform.rotation = Quaternion.LookRotation(direction);
-        }
+    //    if(joystick.Horizontal !=0 || joystick.Vertical != 0)
+    //    {
+    //        Vector3 direction = Vector3.RotateTowards(transform.forward, moveVector, rotateSpeed * Time.deltaTime, 0.0f);
+    //        transform.rotation = Quaternion.LookRotation(direction);
+    //    }
 
-        rb.MovePosition(rb.position + moveVector);
-    }
+    //    rb.MovePosition(rb.position + moveVector);
+    //}
 
 
 }
