@@ -18,9 +18,9 @@ public class Grid : MonoBehaviour
         return cells[index].cellType;
     }
 
-    public Cell GetCell(int index)
+    public Vector3 GetCellPosition(int index)
     {
-        return cells[index];
+        return cells[index].transform.position;
     }
 
     public bool IsCellAvailable(int index)

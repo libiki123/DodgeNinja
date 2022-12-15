@@ -6,14 +6,15 @@ public class Obstacle : MonoBehaviour
 {
     private float speed;
     private Vector3 direction;
-    private Vector3 bounds;
+    public Vector3 minBound = new Vector3(-10, 0, -10);
+    public Vector3 maxBound = new Vector3(10, 0, 10);
     private bool moving;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        bounds = new Vector3(0, 0 , -10);
+
     }
 
     // Update is called once per frame
@@ -23,9 +24,8 @@ public class Obstacle : MonoBehaviour
         {
             transform.position += direction * speed * Time.deltaTime;
         }
-        
 
-        if (transform.position.z < bounds.z)
+        if (transform.position.x > maxBound.x || transform.position.x < minBound.x || transform.position.z > maxBound.z || transform.position.z < minBound.z)
         {
             Destroy(gameObject);
         }
@@ -35,6 +35,7 @@ public class Obstacle : MonoBehaviour
     {
         this.direction = direction;
         this.speed = speed;
+        transform.rotation = Quaternion.LookRotation(direction);
         moving = true;
     }
 

@@ -6,5 +6,7 @@ using UnityEngine;
 [Serializable]
 public class SaveDataSerialization
 {
-    public int highScore;
+    public int totalCoin = 0;
+    public int highScore = 0;
+    public int batteryProgress = 0;
 }

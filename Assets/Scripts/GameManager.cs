@@ -6,27 +6,32 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    //public event Action RestartGame;
     public static GameManager Instance { get; private set; }
     public SaveSystem SaveSystem;
 
-    bool hasPlayed;
+    public string gameSceneName;
+    public SaveDataSerialization saveData { get; private set; }
     private void Awake()
     {
         if (Instance != null && Instance != this)
             Destroy(this);
         else
+        {
             Instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+            
     }
 
     // Start is called before the first frame update
     void Start()
     {
         Application.targetFrameRate = 60;
-        if (PlayerPrefs.GetInt("FIRSTTIMEOPENING", 1) == 1)
-        {
-            PlayerPrefs.SetInt("FIRSTTIMEOPENING", 0);
-            SaveGame();
-        }
+
+        var jsonFormatData = SaveSystem.LoadData();
+        if (String.IsNullOrEmpty(jsonFormatData)) SaveGame();
+
         LoadGame();
     }
 
@@ -38,14 +43,26 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+        GetScore();
         SaveGame();
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(gameSceneName);
+    }
+
+    private void UpdateSaveData(int coin)
+    {
+        //saveData
+    }
+
+    private void GetScore()
+    {
+        saveData.totalCoin += ScoreManager.Instance.score;
+        saveData.highScore = ScoreManager.Instance.highScore;
+        saveData.batteryProgress = ScoreManager.Instance.battery;
     }
 
     private void SaveGame()
     {
-        SaveDataSerialization saveData = new SaveDataSerialization();
-        saveData.highScore = ScoreManager.Instance.highScore;
+
         var jsonFormat = JsonUtility.ToJson(saveData);
         SaveSystem.SaveData(jsonFormat);
     }
@@ -55,9 +72,10 @@ public class GameManager : MonoBehaviour
         var jsonFormatData = SaveSystem.LoadData();
         if(String.IsNullOrEmpty(jsonFormatData))
             return;
-        SaveDataSerialization saveData = JsonUtility.FromJson<SaveDataSerialization>(jsonFormatData);
+        saveData = JsonUtility.FromJson<SaveDataSerialization>(jsonFormatData);
 
-        ScoreManager.Instance.Init(saveData.highScore);
+        if(ScoreManager.Instance) ScoreManager.Instance.Init();
+        if(MainMenu.Instance) MainMenu.Instance.Init();
     }
 
 
