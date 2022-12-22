@@ -35,7 +35,10 @@ public class TrapSpawner : MonoBehaviour
         if (tempTrap == null) return;
         int randomIndex = grid.GetRandomSpawnableCellIndex();
 
-        tempTrap.transform.position = grid.GetCellPosition(randomIndex);
+        Vector3 temPos = grid.GetCellPosition(randomIndex);
+        temPos = new Vector3(temPos.x, 0.127f, temPos.z);
+
+        tempTrap.transform.position = temPos;
         tempTrap.gameObject.SetActive(true);
         tempTrap.SpawnTrap();
         grid.HideCellFloor(randomIndex);

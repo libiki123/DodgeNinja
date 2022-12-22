@@ -41,7 +41,8 @@ public class Obstacle : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        //if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "")
         {
             Debug.Log("HIT");
             UIManager.Instance.ShowEndGameMenu();

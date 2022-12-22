@@ -37,12 +37,12 @@ public class SpawnerManager : MonoBehaviour
             int randNums = Random.Range(0, 2);
             sideSpawners[randNums].SpawnObstacle();
 
-            if(UIManager.Instance.score > 3)
-            {
-                trapSpawner.SpawnDropTrap();
-            }
+			if (UIManager.Instance.score > 3)
+			{
+				//trapSpawner.SpawnDropTrap();
+			}
 
-        }
+		}
     }
 
     private void SpwanTrapWave()
@@ -62,9 +62,11 @@ public class SpawnerManager : MonoBehaviour
             default:
                 if(UIManager.Instance.score % 5 == 0)
                 {
+                    Debug.Log("Spawn trap");
+                    Debug.Log(spikeTrapCount);
                     if(spikeTrapCount < 4)
                     {
-                        trapSpawner.SpawnBlockTrap();
+                        //trapSpawner.SpawnBlockTrap();
                         spikeTrapCount = 0;
                         totalTrapCount++;
                     }

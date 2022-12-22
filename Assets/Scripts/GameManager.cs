@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 30;
+        saveData = new SaveDataSerialization();
 
         var jsonFormatData = SaveSystem.LoadData();
         if (String.IsNullOrEmpty(jsonFormatData)) SaveGame();
