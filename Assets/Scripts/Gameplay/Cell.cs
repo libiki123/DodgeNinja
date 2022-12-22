@@ -5,12 +5,13 @@ using UnityEngine;
 public class Cell : MonoBehaviour
 {
     public Grid.CellType cellType = Grid.CellType.NONE;
+    public bool havePlayer = false;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            cellType = Grid.CellType.PLAYER;
+            havePlayer = true;
         }
     }
 
@@ -18,7 +19,7 @@ public class Cell : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            cellType = Grid.CellType.NONE;
+            havePlayer = false;
         }
     }
 }

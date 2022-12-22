@@ -6,16 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    //public event Action RestartGame;
+    public event Action DoneLoadScene;
     public static GameManager Instance { get; private set; }
     public SaveSystem SaveSystem;
 
     public string gameSceneName;
+    public string menuSceneName;
     public SaveDataSerialization saveData { get; private set; }
+
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
+        {
+            gameObject.SetActive(false);
             Destroy(this);
+        }
         else
         {
             Instance = this;
@@ -27,42 +33,60 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 30;
 
         var jsonFormatData = SaveSystem.LoadData();
         if (String.IsNullOrEmpty(jsonFormatData)) SaveGame();
 
         LoadGame();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //MainMenu.Instance.Init();
     }
 
     public void Restart()
     {
-        GetScore();
+        SaveGameResult();
+        StartGame();
+    }
+
+    public void StartGame()
+    {
+        LoadGame();
+        loadNewScene(gameSceneName);
+    }
+
+    public void LoadMainMenu()
+    {
+        SaveGameResult();
+        LoadGame();
+        loadNewScene(menuSceneName);
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+    }
+
+    private void SaveGameResult()
+    {
+        saveData.totalCoin += UIManager.Instance.score;
+        saveData.highScore = UIManager.Instance.highScore;
+        saveData.batteryProgress = UIManager.Instance.battery;
         SaveGame();
-        SceneManager.LoadScene(gameSceneName);
     }
 
-    private void UpdateSaveData(int coin)
+    private void SaveMoneSpent()
     {
-        //saveData
-    }
-
-    private void GetScore()
-    {
-        saveData.totalCoin += ScoreManager.Instance.score;
-        saveData.highScore = ScoreManager.Instance.highScore;
-        saveData.batteryProgress = ScoreManager.Instance.battery;
+        saveData.totalCoin = MainMenu.Instance.totalCoin;
+        SaveGame();
     }
 
     private void SaveGame()
     {
-
         var jsonFormat = JsonUtility.ToJson(saveData);
         SaveSystem.SaveData(jsonFormat);
     }
@@ -73,10 +97,29 @@ public class GameManager : MonoBehaviour
         if(String.IsNullOrEmpty(jsonFormatData))
             return;
         saveData = JsonUtility.FromJson<SaveDataSerialization>(jsonFormatData);
-
-        if(ScoreManager.Instance) ScoreManager.Instance.Init();
-        if(MainMenu.Instance) MainMenu.Instance.Init();
     }
 
+    public void loadNewScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
 
+        if (SceneManager.GetActiveScene().name != sceneName)
+        {
+            StartCoroutine("waitForSceneLoad", sceneName);
+        }
+    }
+
+    IEnumerator waitForSceneLoad(string sceneName)
+    {
+        while (SceneManager.GetActiveScene().name != sceneName)
+        {
+            yield return null;
+        }
+
+        // Do anything after proper scene has been loaded
+        if (SceneManager.GetActiveScene().name == sceneName)
+        {
+            DoneLoadScene?.Invoke();
+        }
+    }
 }

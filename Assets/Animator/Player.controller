@@ -149,7 +149,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Roll_left
-  m_Speed: 2
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 7978999890516866282}
@@ -162,7 +162,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: a30c2ab543b8d5f4198dfc0245d3ff29,
+  m_Motion: {fileID: 1827226128182048838, guid: be38c5506fd482a478d86e15c220ed4d,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -223,7 +223,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Roll_forward
-  m_Speed: 2
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -5602369140139097360}
@@ -236,7 +236,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: fa06442f291ac404dad67776a2f90412,
+  m_Motion: {fileID: 1827226128182048838, guid: e4aff32fbd38ecf4a8bc1b2fd89a6b6b,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -267,7 +267,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: c54d8ed1bbc7931499fa9dc931598288,
+  m_Motion: {fileID: 1827226128182048838, guid: 507069248371d6042980ee72197c981c,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -307,7 +307,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Roll_right
-  m_Speed: 2
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8701093161359889620}
@@ -320,7 +320,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 1db028f10ac7f9148816165998d2ef0f,
+  m_Motion: {fileID: 1827226128182048838, guid: b6e3a432ba624f949998ce652b7959b1,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -364,12 +364,12 @@ AnimatorStateMachine:
 --- !u!1102 &5625783682701242559
 AnimatorState:
   serializedVersion: 6
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Roll_back
-  m_Speed: 2
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -7614391246195235708}
@@ -382,7 +382,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: 8c6eaa6573c6dc4458fa0450c91072e8,
+  m_Motion: {fileID: 1827226128182048838, guid: f22f01c2437c9a7428d6b12b7dd321c5,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 

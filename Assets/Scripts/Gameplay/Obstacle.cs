@@ -44,7 +44,8 @@ public class Obstacle : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             Debug.Log("HIT");
-            GameManager.Instance.Restart();
+            UIManager.Instance.ShowEndGameMenu();
         }
     }
+
 }
