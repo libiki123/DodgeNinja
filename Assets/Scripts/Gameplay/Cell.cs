@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    public Grid.CellType cellType = Grid.CellType.NONE;
-    public bool havePlayer = false;
+    public Grid.CellType cellType;
+    public bool havePlayer;
+
+    private void Start()
+    {
+        cellType = Grid.CellType.NONE;
+        havePlayer = false;
+    }
 
     private void OnTriggerEnter(Collider other)
     {

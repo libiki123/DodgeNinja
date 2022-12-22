@@ -32,14 +32,14 @@ public class UIManager : MonoBehaviour
             Destroy(this);
         else
             Instance = this;
-
-        score = 0;
-        highScore = 0;
-        battery = 0;
     }
 
     private void Start()
     {
+        score = 0;
+        highScore = 0;
+        battery = 0;
+
         Init();
 
         GameManager.Instance.DoneLoadScene += Init;

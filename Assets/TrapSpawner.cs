@@ -11,7 +11,6 @@ public class TrapSpawner : MonoBehaviour
     [SerializeField] private List<GameObject> blockTraps = new List<GameObject>();
     [SerializeField] private TrapWarning dropTraps;
 
-    private bool maxSpikeTrapReached = false;
     public void SpawnDropTrap()
     {
         int randomIndex = grid.GetRandomSpawnableCellIndex();
@@ -33,11 +32,7 @@ public class TrapSpawner : MonoBehaviour
             }
         }
 
-        if (tempTrap == null)
-        {
-            maxSpikeTrapReached = true;
-            return;
-        }
+        if (tempTrap == null) return;
         int randomIndex = grid.GetRandomSpawnableCellIndex();
 
         tempTrap.transform.position = grid.GetCellPosition(randomIndex);
@@ -48,26 +43,26 @@ public class TrapSpawner : MonoBehaviour
 
     public void SpawnBlockTrap()
     {
-        Trap tempTrap = null;
+        //Trap tempTrap = null;
 
-        foreach (Trap trap in spikeTraps)
-        {
-            if (!trap.isDeployed)
-            {
-                tempTrap = trap;
-            }
-        }
+        //foreach (Trap trap in spikeTraps)
+        //{
+        //    if (!trap.isDeployed)
+        //    {
+        //        tempTrap = trap;
+        //    }
+        //}
 
-        if (tempTrap == null)
-        {
-            maxSpikeTrapReached = true;
-            return;
-        }
-        int randomIndex = grid.GetRandomSpawnableCellIndex();
+        //if (tempTrap == null)
+        //{
+        //    maxSpikeTrapReached = true;
+        //    return;
+        //}
+        //int randomIndex = grid.GetRandomSpawnableCellIndex();
 
-        tempTrap.transform.position = grid.GetCellPosition(randomIndex);
-        tempTrap.gameObject.SetActive(true);
-        tempTrap.SpawnTrap();
-        grid.HideCellFloor(randomIndex);
+        //tempTrap.transform.position = grid.GetCellPosition(randomIndex);
+        //tempTrap.gameObject.SetActive(true);
+        //tempTrap.SpawnTrap();
+        //grid.HideCellFloor(randomIndex);
     }
 }

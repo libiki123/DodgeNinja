@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
         if (String.IsNullOrEmpty(jsonFormatData)) SaveGame();
 
         LoadGame();
-        //MainMenu.Instance.Init();
     }
 
     public void Restart()
