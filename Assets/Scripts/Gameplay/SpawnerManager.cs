@@ -16,13 +16,13 @@ public class SpawnerManager : MonoBehaviour
     void Start()
     {
         UIManager.Instance.PointAdded += SpwanTrapWave;
+
+        rewardSpawner.SpawnCoin();
         StartCoroutine(SpawnWave());
     }
 
     IEnumerator SpawnWave()
     {
-        rewardSpawner.SpawnCoin();
-
         while (true)
         {
             yield return new WaitForSeconds(delay);
@@ -62,9 +62,7 @@ public class SpawnerManager : MonoBehaviour
             default:
                 if(UIManager.Instance.score % 5 == 0)
                 {
-                    Debug.Log("Spawn trap");
-                    Debug.Log(spikeTrapCount);
-                    if(spikeTrapCount < 4)
+                    if(spikeTrapCount > 3)
                     {
                         //trapSpawner.SpawnBlockTrap();
                         spikeTrapCount = 0;
@@ -72,6 +70,7 @@ public class SpawnerManager : MonoBehaviour
                     }
                     else
                     {
+                        Debug.Log(spikeTrapCount);
                         trapSpawner.SpawnSpikeTrap();
                         spikeTrapCount++;
                         totalTrapCount++;

@@ -4,67 +4,54 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
-    public enum CellType { PLAYER, WALKABLE, TRAP, REWARD, NONE}
+    public enum CellType { PLAYER, WALKABLE, TRAP, NONE}
 
-    [SerializeField] List<Cell> cellsPoints = new List<Cell>();
+    [SerializeField] List<Cell> cellList = new List<Cell>();
     [SerializeField] List<GameObject> cellFloor = new List<GameObject>();
 
-    public int GetCellCount()
-    {
-        return cellsPoints.Count;
-    }
 
-    public CellType GetCellStatus(int index)
+    private void Start()
     {
-        return cellsPoints[index].cellType;
-    }
-
-    public Vector3 GetCellPosition(int index)
-    {
-        return cellsPoints[index].transform.position;
-    }
-
-    public void HideCellFloor(int index)
-    {
-        cellFloor[index].SetActive(false);
-    }
-
-    public bool IsCellAvailable(int index)
-    {
-        return (cellsPoints[index].cellType == CellType.NONE || cellsPoints[index].cellType == CellType.WALKABLE) && !cellsPoints[index].havePlayer;
-    }
-
-    public bool IsCellEmpty(int index)
-    {
-        return cellsPoints[index].cellType == CellType.NONE && !cellsPoints[index].havePlayer;
-    }
-
-    public void SetCellType(int index, CellType type)
-    {
-        cellsPoints[index].cellType = type;
-    }
-
-    public int GetRandomSpawnableCellIndex()
-    {
-        int randomIndex = Random.Range(1, cellsPoints.Count);
-
-        while (!IsCellAvailable(randomIndex))
+        for(int i = 0; i < cellList.Count; i++)
         {
-            randomIndex += Random.Range(3, 6);
-            if (randomIndex > cellsPoints.Count) randomIndex = randomIndex - cellsPoints.Count;
+            cellList[i].floor = cellFloor[i];
         }
-        return randomIndex;
+
     }
 
-    public int GetRandomEmptyCellIndex()
+    public Cell GetRandomSpawnableCell(bool onlyEmpty = false)
     {
-        int randomIndex = Random.Range(1, cellsPoints.Count);
+        List<Cell> availableCells = GetAvailableCells(onlyEmpty);
+        Debug.Log(availableCells.Count);
+        int maxIndex = availableCells.Count - 1;
+        int randomIndex = Random.Range(1, maxIndex);
 
-        while (!IsCellEmpty(randomIndex))
-        {
-            randomIndex += Random.Range(3, 6);
-            if (randomIndex > cellsPoints.Count) randomIndex = randomIndex - cellsPoints.Count;
-        }
-        return randomIndex;
+        return availableCells[randomIndex];
     }
+
+    private List<Cell> GetAvailableCells(bool onlyEmpty = false)
+    {
+        List<Cell> tempCellList = new List<Cell>();
+
+        foreach (var cell in cellList)
+        {
+            if (onlyEmpty)
+            {
+                if (cell.cellType == CellType.NONE && !cell.havePlayer)
+                {
+                    tempCellList.Add(cell);
+                }
+            }
+            else
+            {
+                if ((cell.cellType == CellType.NONE || cell.cellType == CellType.WALKABLE) && !cell.havePlayer)
+                {
+                    tempCellList.Add(cell);
+                }
+            }
+        }
+
+        return tempCellList;
+    }
+
 }
