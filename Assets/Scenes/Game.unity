@@ -5207,7 +5207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a477245319fe6db4db0200456129ecbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeRange: 30
+  swipeRange: 25
   tapRange: 10
   tap: 0
   swipeLeft: 0
@@ -10579,6 +10579,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727485160018733542, guid: e243144eef78f33449947046043b60ef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1727485160018733562, guid: e243144eef78f33449947046043b60ef,
         type: 3}
@@ -17091,7 +17096,7 @@ MonoBehaviour:
   moveSpeed: 5
   rayLength: 0.9
   rayOffsetX: 0
-  rayOffsetY: 0
+  rayOffsetY: 0.5
   rayOffsetZ: 0
 --- !u!54 &3389844793912811433
 Rigidbody:
