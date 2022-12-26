@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
+using Unity.Mathematics;
 
 public class UIManager : MonoBehaviour
 {
@@ -19,6 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject swipeControl;
     [SerializeField] private GameObject endGameMenu;
     [SerializeField] private GameObject controlPicker;
+    [SerializeField] private RectMask2D batteryProgressBar;
 
     public event Action PointAdded;
     public int score { get; private set; }
@@ -49,9 +52,11 @@ public class UIManager : MonoBehaviour
     {
         scoreText.text = score.ToString();
         battery = GameManager.Instance.saveData.batteryProgress;
+        float percentage = math.remap(0, 50, 210, 5, battery);
+        batteryProgressBar.padding = new Vector4(percentage, 0, 0, 0);
         batteryProgressText.text = battery.ToString() + " / 50";
         this.highScore = GameManager.Instance.saveData.highScore;
-        highscoreText.text = "HIGHSCORE " + highScore.ToString();
+        highscoreText.text = highScore.ToString();
 
         GameManager.Instance.PauseGame();
         controlPicker.SetActive(true);
@@ -65,7 +70,7 @@ public class UIManager : MonoBehaviour
         if (highScore < score)
         {
             highScore = score;
-            highscoreText.text = "HIGHSCORE " + highScore.ToString();
+            highscoreText.text = highScore.ToString();
         }
 
         PointAdded?.Invoke();

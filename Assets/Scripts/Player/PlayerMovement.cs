@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (moving)
         {
+
             if (Vector3.Distance(startPos, transform.position) > 1f)
             {
                 transform.position = targetPos;
@@ -58,6 +59,10 @@ public class PlayerMovement : MonoBehaviour
                 moving = true;
                 animator.SetTrigger("Roll_back");
             }
+            else
+            {
+                if (buttonControl.gameObject.activeSelf) buttonControl.Reset();
+            }
         }
         else if (swipeControl.swipeDown || buttonControl.tapDown)
         {
@@ -67,6 +72,10 @@ public class PlayerMovement : MonoBehaviour
                 startPos = transform.position;
                 moving = true;
                 animator.SetTrigger("Roll_forward");
+            }
+            else
+            {
+                if (buttonControl.gameObject.activeSelf) buttonControl.Reset();
             }
         }
         else if (swipeControl.swipeLeft || buttonControl.tapLeft)
@@ -78,6 +87,10 @@ public class PlayerMovement : MonoBehaviour
                 moving = true;
                 animator.SetTrigger("Roll_left");
             }
+            else
+            {
+                if (buttonControl.gameObject.activeSelf) buttonControl.Reset();
+            }
         }
         else if (swipeControl.swipeRight || buttonControl.tapRight)
         {
@@ -87,6 +100,10 @@ public class PlayerMovement : MonoBehaviour
                 startPos = transform.position;
                 moving = true;
                 animator.SetTrigger("Roll_right");
+            }
+            else
+            {
+                if (buttonControl.gameObject.activeSelf) buttonControl.Reset();
             }
         }
     }
