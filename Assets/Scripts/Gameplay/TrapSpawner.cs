@@ -13,11 +13,11 @@ public class TrapSpawner : MonoBehaviour
 
     public void SpawnDropTrap()
     {
-        //int randomIndex = grid.GetRandomSpawnableCell();
+        Cell cell = grid.GetPlayerCell();
 
-        //dropTraps.transform.position = grid.GetCellPosition(randomIndex);
-        //dropTraps.gameObject.SetActive(true);
-        //dropTraps.SpawnTrap();
+        if (cell == null) return;
+        dropTraps.rootParent.transform.position = new Vector3(cell.transform.position.x, 0, cell.transform.position.z);
+        dropTraps.SpawnTrap();
     }
 
     public void SpawnSpikeTrap()

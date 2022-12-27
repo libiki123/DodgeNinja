@@ -19,12 +19,20 @@ public class Grid : MonoBehaviour
 
     }
 
-    public Cell GetRandomSpawnableCell(bool onlyEmpty = false)
+    public Cell GetRandomSpawnableCell(bool onlyEmpty = false, Cell excludingCell = null)
     {
         List<Cell> availableCells = GetAvailableCells(onlyEmpty);
         Debug.Log(availableCells.Count);
         int maxIndex = availableCells.Count - 1;
         int randomIndex = Random.Range(1, maxIndex);
+
+        if(excludingCell != null)
+        {
+            while (availableCells[randomIndex] == excludingCell)
+            {
+                randomIndex = Random.Range(1, maxIndex);
+            }
+        }
 
         return availableCells[randomIndex];
     }
@@ -52,6 +60,21 @@ public class Grid : MonoBehaviour
         }
 
         return tempCellList;
+    }
+
+    public Cell GetPlayerCell()
+    {
+        Cell playerCell = null;
+
+        foreach (var cell in cellList)
+        {
+            if (cell.havePlayer)
+            {
+                playerCell = cell;
+            }
+        }
+
+        return playerCell;
     }
 
 }
