@@ -19,13 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 targetPos;
     private bool moving;
 
-    private Animator animator;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
+    private PlayerAnimation playerAnim;
 
     // Update is called once per frame
     void Update()
@@ -57,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
                 targetPos = transform.position + Vector3.forward;
                 startPos = transform.position;
                 moving = true;
-                animator.SetTrigger("Roll_back");
+                playerAnim.TriggerAnimation(PlayerAnimation.MoveDirection.UP);
             }
             else
             {
@@ -71,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
                 targetPos = transform.position + Vector3.back;
                 startPos = transform.position;
                 moving = true;
-                animator.SetTrigger("Roll_forward");
+                playerAnim.TriggerAnimation(PlayerAnimation.MoveDirection.DOWN);
             }
             else
             {
@@ -85,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
                 targetPos = transform.position + Vector3.left;
                 startPos = transform.position;
                 moving = true;
-                animator.SetTrigger("Roll_left");
+                playerAnim.TriggerAnimation(PlayerAnimation.MoveDirection.LEFT);
             }
             else
             {
@@ -99,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
                 targetPos = transform.position + Vector3.right;
                 startPos = transform.position;
                 moving = true;
-                animator.SetTrigger("Roll_right");
+                playerAnim.TriggerAnimation(PlayerAnimation.MoveDirection.RIGHT);
             }
             else
             {

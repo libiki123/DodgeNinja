@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TrapWarning : Trap
 {
+    public GameObject rootParent;
     public GameObject warningMark;
     public float warningTime = 0.5f;
     public Animator anim;

@@ -10,7 +10,8 @@ public class RewardSpawner : MonoBehaviour
     [SerializeField] private Reward coin;
     [SerializeField] private Reward battery;
 
-    Cell coinCell;
+    private Cell coinCell;
+    private Cell batteryCell;
 
     private int coinCount = 0;
     private bool isBatteryCollected = true;
@@ -25,6 +26,12 @@ public class RewardSpawner : MonoBehaviour
     public void SpawnCoin()
     {
         coinCell = grid.GetRandomSpawnableCell();
+
+        if(batteryCell != null)
+        {
+            coinCell = grid.GetRandomSpawnableCell(false, batteryCell);
+        }
+
         coin.transform.position = coinCell.transform.position;
         coin.gameObject.SetActive(true);
 
@@ -39,11 +46,8 @@ public class RewardSpawner : MonoBehaviour
 
     private void SpawnBattery()
     {
-        Cell batteryCell = grid.GetRandomSpawnableCell();
-        while (batteryCell == coinCell)
-        {
-            batteryCell = grid.GetRandomSpawnableCell();
-        }
+        batteryCell = grid.GetRandomSpawnableCell(false, coinCell);
+
         battery.transform.position = batteryCell.transform.position;
         battery.gameObject.SetActive(true);
         isBatteryCollected = false;
@@ -62,6 +66,7 @@ public class RewardSpawner : MonoBehaviour
         UIManager.Instance.AddBattery();
         isBatteryCollected = true;
         coinCount = 0;
+        batteryCell = null;
     }
 
     private void OnDestroy()

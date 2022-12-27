@@ -8,7 +8,8 @@ public class SpawnerManager : MonoBehaviour
     [SerializeField] private TrapSpawner trapSpawner;
     [SerializeField] private RewardSpawner rewardSpawner;
 
-    [SerializeField] private float delay = 3.0f;
+    [SerializeField] private float gunWaveDelay = 3.0f;
+    [SerializeField] private float dropTrapDelay = 5.0f;
 
     private int maxTrapAmount = 25;
     private int totalTrapCount = 0;
@@ -19,13 +20,14 @@ public class SpawnerManager : MonoBehaviour
 
         rewardSpawner.SpawnCoin();
         StartCoroutine(SpawnWave());
+        StartCoroutine(SpawnDropTrap());
     }
 
     IEnumerator SpawnWave()
     {
         while (true)
         {
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(gunWaveDelay);
             //int count = Random.Range(1, sideSpawners.Count);
             //List<int> randNums = Utils.GenerateRandomNumbers(count, 0, sideSpawners.Count - 1);
 
@@ -77,6 +79,21 @@ public class SpawnerManager : MonoBehaviour
                     }
                 }
                 break;
+        }
+    }
+
+    IEnumerator SpawnDropTrap()
+    {
+        while (true)
+        {
+            if (UIManager.Instance.score >= 2)
+            {
+                yield return new WaitForSeconds(dropTrapDelay);
+
+                trapSpawner.SpawnDropTrap();
+            }
+            else
+                yield return null;  
         }
     }
 
