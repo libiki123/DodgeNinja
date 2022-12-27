@@ -22,7 +22,7 @@ public class Grid : MonoBehaviour
     public Cell GetRandomSpawnableCell(bool onlyEmpty = false, Cell excludingCell = null)
     {
         List<Cell> availableCells = GetAvailableCells(onlyEmpty);
-        Debug.Log(availableCells.Count);
+
         int maxIndex = availableCells.Count - 1;
         int randomIndex = Random.Range(1, maxIndex);
 

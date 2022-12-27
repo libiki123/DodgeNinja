@@ -10,13 +10,6 @@ public class Obstacle : MonoBehaviour
     public Vector3 maxBound = new Vector3(10, 0, 10);
     private bool moving;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -44,8 +37,7 @@ public class Obstacle : MonoBehaviour
         //if (other.gameObject.tag == "Player")
         if (other.gameObject.tag == "")
         {
-            Debug.Log("HIT");
-            UIManager.Instance.ShowEndGameMenu();
+            other.GetComponent<Player>().TrigerDieAnim();
         }
     }
 
