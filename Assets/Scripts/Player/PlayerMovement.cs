@@ -19,7 +19,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 targetPos;
     private bool moving;
 
-    private PlayerAnimation playerAnim;
+    private Player player;
+
+    private void Start()
+    {
+        player = gameObject.GetComponent<Player>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -29,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void GridMove()
     {
+        if (!player.isAlive) return;
+
         if (moving)
         {
 
@@ -51,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
                 targetPos = transform.position + Vector3.forward;
                 startPos = transform.position;
                 moving = true;
-                playerAnim.TriggerAnimation(PlayerAnimation.MoveDirection.UP);
+                player.TriggerMoveAnim(Player.MoveDirection.UP);
             }
             else
             {
@@ -65,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
                 targetPos = transform.position + Vector3.back;
                 startPos = transform.position;
                 moving = true;
-                playerAnim.TriggerAnimation(PlayerAnimation.MoveDirection.DOWN);
+                player.TriggerMoveAnim(Player.MoveDirection.DOWN);
             }
             else
             {
@@ -79,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
                 targetPos = transform.position + Vector3.left;
                 startPos = transform.position;
                 moving = true;
-                playerAnim.TriggerAnimation(PlayerAnimation.MoveDirection.LEFT);
+                player.TriggerMoveAnim(Player.MoveDirection.LEFT);
             }
             else
             {
@@ -93,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
                 targetPos = transform.position + Vector3.right;
                 startPos = transform.position;
                 moving = true;
-                playerAnim.TriggerAnimation(PlayerAnimation.MoveDirection.RIGHT);
+                player.TriggerMoveAnim(Player.MoveDirection.RIGHT);
             }
             else
             {

@@ -9,9 +9,9 @@ public class SpawnerManager : MonoBehaviour
     [SerializeField] private RewardSpawner rewardSpawner;
 
     [SerializeField] private float gunWaveDelay = 3.0f;
-    [SerializeField] private float dropTrapDelay = 5.0f;
+    [SerializeField] private float dropTrapDelay = 4.0f;
 
-    private int maxTrapAmount = 25;
+    private int maxTrapAmount = 8; //25
     private int totalTrapCount = 0;
     private int spikeTrapCount = 0;
     void Start()
@@ -64,15 +64,14 @@ public class SpawnerManager : MonoBehaviour
             default:
                 if(UIManager.Instance.score % 5 == 0)
                 {
-                    if(spikeTrapCount > 3)
+                    if(spikeTrapCount >= 3)
                     {
-                        //trapSpawner.SpawnBlockTrap();
+                        trapSpawner.SpawnBlockTrap();
                         spikeTrapCount = 0;
                         totalTrapCount++;
                     }
                     else
                     {
-                        Debug.Log(spikeTrapCount);
                         trapSpawner.SpawnSpikeTrap();
                         spikeTrapCount++;
                         totalTrapCount++;
@@ -86,7 +85,7 @@ public class SpawnerManager : MonoBehaviour
     {
         while (true)
         {
-            if (UIManager.Instance.score >= 2)
+            if (UIManager.Instance.score >= 5)
             {
                 yield return new WaitForSeconds(dropTrapDelay);
 

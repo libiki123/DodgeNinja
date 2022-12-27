@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class SideSpawner : MonoBehaviour
 {
-    public bool isGun = false;
     enum SpawnerLocation { TOP, BOTTOM, LEFT, RIGHT }
     [SerializeField] SpawnerLocation spawnerLocation;
     [SerializeField] private GameObject obstaclePrefab;
-    [SerializeField] private List<Transform> spawnPoints = new List<Transform>();
     [SerializeField] private List<Gun> guns = new List<Gun>();
 
     [SerializeField] private float speed = 2.0f;
@@ -38,23 +36,14 @@ public class SideSpawner : MonoBehaviour
     public void SpawnObstacle()
     {
         int count = Random.Range(1, 3);
-        List<int> randNums = Utils.GenerateRandomNumbers(count, 0, spawnPoints.Count);
+        List<int> randNums = Utils.GenerateRandomNumbers(count, 0, guns.Count);
 
-        if (isGun)
+
+        foreach (var num in randNums)
         {
-            foreach (var num in randNums)
-            {
-                guns[num].Init(direction, speed, obstaclePrefab);
-            }
+            guns[num].Init(direction, speed, obstaclePrefab);
         }
-        else
-        {
-            foreach (var num in randNums)
-            {
-                GameObject a = Instantiate(obstaclePrefab, spawnPoints[num].position, Quaternion.identity);
-                a.GetComponent<Obstacle>().Init(direction, speed);
-            }
-        }
+
     }
 
 }
