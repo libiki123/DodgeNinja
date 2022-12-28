@@ -20268,6 +20268,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 85218849}
     m_Modifications:
+    - target: {fileID: 3149321420518893937, guid: da5c874f16389174eb8153d70204d92e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -28.670538
+      objectReference: {fileID: 0}
+    - target: {fileID: 3149321420518893937, guid: da5c874f16389174eb8153d70204d92e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3149321420518893937, guid: da5c874f16389174eb8153d70204d92e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6146497397092473393, guid: da5c874f16389174eb8153d70204d92e,
         type: 3}
       propertyPath: m_Name
@@ -20948,6 +20963,11 @@ PrefabInstance:
     - target: {fileID: 7314802791607129167, guid: 6235500cadc7f3b4a93793e30da7dd32,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7743129562803654469, guid: 6235500cadc7f3b4a93793e30da7dd32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
