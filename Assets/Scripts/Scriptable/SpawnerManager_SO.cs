@@ -39,12 +39,12 @@ public struct NumberOfMachinePercentage
     public NumberOfBulletPercentage _2M_NumOfBullet;
 
     [Space]
-    [Header("1 Machine")]
+    [Header("3 Machine")]
     public float _3MachineChance;
     public NumberOfBulletPercentage _3M_NumOfBullet;
 
     [Space]
-    [Header("1 Machine")]
+    [Header("4 Machine")]
     public float _4MachineChance;
     public NumberOfBulletPercentage _4M_NumOfBullet;
 

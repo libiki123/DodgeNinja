@@ -31,8 +31,8 @@ public class Trap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.tag == "Player")
-        if (other.gameObject.tag == "")
+        if (other.gameObject.tag == "Player")
+        //if (other.gameObject.tag == "")
         {
             other.GetComponent<Player>().TrigerDieAnim();
         }
