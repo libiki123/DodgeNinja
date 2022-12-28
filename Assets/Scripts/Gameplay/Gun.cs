@@ -22,14 +22,15 @@ public class Gun : MonoBehaviour
         this.direction = direction;
         this.speed = speed;
         this.obstaclePrefab = obstaclePrefab;
-        StartCoroutine(StartWarning());
+        //StartCoroutine(StartWarning());
+        animator.SetTrigger("Shoot");
     }
 
     IEnumerator StartWarning()
     {
-        warningMark.SetActive(true);
+        //warningMark.SetActive(true);
         yield return new WaitForSecondsRealtime(warningTime);
-        warningMark.SetActive(false);
+        //warningMark.SetActive(false);
         animator.SetTrigger("Shoot");
     }
 

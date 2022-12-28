@@ -33,11 +33,9 @@ public class SideSpawner : MonoBehaviour
         }
     }
 
-    public void SpawnObstacle()
+    public void SpawnObstacle(int numOfObstacle)
     {
-        int count = Random.Range(1, 3);
-        List<int> randNums = Utils.GenerateRandomNumbers(count, 0, guns.Count);
-
+        List<int> randNums = Utils.GenerateRandomNumbers(numOfObstacle, 0, guns.Count - 1);
 
         foreach (var num in randNums)
         {

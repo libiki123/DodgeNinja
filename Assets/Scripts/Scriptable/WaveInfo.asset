@@ -1,0 +1,183 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad42f36f26bd7414baa7c2348c05f1f7, type: 3}
+  m_Name: WaveInfo
+  m_EditorClassIdentifier: 
+  waveGroupInfo:
+  - name: 1-9
+    waveDelay:
+      _1sChance: 20
+      _1_5sChance: 30
+      _2sChance: 20
+      _2_5sChance: 25
+      _3sChance: 5
+    numOfMerchine:
+      _1MachineChance: 60
+      _1M_NumOfBullet:
+        _1_BulletChance: 70
+        _2_BulletChance: 30
+        _3_BulletChance: 0
+      _2MachineChance: 40
+      _2M_NumOfBullet:
+        _1_BulletChance: 90
+        _2_BulletChance: 10
+        _3_BulletChance: 0
+      _3MachineChance: 0
+      _3M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _4MachineChance: 0
+      _4M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+  - name: 
+    waveDelay:
+      _1sChance: 0
+      _1_5sChance: 0
+      _2sChance: 0
+      _2_5sChance: 0
+      _3sChance: 0
+    numOfMerchine:
+      _1MachineChance: 0
+      _1M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _2MachineChance: 0
+      _2M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _3MachineChance: 0
+      _3M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _4MachineChance: 0
+      _4M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+  - name: 
+    waveDelay:
+      _1sChance: 0
+      _1_5sChance: 0
+      _2sChance: 0
+      _2_5sChance: 0
+      _3sChance: 0
+    numOfMerchine:
+      _1MachineChance: 0
+      _1M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _2MachineChance: 0
+      _2M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _3MachineChance: 0
+      _3M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _4MachineChance: 0
+      _4M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+  - name: 
+    waveDelay:
+      _1sChance: 0
+      _1_5sChance: 0
+      _2sChance: 0
+      _2_5sChance: 0
+      _3sChance: 0
+    numOfMerchine:
+      _1MachineChance: 0
+      _1M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _2MachineChance: 0
+      _2M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _3MachineChance: 0
+      _3M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _4MachineChance: 0
+      _4M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+  - name: 
+    waveDelay:
+      _1sChance: 0
+      _1_5sChance: 0
+      _2sChance: 0
+      _2_5sChance: 0
+      _3sChance: 0
+    numOfMerchine:
+      _1MachineChance: 0
+      _1M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _2MachineChance: 0
+      _2M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _3MachineChance: 0
+      _3M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _4MachineChance: 0
+      _4M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+  - name: 
+    waveDelay:
+      _1sChance: 0
+      _1_5sChance: 0
+      _2sChance: 0
+      _2_5sChance: 0
+      _3sChance: 0
+    numOfMerchine:
+      _1MachineChance: 0
+      _1M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _2MachineChance: 0
+      _2M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _3MachineChance: 0
+      _3M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _4MachineChance: 0
+      _4M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0

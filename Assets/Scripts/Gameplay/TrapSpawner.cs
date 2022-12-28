@@ -37,10 +37,10 @@ public class TrapSpawner : MonoBehaviour
         Cell randomCell = grid.GetRandomSpawnableCell(true);
         randomCell.cellType = Grid.CellType.WALKABLE;
 
-        tempTrap.transform.position = new Vector3(randomCell.transform.position.x, 0.14f, randomCell.transform.position.z);
+        tempTrap.transform.position = new Vector3(randomCell.transform.position.x, 0.19f, randomCell.transform.position.z);
         tempTrap.gameObject.SetActive(true);
         tempTrap.SpawnTrap();
-        randomCell.HideFloor();
+        //randomCell.HideFloor();
     }
 
     public void SpawnBlockTrap()

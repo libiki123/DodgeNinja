@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: d37ffe47162614941b40e47d034f5561
+guid: 66564d8026a9f824994caaeb32f8758e
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Dragon_gun_02_m
-    second: {fileID: 2100000, guid: 4e9a612d9c7386c4c95627d65101a341, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -71,7 +66,7 @@ ModelImporter:
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
-    useFileScale: 0
+    useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
