@@ -176,7 +176,7 @@ public class SpawnerManager : MonoBehaviour
         return numOfBullet;
     }
 
-    private int GetChanceIndex(float percent1, float percent2, float percent3 = 0, float percent4 = 0, float percent5 = 0)
+    private int GetChanceIndex(float percent1, float percent2 = 0, float percent3 = 0, float percent4 = 0, float percent5 = 0)
     {
         int chanceIndex = 0;
 
