@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: b6e3a432ba624f949998ce652b7959b1
+guid: f972e5cc9ab814a479649e4f2c0cce34
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
-    second: human_move_right
+    second: human_move_right1
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -36,7 +36,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: human_move_right
+      name: human_move_right1
       takeName: Take 001
       internalID: 0
       firstFrame: 0
