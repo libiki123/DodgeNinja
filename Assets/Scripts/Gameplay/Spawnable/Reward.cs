@@ -6,7 +6,6 @@ using UnityEngine;
 public class Reward : MonoBehaviour
 {
     public event Action OnRewardCollected;
-    public Cell cell;
 
     private void OnTriggerEnter(Collider other)
     {
