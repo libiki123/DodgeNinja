@@ -17,7 +17,7 @@ public class Gun : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void Init(Vector3 direction, float speed, GameObject obstaclePrefab)
+    public void Init(Vector3 direction, float speed)
     {
         this.direction = direction;
         this.speed = speed;
@@ -36,7 +36,9 @@ public class Gun : MonoBehaviour
 
     public void Shoot()
     {
-        GameObject a = Instantiate(obstaclePrefab, transform.position + new Vector3(0,0.25f, 0), Quaternion.identity);
+        GameObject a = BulletPool.Instance.GetBullet();
+        a.SetActive(true);
+        a.transform.position = transform.position + new Vector3(0, 0.25f, 0);
         a.GetComponent<Obstacle>().Init(direction, speed);
     }
 
