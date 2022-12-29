@@ -38,6 +38,7 @@ public class Obstacle : MonoBehaviour
         //if (other.gameObject.tag == "")
         {
             other.GetComponent<Player>().TrigerDieAnim();
+            Destroy(gameObject);
         }
     }
 
