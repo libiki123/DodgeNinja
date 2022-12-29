@@ -18702,7 +18702,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swipeControl: {fileID: 714073040}
   buttonControl: {fileID: 648106120}
-  moveSpeed: 8
+  moveSpeed: 9
   rayLength: 1.4
   rayOffsetX: 0
   rayOffsetY: 0.5
