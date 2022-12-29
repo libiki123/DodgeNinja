@@ -20,7 +20,7 @@ public class Obstacle : MonoBehaviour
 
         if (transform.position.x > maxBound.x || transform.position.x < minBound.x || transform.position.z > maxBound.z || transform.position.z < minBound.z)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -38,7 +38,7 @@ public class Obstacle : MonoBehaviour
         //if (other.gameObject.tag == "")
         {
             other.GetComponent<Player>().TrigerDieAnim();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 

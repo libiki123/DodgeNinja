@@ -6,10 +6,9 @@ public class SideSpawner : MonoBehaviour
 {
     enum SpawnerLocation { TOP, BOTTOM, LEFT, RIGHT }
     [SerializeField] SpawnerLocation spawnerLocation;
-    [SerializeField] private GameObject obstaclePrefab;
     [SerializeField] private List<Gun> guns = new List<Gun>();
 
-    [SerializeField] private float speed = 2.0f;
+    [SerializeField] private float bulletSpeed = 3.0f;
 
     Vector3 direction;
 
@@ -39,7 +38,7 @@ public class SideSpawner : MonoBehaviour
 
         foreach (var num in randNums)
         {
-            guns[num].Init(direction, speed, obstaclePrefab);
+            guns[num].Init(direction, bulletSpeed);
         }
 
     }
