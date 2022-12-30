@@ -83,7 +83,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 19967dda67c9a26458a04482ab525758, type: 2}
+  - {fileID: -1976799459468813334, guid: 33cf2a7fec4a9624aa51cd1f950d9795, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,7 +108,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 2159703810824169821, guid: 33cf2a7fec4a9624aa51cd1f950d9795, type: 3}
+  m_Mesh: {fileID: -3797651674442382300, guid: 33cf2a7fec4a9624aa51cd1f950d9795, type: 3}
   m_Bones:
   - {fileID: 5821770584540054014}
   m_BlendShapeWeights: []
@@ -187,7 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4396060622e4348a72c0b507a91b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cell: {fileID: 0}
 --- !u!135 &173456324
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -211,6 +210,10 @@ PrefabInstance:
     - target: {fileID: 100002, guid: 6c87bb361181bb342b50693515edab5b, type: 3}
       propertyPath: m_Name
       value: Shadow_coin
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 6c87bb361181bb342b50693515edab5b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 6c87bb361181bb342b50693515edab5b, type: 3}
       propertyPath: m_RootOrder
