@@ -35,8 +35,8 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.tag == "Player")
-        if (other.gameObject.tag == "")
+        if (other.gameObject.tag == "Player")
+        //if (other.gameObject.tag == "")
         {
             other.GetComponent<Player>().TrigerDieAnim();
             gameObject.SetActive(false);

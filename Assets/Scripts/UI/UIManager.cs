@@ -112,6 +112,7 @@ public class UIManager : MonoBehaviour
         bttnControl.SetActive(true);
         swipeControl.SetActive(false);
         GameManager.Instance.ResumeGame();
+        CameraManager.Instance.StartZoomIn();
     }
 
     public void UseSwipe()
@@ -120,6 +121,7 @@ public class UIManager : MonoBehaviour
         bttnControl.SetActive(false);
         swipeControl.SetActive(true);
         GameManager.Instance.ResumeGame();
+        CameraManager.Instance.StartZoomIn();
     }
 
     private void OnDestroy()

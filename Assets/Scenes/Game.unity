@@ -336,7 +336,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &23325117
@@ -1581,7 +1581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &226213145
@@ -2140,6 +2140,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2180,7 +2181,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 55
+  field of view: 65
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -2246,6 +2247,18 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe91bfbe30018194fb63538e98c8bcaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &338714390
 GameObject:
   m_ObjectHideFlags: 0
@@ -2718,7 +2731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &354551212
@@ -2831,7 +2844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &379870848
@@ -3718,7 +3731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &537000340
@@ -3832,7 +3845,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 1
   floor: {fileID: 0}
 --- !u!65 &543258445
@@ -4663,7 +4676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!1 &663313893
@@ -6158,7 +6171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &889200340
@@ -7047,7 +7060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &1053910216
@@ -7265,7 +7278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &1088808769
@@ -7514,7 +7527,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &1122324136
@@ -8896,7 +8909,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &1369466768
@@ -9245,7 +9258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &1391504877
@@ -9421,7 +9434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!1 &1423429951
@@ -9554,7 +9567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &1432383228
@@ -10056,7 +10069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &1521733297
@@ -10854,7 +10867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &1680826372
@@ -11126,7 +11139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &1763028973
@@ -11719,7 +11732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &1822417056
@@ -11937,7 +11950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!1 &1835402273
@@ -13450,7 +13463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!1 &1991126627
@@ -13588,7 +13601,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &1999105395
@@ -14096,7 +14109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &2028762397
@@ -14548,7 +14561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!1 &2071805789
@@ -14598,7 +14611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e28cb25117bc94ca5046de714a1a23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cellType: 4
+  cellType: 3
   havePlayer: 0
   floor: {fileID: 0}
 --- !u!65 &2071805792

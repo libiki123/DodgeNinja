@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class Cell : MonoBehaviour
 {
-    public Grid.CellType cellType;
+    public Grid.CellType cellType = Grid.CellType.NONE;
     public bool havePlayer;
     [HideInInspector] public GameObject floor;
-
-    private void Start()
-    {
-        cellType = Grid.CellType.NONE;
-        havePlayer = false;
-    }
 
     public void HideFloor()
     {

@@ -23,6 +23,11 @@ public class Grid : MonoBehaviour
     {
         List<Cell> availableCells = GetAvailableCells(onlyEmpty);
 
+        foreach(var cell in availableCells)
+        {
+            Debug.Log(cell);
+        }
+
         int maxIndex = availableCells.Count - 1;
         int randomIndex = Random.Range(1, maxIndex);
 

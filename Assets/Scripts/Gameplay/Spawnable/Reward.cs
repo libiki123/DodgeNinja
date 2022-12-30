@@ -11,17 +11,10 @@ public class Reward : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            Debug.Log("OBTAIN");
             gameObject.SetActive(false);
             OnRewardCollected?.Invoke();
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            gameObject.SetActive(false);
-            OnRewardCollected?.Invoke();
-        }
-    }
 }

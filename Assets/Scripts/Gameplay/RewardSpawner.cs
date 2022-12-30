@@ -28,11 +28,6 @@ public class RewardSpawner : MonoBehaviour
     {
         coinCell = grid.GetRandomSpawnableCell();
 
-        if(batteryCell != null)
-        {
-            coinCell = grid.GetRandomSpawnableCell(false, batteryCell);
-        }
-
         coin.transform.position = new Vector3(coinCell.transform.position.x, 0.48f, coinCell.transform.position.z);
         coin.gameObject.SetActive(true);
 
