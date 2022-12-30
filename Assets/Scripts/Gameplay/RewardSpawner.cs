@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Grid))]
 public class RewardSpawner : MonoBehaviour
 {
     [SerializeField] private Grid grid;

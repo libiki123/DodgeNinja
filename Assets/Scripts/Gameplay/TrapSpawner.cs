@@ -2,13 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Grid))]
 public class TrapSpawner : MonoBehaviour
 {
     [SerializeField] private Grid grid;
-
-    [Header("Traps")]
-    [SerializeField] private List<Trap> spikeTraps = new List<Trap>();
-    [SerializeField] private List<GameObject> blockTraps = new List<GameObject>();
 
     public void SpawnDropTrap()
     {
@@ -23,18 +20,7 @@ public class TrapSpawner : MonoBehaviour
 
     public void SpawnSpikeTrap()
     {
-        Trap tempTrap = null;
-
-        foreach (Trap trap in spikeTraps)
-        {
-            if (!trap.isDeployed)
-            {
-                tempTrap = trap;
-                break;
-            }
-        }
-
-        if (tempTrap == null) return;
+        Trap tempTrap = ObjectsPool.Instance.GetSpikeTrap();
         Cell randomCell = grid.GetRandomSpawnableCell(true);
         randomCell.cellType = Grid.CellType.WALKABLE;
 
@@ -46,18 +32,7 @@ public class TrapSpawner : MonoBehaviour
 
     public void SpawnBlockTrap()
     {
-        GameObject tempTrap = null;
-
-        foreach (GameObject trap in blockTraps)
-        {
-            if (!trap.activeSelf)
-            {
-                tempTrap = trap;
-                break;
-            }
-        }
-
-        if (tempTrap == null) return;
+        GameObject tempTrap = ObjectsPool.Instance.GetBlockTrap();
         Cell randomCell = grid.GetRandomSpawnableCell(true);
         randomCell.cellType = Grid.CellType.TRAP;
 

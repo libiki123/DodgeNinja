@@ -26,8 +26,18 @@ public static class Utils
 
     public static IEnumerator CheckAnimationCompleted(Animator anim, string CurrentAnim, Action Oncomplete)
     {
-        while (!anim.GetCurrentAnimatorStateInfo(0).IsName(CurrentAnim))
+        bool flag = true;
+        while (flag)
+        {
+            AnimatorStateInfo animInfo = anim.GetCurrentAnimatorStateInfo(0);
+            if (animInfo.IsName(CurrentAnim) && animInfo.normalizedTime > 1.0f)
+            {
+                flag = false;
+            }
+
             yield return null;
+        }
+           
         if (Oncomplete != null)
             Oncomplete();
     }
