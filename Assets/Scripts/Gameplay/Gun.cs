@@ -39,7 +39,7 @@ public class Gun : MonoBehaviour
         GameObject a = ObjectsPool.Instance.GetBullet();
         a.SetActive(true);
         a.transform.position = transform.position + new Vector3(0, 0.25f, 0);
-        a.GetComponent<Obstacle>().Init(direction, speed);
+        a.GetComponent<Bullet>().Init(direction, speed);
     }
 
 }
