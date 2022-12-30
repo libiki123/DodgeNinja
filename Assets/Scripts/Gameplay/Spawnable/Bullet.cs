@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
+    [SerializeField] private Vector3 minBound = new Vector3(-10, 0, -10);
+    [SerializeField] private Vector3 maxBound = new Vector3(10, 0, 10);
+
     private float speed;
     private Vector3 direction;
-    public Vector3 minBound = new Vector3(-10, 0, -10);
-    public Vector3 maxBound = new Vector3(10, 0, 10);
     private bool moving;
 
     // Update is called once per frame
