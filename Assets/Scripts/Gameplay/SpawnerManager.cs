@@ -10,7 +10,7 @@ public class SpawnerManager : MonoBehaviour
 
     [SerializeField] private SpawnerManager_SO waveData;
     [SerializeField] private float gunWaveDelay = 3.0f;
-    [SerializeField] private float dropTrapDelay = 4.0f;
+    [SerializeField] private float dropTrapWaveDelay = 4.0f;
 
     private int maxTrapAmount = 8; //25
     private int totalTrapCount = 0;
@@ -84,7 +84,7 @@ public class SpawnerManager : MonoBehaviour
         {
             if (UIManager.Instance.score >= 5)
             {
-                yield return new WaitForSeconds(dropTrapDelay);
+                yield return new WaitForSeconds(dropTrapWaveDelay);
 
                 trapSpawner.SpawnDropTrap();
             }

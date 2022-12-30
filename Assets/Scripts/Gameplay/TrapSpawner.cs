@@ -9,15 +9,16 @@ public class TrapSpawner : MonoBehaviour
     [Header("Traps")]
     [SerializeField] private List<Trap> spikeTraps = new List<Trap>();
     [SerializeField] private List<GameObject> blockTraps = new List<GameObject>();
-    [SerializeField] private TrapWarning dropTraps;
 
     public void SpawnDropTrap()
     {
         Cell cell = grid.GetPlayerCell();
 
         if (cell == null) return;
-        dropTraps.rootParent.transform.position = new Vector3(cell.transform.position.x, 0, cell.transform.position.z);
-        dropTraps.SpawnTrap();
+        TrapWarning dropTrap = ObjectsPool.Instance.GetDropTrap();
+        dropTrap.rootParent.SetActive(true);
+        dropTrap.rootParent.transform.position = new Vector3(cell.transform.position.x, 0, cell.transform.position.z);
+        dropTrap.SpawnTrap();
     }
 
     public void SpawnSpikeTrap()

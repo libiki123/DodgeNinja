@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,11 +16,19 @@ public static class Utils
 
         while (chosenNumbers.Count < count)
         {
-            int position = Random.Range(0, possibleNumbers.Count);
+            int position = UnityEngine.Random.Range(0, possibleNumbers.Count);
             chosenNumbers.Add(possibleNumbers[position]);
             possibleNumbers.RemoveAt(position);
         }
         return chosenNumbers;
     }
 
+
+    public static IEnumerator CheckAnimationCompleted(Animator anim, string CurrentAnim, Action Oncomplete)
+    {
+        while (!anim.GetCurrentAnimatorStateInfo(0).IsName(CurrentAnim))
+            yield return null;
+        if (Oncomplete != null)
+            Oncomplete();
+    }
 }
