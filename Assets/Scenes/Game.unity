@@ -4878,7 +4878,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a477245319fe6db4db0200456129ecbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeRange: 25
+  swipeRange: 30
   tapRange: 10
   tap: 0
   swipeLeft: 0

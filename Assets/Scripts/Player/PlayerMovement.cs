@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         if (moving)
         {
 
-            if (Vector3.Distance(startPos, transform.position) > 0.9f)
+            if (Vector3.Distance(startPos, transform.position) > 0.85f)
             {
                 transform.position = targetPos;
                 moving = false;
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
                 return;
             }
 
-            transform.position += (targetPos - startPos) * moveSpeed * Time.deltaTime;
+            transform.position += (targetPos - startPos) * moveSpeed * Time.fixedDeltaTime;
             return;
         }
         
