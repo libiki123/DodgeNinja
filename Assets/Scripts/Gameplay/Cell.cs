@@ -5,7 +5,8 @@ using UnityEngine;
 public class Cell : MonoBehaviour
 {
     public Grid.CellType cellType = Grid.CellType.NONE;
-    public bool havePlayer;
+    public bool havePlayer = false;
+    public bool haveReward = false;
     [HideInInspector] public GameObject floor;
 
     public void HideFloor()

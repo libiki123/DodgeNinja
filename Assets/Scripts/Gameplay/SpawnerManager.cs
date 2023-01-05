@@ -9,7 +9,7 @@ public class SpawnerManager : MonoBehaviour
     [SerializeField] private RewardSpawner rewardSpawner;
 
     [SerializeField] private SpawnerManager_SO waveData;
-    [SerializeField] private float gunWaveDelay = 3.0f;
+    [SerializeField] private float gunWaveDelay = 2.0f;
     [SerializeField] private float dropTrapWaveDelay = 4.0f;
 
     private int maxTrapAmount = 8; //25
@@ -21,6 +21,7 @@ public class SpawnerManager : MonoBehaviour
         UIManager.Instance.PointAdded += SpwanTrapWave;
 
         rewardSpawner.SpawnCoin();
+
         StartCoroutine(SpawnWave());
         StartCoroutine(SpawnDropTrap());
     }
@@ -33,7 +34,7 @@ public class SpawnerManager : MonoBehaviour
             int numOfNachine = GetNumOfMachine();
             int numOfBullet = GetNumOfBullet(numOfNachine);
 
-            List<int> randomListOfMachineIndex = Utils.GenerateRandomNumbers(numOfNachine, 0, sideSpawners.Count - 1);
+            List<int> randomListOfMachineIndex = Utils.GenerateRandomNumbers(numOfNachine, 0, sideSpawners.Count);
             foreach (var index in randomListOfMachineIndex)
             {
                 sideSpawners[index].SpawnObstacle(numOfBullet);
@@ -178,6 +179,8 @@ public class SpawnerManager : MonoBehaviour
 
     private int GetChanceIndex(float percent1, float percent2 = 0, float percent3 = 0, float percent4 = 0, float percent5 = 0)
     {
+        if (percent1 + percent2 + percent3 + percent4 + percent5 == 0f) return 0;
+
         int chanceIndex = 0;
 
         if(Random.Range(0f, 100.0f) <= percent1 && percent1 != 0)

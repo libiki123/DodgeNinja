@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Unity.Mathematics;
 using TMPro;
+using DG.Tweening;
 
 public class MainMenu : MonoBehaviour
 {

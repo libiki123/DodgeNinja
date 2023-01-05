@@ -13,11 +13,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float rayOffsetY = 0.5f;
     [SerializeField] private float rayOffsetZ = 0.5f;
 
-    Vector3 minBound = new Vector3(-2.5f, 0, -2.5f);
-    Vector3 maxBound = new Vector3(2.5f, 0, 2.5f);
+    private Vector3 minBound = new Vector3(-2.5f, 0, -2.5f);
+    private Vector3 maxBound = new Vector3(2.5f, 0, 2.5f);
     private Vector3 startPos;
     private Vector3 targetPos;
-    private bool moving;
+    private bool moving = false;
 
     private Player player;
 
@@ -38,12 +38,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (moving)
         {
-
-            if (Vector3.Distance(startPos, transform.position) > 0.85f)
+            if (Vector3.Distance(startPos, transform.position) > 0.7f)
             {
                 transform.position = targetPos;
+                
                 moving = false;
-                if(buttonControl.gameObject.activeSelf) buttonControl.Reset();
+                if (buttonControl.gameObject.activeSelf) buttonControl.Reset();
                 return;
             }
 
@@ -51,7 +51,8 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         
-        if (swipeControl.swipeUp || buttonControl.tapUp) //(Input.GetKeyDown(KeyCode.W))
+
+        if (swipeControl.swipeUp || buttonControl.tapUp || Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (CanMove(Vector3.forward))
             {
@@ -65,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
                 if (buttonControl.gameObject.activeSelf) buttonControl.Reset();
             }
         }
-        else if (swipeControl.swipeDown || buttonControl.tapDown)
+        else if (swipeControl.swipeDown || buttonControl.tapDown || Input.GetKeyDown(KeyCode.DownArrow))
         {
             if (CanMove(Vector3.back))
             {
@@ -79,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
                 if (buttonControl.gameObject.activeSelf) buttonControl.Reset();
             }
         }
-        else if (swipeControl.swipeLeft || buttonControl.tapLeft)
+        else if (swipeControl.swipeLeft || buttonControl.tapLeft || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             if (CanMove(Vector3.left))
             {
@@ -93,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
                 if (buttonControl.gameObject.activeSelf) buttonControl.Reset();
             }
         }
-        else if (swipeControl.swipeRight || buttonControl.tapRight)
+        else if (swipeControl.swipeRight || buttonControl.tapRight || Input.GetKeyDown(KeyCode.RightArrow))
         {
             if (CanMove(Vector3.right))
             {
@@ -107,6 +108,8 @@ public class PlayerMovement : MonoBehaviour
                 if (buttonControl.gameObject.activeSelf) buttonControl.Reset();
             }
         }
+
+        
     }
 
     private bool CanMove(Vector3 direction)

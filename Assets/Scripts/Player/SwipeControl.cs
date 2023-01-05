@@ -6,6 +6,7 @@ public class SwipeControl : MonoBehaviour
 {
     public float swipeRange = 50f;
     public float tapRange = 10f;
+    [SerializeField] GameObject swipeTrailPrefab;
 
     [HideInInspector] public bool tap, swipeLeft, swipeRight, swipeUp,swipeDown;
 
@@ -13,8 +14,10 @@ public class SwipeControl : MonoBehaviour
     private Vector2 currentPos;
     private Vector2 endTouchPos;
     private bool stopTouch = false;
+    private bool stopTrailFollow = false;
     private RectTransform swipableArea;
     private Camera mainCam;
+    private GameObject currentTrail;
 
     private void Start()
     {
@@ -34,6 +37,11 @@ public class SwipeControl : MonoBehaviour
         if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
         {
             startTouchPos = Input.GetTouch(0).position;
+
+            Vector3 screenPos = new Vector3(startTouchPos.x, startTouchPos.y, 12f);
+            Vector3 touchPos = mainCam.ScreenToWorldPoint(screenPos);
+            currentTrail = Instantiate(swipeTrailPrefab, touchPos, Quaternion.identity);
+            stopTrailFollow = false ;
         }
 
         if (!RectTransformUtility.RectangleContainsScreenPoint(swipableArea, startTouchPos))
@@ -67,6 +75,11 @@ public class SwipeControl : MonoBehaviour
                     stopTouch = true;
                 }
             }
+
+            Vector3 screenPos = new Vector3(currentPos.x, currentPos.y, 12f);
+            Vector3 touchPos = mainCam.ScreenToWorldPoint(screenPos);
+            currentTrail.transform.position = touchPos;
+
         }
 
         if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)
@@ -74,6 +87,7 @@ public class SwipeControl : MonoBehaviour
             stopTouch = false;
             endTouchPos = Input.GetTouch(0).position;
             Vector2 distance = endTouchPos - startTouchPos;
+            Destroy(currentTrail, 1f);
 
             if(Mathf.Abs(distance.x) < tapRange && Mathf.Abs(distance.y) < tapRange) // Tap
             {

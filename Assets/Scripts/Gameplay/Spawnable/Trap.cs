@@ -34,7 +34,8 @@ public class Trap : MonoBehaviour
         if (other.gameObject.tag == "Player")
         //if (other.gameObject.tag == "")
         {
-            other.GetComponent<Player>().TrigerDieAnim();
+            Vector3 tmpContactPoint = other.ClosestPoint(transform.position);
+            other.GetComponent<Player>().KillPLayer(tmpContactPoint);
         }
     }
 }

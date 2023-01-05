@@ -9,4 +9,6 @@ public class SaveDataSerialization
     public int totalCoin = 0;
     public int highScore = 0;
     public int batteryProgress = 0;
+
+    public string currentSkinId = "";
 }

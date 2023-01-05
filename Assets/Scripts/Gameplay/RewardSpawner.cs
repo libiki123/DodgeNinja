@@ -26,10 +26,11 @@ public class RewardSpawner : MonoBehaviour
 
     public void SpawnCoin()
     {
-        coinCell = grid.GetRandomSpawnableCell();
+        coinCell = grid.GetRandomSpawnableCell(3);
 
         coin.transform.position = new Vector3(coinCell.transform.position.x, 0.48f, coinCell.transform.position.z);
         coin.gameObject.SetActive(true);
+        coinCell.haveReward = true;
 
         if (isBatteryCollected)
         {
@@ -42,18 +43,20 @@ public class RewardSpawner : MonoBehaviour
 
     private void SpawnBattery()
     {
-        batteryCell = grid.GetRandomSpawnableCell(false, coinCell);
+        batteryCell = grid.GetRandomSpawnableCell(3);
 
         battery.transform.position = batteryCell.transform.position;
         battery.gameObject.SetActive(true);
+        batteryCell.haveReward = true;
         isBatteryCollected = false;
-        
     }
 
     private void CoinCollected()
     {
         UIManager.Instance.AddPoint();
         coinCount++;
+        coinCell.haveReward = false;
+        coinCell = null;
         SpawnCoin();
     }
 
@@ -62,6 +65,7 @@ public class RewardSpawner : MonoBehaviour
         UIManager.Instance.AddBattery();
         isBatteryCollected = true;
         coinCount = 0;
+        batteryCell.haveReward = false;
         batteryCell = null;
     }
 

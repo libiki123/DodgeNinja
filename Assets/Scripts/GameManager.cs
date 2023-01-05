@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         SaveGame();
     }
 
-    private void SaveGame()
+    public void SaveGame()
     {
         var jsonFormat = JsonUtility.ToJson(saveData);
         SaveSystem.SaveData(jsonFormat);

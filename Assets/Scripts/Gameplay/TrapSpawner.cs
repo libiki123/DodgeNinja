@@ -21,7 +21,7 @@ public class TrapSpawner : MonoBehaviour
     public void SpawnSpikeTrap()
     {
         Trap tempTrap = ObjectsPool.Instance.GetSpikeTrap();
-        Cell randomCell = grid.GetRandomSpawnableCell(true);
+        Cell randomCell = grid.GetRandomSpawnableCell(1);
         randomCell.cellType = Grid.CellType.WALKABLE;
 
         tempTrap.transform.position = new Vector3(randomCell.transform.position.x, 0.19f, randomCell.transform.position.z);
@@ -33,7 +33,7 @@ public class TrapSpawner : MonoBehaviour
     public void SpawnBlockTrap()
     {
         GameObject tempTrap = ObjectsPool.Instance.GetBlockTrap();
-        Cell randomCell = grid.GetRandomSpawnableCell(true);
+        Cell randomCell = grid.GetRandomSpawnableCell(2);
         randomCell.cellType = Grid.CellType.TRAP;
 
         tempTrap.transform.position = new Vector3(randomCell.transform.position.x, 0f, randomCell.transform.position.z);

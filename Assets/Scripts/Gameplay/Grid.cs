@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Grid : MonoBehaviour
 {
-    public enum CellType { PLAYER, WALKABLE, TRAP, NONE}
+    public enum CellType { WALKABLE, TRAP, NONE}
 
     [SerializeField] List<Cell> cellList = new List<Cell>();
     [SerializeField] List<GameObject> cellFloor = new List<GameObject>();
@@ -19,43 +19,42 @@ public class Grid : MonoBehaviour
 
     }
 
-    public Cell GetRandomSpawnableCell(bool onlyEmpty = false, Cell excludingCell = null)
+    public Cell GetRandomSpawnableCell(int caseIndex)
     {
-        List<Cell> availableCells = GetAvailableCells(onlyEmpty);
+        List<Cell> availableCells = GetAvailableCells(caseIndex);
 
         int maxIndex = availableCells.Count - 1;
         int randomIndex = Random.Range(1, maxIndex);
 
-        if(excludingCell != null)
-        {
-            while (availableCells[randomIndex] == excludingCell)
-            {
-                randomIndex = Random.Range(1, maxIndex);
-            }
-        }
-
         return availableCells[randomIndex];
     }
 
-    private List<Cell> GetAvailableCells(bool onlyEmpty = false)
+    private List<Cell> GetAvailableCells(int caseIndex)
     {
         List<Cell> tempCellList = new List<Cell>();
 
         foreach (var cell in cellList)
         {
-            if (onlyEmpty)
+            switch (caseIndex)
             {
-                if (cell.cellType == CellType.NONE && !cell.havePlayer)
-                {
-                    tempCellList.Add(cell);
-                }
-            }
-            else
-            {
-                if ((cell.cellType == CellType.NONE || cell.cellType == CellType.WALKABLE) && !cell.havePlayer)
-                {
-                    tempCellList.Add(cell);
-                }
+                case 1:
+                    if (cell.cellType == CellType.NONE && !cell.havePlayer)
+                    {
+                        tempCellList.Add(cell);
+                    }
+                    break;
+                case 2:
+                    if (cell.cellType == CellType.NONE && !cell.havePlayer && !cell.haveReward)
+                    {
+                        tempCellList.Add(cell);
+                    }
+                    break;
+                case 3:
+                    if ((cell.cellType == CellType.NONE || cell.cellType == CellType.WALKABLE) && !cell.havePlayer && !cell.haveReward)
+                    {
+                        tempCellList.Add(cell);
+                    }
+                    break;
             }
         }
 

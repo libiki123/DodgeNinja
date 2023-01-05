@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e24d37fd89d4e094cab236def2e249f2, type: 3}
+  m_Name: ShopData
+  m_EditorClassIdentifier: 
+  skins:
+  - id: 768c1e5c-bc6b-49e1-957a-aab4359d3d62
+    icon: {fileID: 21300000, guid: 8dc209cbdae6c7e49bb955fe70525f51, type: 3}
+    price: 0
+    mesh: {fileID: 8309603431903185669, guid: 58ee7981885b6ab49808731ab94ddcf1, type: 3}
+    material: {fileID: 2100000, guid: 0d91591a55883d149b40c463b45d7b57, type: 2}
+  - id: b0e9e020-b1b8-4919-a5d6-55fd51f6cb97
+    icon: {fileID: 21300000, guid: 9af54eaf8123e784cb950b05d866cb6c, type: 3}
+    price: 0
+    mesh: {fileID: 5776978540422182188, guid: a3d52b4092a03c14193056469592072a, type: 3}
+    material: {fileID: 2100000, guid: 3577882559958c04f9e593db7909e149, type: 2}
+  - id: 6837b138-66ac-45a7-9973-fcfc95e3a2b8
+    icon: {fileID: 21300000, guid: 996cda2d520509e4cbff41e51ba3592e, type: 3}
+    price: 0
+    mesh: {fileID: -2923391862508124051, guid: 7efb9bd3e0249a04dbcd1d298ff2339e, type: 3}
+    material: {fileID: 2100000, guid: 1b785635d119000498857721ee9ad78c, type: 2}
+  - id: 9dee3f0a-1d57-40cf-a14d-b8436a6f0afb
+    icon: {fileID: 21300000, guid: 00fa82b30a0858d42a4a94970b3941e8, type: 3}
+    price: 0
+    mesh: {fileID: 3023821055701972402, guid: cfcb03b82f444ad479f17600cba557c1, type: 3}
+    material: {fileID: 2100000, guid: 3022452930acea4479243bdb9afd0752, type: 2}
+  - id: ee4ff3c1-f6c7-4670-a2f6-fc74c141ce9a
+    icon: {fileID: 21300000, guid: b18a610e465b1d7489c1902c8a0ca0cd, type: 3}
+    price: 0
+    mesh: {fileID: 7466548762232585006, guid: fe72ea4719333cf41b0e89d078d799d4, type: 3}
+    material: {fileID: 2100000, guid: f7d2f9f0338bfd04db3ee50007dfc361, type: 2}
+  stages: []
