@@ -17,5 +17,6 @@ public struct ShopItemData
     public int price;
     public Mesh mesh;
     public Material material;
+    public bool isDefault;
 }
 

@@ -6,7 +6,7 @@ using Unity.Mathematics;
 using TMPro;
 using DG.Tweening;
 
-public class MainMenu : MonoBehaviour
+public class MainMenu : MonoBehaviour, IDataPersistence
 {
     public static MainMenu Instance { get; private set; }
 
@@ -27,30 +27,23 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void LoadData(GameData data)
     {
-        Init();
-
-        GameManager.Instance.DoneLoadScene += Init;
-    }
-
-    public void Init()
-    {
-        battery = GameManager.Instance.saveData.batteryProgress;
+        battery = data.batteryProgress;
         float percentage = math.remap(0, 50, 210, 5, battery);
-        batteryProgressBar.padding = new Vector4(0,0,0, percentage);
+        batteryProgressBar.padding = new Vector4(0, 0, 0, percentage);
         batteryProgressText.text = battery.ToString() + " / 50";
-        totalCoin = GameManager.Instance.saveData.totalCoin;
+        totalCoin = data.totalCoin;
         coinText.text = totalCoin.ToString();
     }
 
-    public void LoadGame()
+    public void SaveData(ref GameData data)
     {
-        GameManager.Instance.StartGame();
+        
     }
 
-    private void OnDestroy()
+    public void OnPlayClick()
     {
-        GameManager.Instance.DoneLoadScene -= Init;
+        GameManager.Instance.StartGame();
     }
 }

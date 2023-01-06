@@ -8,7 +8,6 @@ public class Gun : MonoBehaviour
     public float warningTime = 0.5f;
     private Animator animator;
 
-    private GameObject obstaclePrefab;
     private Vector3 direction;
     private float speed;
 
@@ -21,7 +20,6 @@ public class Gun : MonoBehaviour
     {
         this.direction = direction;
         this.speed = speed;
-        this.obstaclePrefab = obstaclePrefab;
         //StartCoroutine(StartWarning());
         animator.SetTrigger("Shoot");
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 using EZCameraShake;
 
 [RequireComponent(typeof(Animator))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDataPersistence
 {
     public enum MoveDirection { LEFT, RIGHT, UP, DOWN }
 
@@ -16,12 +16,10 @@ public class Player : MonoBehaviour
     private SkinnedMeshRenderer SMR;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
         SMR = GetComponentInChildren<SkinnedMeshRenderer>();
-
-        GameManager.Instance.DoneLoadScene += UpdateSkin;
     }
 
     public void TriggerMoveAnim(MoveDirection direction)
@@ -53,6 +51,7 @@ public class Player : MonoBehaviour
             Handheld.Vibrate();
             animator.SetTrigger("Die");
             isAlive = false;
+            DataPersistenceManager.Instance.SaveGame();
         }
     }
 
@@ -61,10 +60,9 @@ public class Player : MonoBehaviour
         UIManager.Instance.ShowEndGameMenu();
     }
 
-    public void UpdateSkin()
+    public void UpdateSkin(GameData data)
     {
-        Debug.Log(GameManager.Instance.saveData.currentSkinId);
-        if(GameManager.Instance.saveData.currentSkinId == "")
+        if(data.currentSkinId == "")
         {
             SMR.sharedMesh = skinData.skins[0].mesh;
             SMR.material = skinData.skins[0].material;
@@ -72,7 +70,7 @@ public class Player : MonoBehaviour
 
         foreach(var skin in skinData.skins)
         {
-            if(skin.id == GameManager.Instance.saveData.currentSkinId)
+            if(skin.id == data.currentSkinId)
             {
                 SMR.sharedMesh = skin.mesh;
                 SMR.material = skin.material;
@@ -80,8 +78,13 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void OnDestroy()
+    public void LoadData(GameData data)
     {
-        GameManager.Instance.DoneLoadScene -= UpdateSkin;
+        UpdateSkin(data);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        
     }
 }

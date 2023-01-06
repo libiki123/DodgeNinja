@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using System;
 
-public class Shop : MonoBehaviour
+public class Shop : MonoBehaviour, IDataPersistence
 {
+    public enum ShopItemType { SKIN, STAGE }
     public static Shop Instance { get; private set; }
 
     [Header("Refs")]
@@ -27,6 +29,10 @@ public class Shop : MonoBehaviour
     private RectTransform skinBttnRT;
     private RectTransform stageBttnRT;
 
+    private string currentSkinId = "";
+    private string currentStageId = "";
+    private int currentTotalCoin;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -46,18 +52,50 @@ public class Shop : MonoBehaviour
         stageBttnRT = stageBttn.GetComponent<RectTransform>();
 
         InitShop();
+        DataPersistenceManager.Instance.RefreshDataPersistenceObjs();
+        DataPersistenceManager.Instance.LoadGame();
     }
 
     private void InitShop()
     {
-        foreach(var skin in ShopData.skins)
+        foreach(ShopItemData skin in ShopData.skins)
         {
             GameObject g = Instantiate(shopItemPrefab, skinScrollView);
             g.SetActive(true);
-            g.GetComponent<ShopItem>().Init(skin.id, skin.icon, skin.price);
+            g.GetComponent<ShopItem>().Init(skin, ShopItemType.SKIN);
         }
+
     }
 
+    public void OnShopItemClick(ShopItem item)
+    {
+        if (item.isPurchased)
+        {
+            if (item.type == ShopItemType.SKIN)
+                currentSkinId = item.id;
+            else
+                currentStageId = item.id;
+        }
+        else if (currentTotalCoin >= item.price)
+        {
+            currentTotalCoin -= item.price;
+            if (item.type == ShopItemType.SKIN)
+                currentSkinId = item.id;
+            else
+                currentStageId = item.id;
+            item.SetPurchased(true);
+        }
+        else
+        {
+            return;
+        }
+
+        DataPersistenceManager.Instance.SaveGame();
+        DataPersistenceManager.Instance.LoadGame();
+        
+    }
+
+    //============================================ Button Event ============================================//
     public void OnShopClick()
     {
         if (shopBttn.isOn)
@@ -86,8 +124,18 @@ public class Shop : MonoBehaviour
         stageScrollView.gameObject.SetActive(true);
     }
 
-    public void UpdatePlayerSkin()
+    public void LoadData(GameData data)
     {
-        player.UpdateSkin();
+        currentSkinId = data.currentSkinId;
+        //currentStageId = data.currentStageId;
+        currentTotalCoin = data.totalCoin;
     }
+
+    public void SaveData(ref GameData data)
+    {
+        data.currentSkinId = currentSkinId;
+        //data.currentStageId = currentStageId;
+        data.totalCoin = currentTotalCoin;
+    }
+
 }

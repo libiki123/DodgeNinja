@@ -14,7 +14,6 @@ public class SwipeControl : MonoBehaviour
     private Vector2 currentPos;
     private Vector2 endTouchPos;
     private bool stopTouch = false;
-    private bool stopTrailFollow = false;
     private RectTransform swipableArea;
     private Camera mainCam;
     private GameObject currentTrail;
@@ -41,7 +40,6 @@ public class SwipeControl : MonoBehaviour
             Vector3 screenPos = new Vector3(startTouchPos.x, startTouchPos.y, 12f);
             Vector3 touchPos = mainCam.ScreenToWorldPoint(screenPos);
             currentTrail = Instantiate(swipeTrailPrefab, touchPos, Quaternion.identity);
-            stopTrailFollow = false ;
         }
 
         if (!RectTransformUtility.RectangleContainsScreenPoint(swipableArea, startTouchPos))

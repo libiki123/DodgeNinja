@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1727485160018733562}
   - component: {fileID: 1727485160018733563}
   - component: {fileID: 1727485160018733560}
-  - component: {fileID: 1727485160018733561}
+  - component: {fileID: 1528929415}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6878251dccd5f4fb059987b0019a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SaveSystem: {fileID: 1727485160018733561}
+  SaveSystem: {fileID: 0}
   gameSceneName: Game
   menuSceneName: MainMenu
 --- !u!114 &1727485160018733560
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4a525ffcd273e42b463810fc93b872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1727485160018733561
+--- !u!114 &1528929415
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,8 +70,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1727485160018733542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05c311353eadf7b4a82736ddd4a6424c, type: 3}
+  m_Script: {fileID: 11500000, guid: c3cdadaecf3e48c4aa8865a48e6da62b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveName: SaveData_
+  fileName: SaveData_
   saveDataIndex: 0

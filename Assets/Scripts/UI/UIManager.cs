@@ -6,7 +6,7 @@ using System;
 using UnityEngine.UI;
 using Unity.Mathematics;
 
-public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviour, IDataPersistence
 {
     public static UIManager Instance { get; private set; }
 
@@ -39,27 +39,33 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        score = 0;
-        highScore = 0;
-        battery = 0;
-
-        Init();
-
-        GameManager.Instance.DoneLoadScene += Init;
+        DataPersistenceManager.Instance.RefreshDataPersistenceObjs();
+        DataPersistenceManager.Instance.LoadGame();
+        ChoseControlType();
     }
 
-    public void Init()
+    public void LoadData(GameData data)
     {
         scoreText.text = score.ToString();
-        battery = GameManager.Instance.saveData.batteryProgress;
+        battery = data.batteryProgress;
         float percentage = math.remap(0, 50, 210, 5, battery);
         batteryProgressBar.padding = new Vector4(percentage, 0, 0, 0);
         batteryProgressText.text = battery.ToString() + " / 50";
-        this.highScore = GameManager.Instance.saveData.highScore;
+        this.highScore = data.highScore;
         highscoreText.text = highScore.ToString();
+    }
 
-        GameManager.Instance.PauseGame();
+    public void SaveData(ref GameData data)
+    {
+        data.totalCoin += score;
+        data.batteryProgress = battery;
+        data.highScore = highScore;
+    }
+
+    public void ChoseControlType()
+    {
         controlPicker.SetActive(true);
+        GameManager.Instance.PauseGame();
     }
 
     // Update is called once per frame
@@ -94,10 +100,11 @@ public class UIManager : MonoBehaviour
         finalScoreText.text = score.ToString();
     }
 
+    //============================================ Button Event ============================================//
     public void Replay()
     {
-        GameManager.Instance.Restart();
         GameManager.Instance.ResumeGame();
+        GameManager.Instance.StartGame();
     }
 
     public void Home()
@@ -124,8 +131,5 @@ public class UIManager : MonoBehaviour
         CameraManager.Instance.StartZoomIn();
     }
 
-    private void OnDestroy()
-    {
-        GameManager.Instance.DoneLoadScene -= Init;
-    }
+
 }
