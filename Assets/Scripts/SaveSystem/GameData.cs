@@ -9,6 +9,7 @@ public class GameData
     public int highScore;
     public int batteryProgress;
     public string currentSkinId;
+    public string currentStageId;
     public SerializableDictionary<string, bool> skinPurchased;
 
     public GameData()
@@ -17,6 +18,7 @@ public class GameData
         highScore = 0;
         batteryProgress = 0;
         currentSkinId = "";
+        currentStageId = "";
         skinPurchased = new SerializableDictionary<string, bool>();
     }
 }

@@ -4,22 +4,19 @@ using UnityEngine;
 using EZCameraShake;
 
 [RequireComponent(typeof(Animator))]
-public class Player : MonoBehaviour, IDataPersistence
+public class Player : MonoBehaviour
 {
     public enum MoveDirection { LEFT, RIGHT, UP, DOWN }
 
     public bool isAlive = true;
     [SerializeField] private GameObject impactVFX;
-    [SerializeField] private Shop_SO skinData;
 
     private Animator animator;
-    private SkinnedMeshRenderer SMR;
 
     // Start is called before the first frame update
     void Awake()
     {
         animator = GetComponent<Animator>();
-        SMR = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     public void TriggerMoveAnim(MoveDirection direction)
@@ -60,31 +57,4 @@ public class Player : MonoBehaviour, IDataPersistence
         UIManager.Instance.ShowEndGameMenu();
     }
 
-    public void UpdateSkin(GameData data)
-    {
-        if(data.currentSkinId == "")
-        {
-            SMR.sharedMesh = skinData.skins[0].mesh;
-            SMR.material = skinData.skins[0].material;
-        }
-
-        foreach(var skin in skinData.skins)
-        {
-            if(skin.id == data.currentSkinId)
-            {
-                SMR.sharedMesh = skin.mesh;
-                SMR.material = skin.material;
-            }
-        }
-    }
-
-    public void LoadData(GameData data)
-    {
-        UpdateSkin(data);
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        
-    }
 }

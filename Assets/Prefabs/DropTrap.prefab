@@ -61,8 +61,8 @@ MonoBehaviour:
   isDeployed: 0
   rootParent: {fileID: 6146497397092473393}
   warningMark: {fileID: 8805540560891325254}
-  warningTime: 2
-  dropStartTime: 1
+  warningTime: 3
+  dropStartTime: 2
   anim: {fileID: 7972648533401898719}
 --- !u!1 &6104522110068733962
 GameObject:

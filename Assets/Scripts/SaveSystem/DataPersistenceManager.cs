@@ -6,10 +6,12 @@ using System;
 
 public class DataPersistenceManager : MonoBehaviour
 {
+    public static DataPersistenceManager Instance { get; private set; }
+
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
     [Range(0, 10)][SerializeField] private int saveDataIndex = 0;
-    public static DataPersistenceManager Instance { get; private set; }
+
 
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;

@@ -9,13 +9,14 @@ public class ShopItem : MonoBehaviour, IDataPersistence
 {
     [SerializeField] private Image icon;
     [SerializeField] private TMP_Text priceText;
-    [SerializeField] private GameObject checkMark;
+    [SerializeField] private Transform checkMarkPos;
     [SerializeField] private GameObject lockBackground;
 
-    [HideInInspector] public Shop.ShopItemType type;
-    [HideInInspector] public int price;
-    [HideInInspector] public string id;
-    [HideInInspector] public bool isPurchased = false;
+    [Header("Item Info - Auto Populate")]
+    public Shop.ShopItemType type;
+    public int price;
+    public string id;
+    public bool isPurchased = false;
 
     private bool isDefault = false;
 
@@ -34,20 +35,24 @@ public class ShopItem : MonoBehaviour, IDataPersistence
         if (isPurchased || isDefault)
         {
             priceText.gameObject.SetActive(false);
-            checkMark.SetActive(true);
             lockBackground.gameObject.SetActive(false);
             this.isPurchased = true;
         }
         else
         {
             priceText.gameObject.SetActive(true);
-            checkMark.SetActive(false);
             lockBackground.gameObject.SetActive(true);
             this.isPurchased = false;
         }
     }
 
-    public void OnSkinClick()
+    public void SetUsing(ref RectTransform checkMark)
+    {
+        checkMark.SetParent(checkMarkPos);
+        checkMark.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+    }
+
+    public void OnItemClick()
     {
         Shop.Instance.OnShopItemClick(this);
     }

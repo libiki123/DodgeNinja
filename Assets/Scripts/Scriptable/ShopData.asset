@@ -43,4 +43,16 @@ MonoBehaviour:
     mesh: {fileID: 7466548762232585006, guid: fe72ea4719333cf41b0e89d078d799d4, type: 3}
     material: {fileID: 2100000, guid: f7d2f9f0338bfd04db3ee50007dfc361, type: 2}
     isDefault: 0
-  stages: []
+  stages:
+  - id: 316b6490-2b2a-4e99-ae71-567492104260
+    icon: {fileID: 21300000, guid: f758a2865429d3c429c92a4f73b68f03, type: 3}
+    price: 0
+    mesh: {fileID: 8590717756623588023, guid: bd578c739e263ef43a36e1f8a11f043d, type: 3}
+    material: {fileID: 2100000, guid: fd66e9cbd0617b64a95af0771a9a1f4e, type: 2}
+    isDefault: 1
+  - id: 14cca45b-fed8-4334-99a8-9018b24206eb
+    icon: {fileID: 21300000, guid: 98d95ad15a21369429d529263192bdd8, type: 3}
+    price: 1
+    mesh: {fileID: -3415877117910875990, guid: bf94d71396d16cd4dae010ab349a0368, type: 3}
+    material: {fileID: 2100000, guid: 76aa8dfc4fe92874fb4e438c504d09b8, type: 2}
+    isDefault: 0
