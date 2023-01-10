@@ -6,12 +6,12 @@ using System;
 
 public class DataPersistenceManager : MonoBehaviour
 {
-    public static DataPersistenceManager Instance { get; private set; }
+    public static DataPersistenceManager instance { get; private set; }
 
     [Header("File Storage Config")]
     [SerializeField] private string fileName;
     [Range(0, 10)][SerializeField] private int saveDataIndex = 0;
-
+    [SerializeField] private bool useEncryption;
 
     private GameData gameData;
     private List<IDataPersistence> dataPersistenceObjects;
@@ -19,15 +19,15 @@ public class DataPersistenceManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
             Destroy(this);
         else
-            Instance = this;
+            instance = this;
     }
 
     private void Start()
     {
-        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName + saveDataIndex);
+        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName + saveDataIndex, useEncryption);
         dataPersistenceObjects = FindAllDataPersistenceObjects();
     }
 

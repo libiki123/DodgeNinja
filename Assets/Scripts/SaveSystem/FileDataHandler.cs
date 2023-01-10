@@ -9,11 +9,15 @@ public class FileDataHandler
     private string dataDirpath = "";
     private string dataFileName = "";
 
-    public FileDataHandler(string dataDirpath, string dataFileName)
+    private bool useEncryption = false;
+    private string useEncryptionCodeWord = "carem";                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+
+    public FileDataHandler(string dataDirpath, string dataFileName, bool useEncryption)
     {
         this.dataDirpath = dataDirpath;
         this.dataFileName = dataFileName;
-    }   
+        this.useEncryption = useEncryption;
+    }
 
     public GameData Load()
     {
@@ -31,6 +35,11 @@ public class FileDataHandler
                     {
                         dataToLoad = reader.ReadToEnd();
                     }
+                }
+
+                if (useEncryption)
+                {
+                    dataToLoad = EncryptDecrypt(dataToLoad);
                 }
 
                 // Desieialize data from Json to c# object
@@ -56,6 +65,11 @@ public class FileDataHandler
             // Serialize data to a Json
             string dataToStore = JsonUtility.ToJson(data, true);
 
+            if (useEncryption)
+            {
+                dataToStore = EncryptDecrypt(dataToStore);
+            }
+
             using (FileStream stream = new FileStream(fullPath, FileMode.Create))
             {
                 using(StreamWriter writer = new StreamWriter(stream))
@@ -69,5 +83,15 @@ public class FileDataHandler
             Debug.LogError("Error saving to a file: " + fullPath + "\n" + e.Message);
         }
 
+    }
+
+    private string EncryptDecrypt(string data)
+    {
+        string modifiedData = "";
+        for (int i = 0; i < data.Length; i++)
+        {
+            modifiedData += (char)(data[i] ^ useEncryptionCodeWord[i % useEncryptionCodeWord.Length]);
+        }
+        return modifiedData;
     }
 }

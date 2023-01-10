@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public event Action DoneLoadScene;
-    public static GameManager Instance { get; private set; }
+    public static GameManager instance { get; private set; }
 
     public string gameSceneName;
     public string menuSceneName;
@@ -16,14 +16,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
         {
             gameObject.SetActive(false);
             Destroy(this);
         }
         else
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
             
