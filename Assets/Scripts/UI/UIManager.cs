@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
     [Header("Refs")]
     [SerializeField] private GameObject bttnControl;
     [SerializeField] private GameObject swipeControl;
+    [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject endGameMenu;
     [SerializeField] private GameObject controlPicker;
     [SerializeField] private RectMask2D batteryProgressBar;
@@ -41,7 +42,9 @@ public class UIManager : MonoBehaviour, IDataPersistence
     {
         DataPersistenceManager.Instance.RefreshDataPersistenceObjs();
         DataPersistenceManager.Instance.LoadGame();
-        ChoseControlType();
+
+        controlPicker.SetActive(true);
+        GameManager.Instance.PauseGame();
     }
 
     public void LoadData(GameData data)
@@ -62,11 +65,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
         data.highScore = highScore;
     }
 
-    public void ChoseControlType()
-    {
-        controlPicker.SetActive(true);
-        GameManager.Instance.PauseGame();
-    }
+
 
     // Update is called once per frame
     public void AddPoint()
@@ -131,5 +130,15 @@ public class UIManager : MonoBehaviour, IDataPersistence
         CameraManager.Instance.StartZoomIn();
     }
 
+    public void PauseGame()
+    {
+        GameManager.Instance.PauseGame();
+        pauseMenu.SetActive(true);
+    }
 
+    public void ResumeGame()
+    {
+        GameManager.Instance.ResumeGame();
+        pauseMenu.SetActive(false);
+    }
 }

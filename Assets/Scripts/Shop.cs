@@ -20,6 +20,7 @@ public class Shop : MonoBehaviour, IDataPersistence
     [SerializeField] private Button skinBttn;
     [SerializeField] private Button stageBttn;
     [SerializeField] private RectTransform shopMenu;
+    [SerializeField] private RectTransform mainMenu;
     [SerializeField] private Transform skinScrollView;
     [SerializeField] private Transform stageScrollView;
     [SerializeField] private RectTransform skinCheckMark;
@@ -32,6 +33,8 @@ public class Shop : MonoBehaviour, IDataPersistence
 
     private RectTransform skinBttnRT;
     private RectTransform stageBttnRT;
+    private Image skinBttnIMG;
+    private Image stageBttnIMG;
 
     private string currentSkinId = "";
     private string currentStageId = "";
@@ -54,6 +57,8 @@ public class Shop : MonoBehaviour, IDataPersistence
     {
         skinBttnRT = skinBttn.GetComponent<RectTransform>();
         stageBttnRT = stageBttn.GetComponent<RectTransform>();
+        skinBttnIMG = skinBttn.GetComponent<Image>();
+        stageBttnIMG = stageBttn.GetComponent<Image>();
 
         DataPersistenceManager.Instance.RefreshDataPersistenceObjs();
         DataPersistenceManager.Instance.LoadGame();
@@ -86,36 +91,6 @@ public class Shop : MonoBehaviour, IDataPersistence
 
         UpdateSkin("player");
         UpdateSkin("stage");
-    }
-
-    public void OnShopItemClick(ShopItem item)
-    {
-        if (!item.isPurchased)
-        {
-            if (currentTotalCoin >= item.price)
-            {
-                currentTotalCoin -= item.price;
-                item.SetPurchased(true);
-            }
-            else
-                return;
-        }
-
-        if (item.type == ShopItemType.SKIN)
-        {
-            currentSkinId = item.id;
-            item.SetUsing(ref skinCheckMark);
-            UpdateSkin("player");
-        }
-        else
-        {
-            currentStageId = item.id;
-            item.SetUsing(ref stageCheckMark);
-            UpdateSkin("stage");
-        }
-
-        DataPersistenceManager.Instance.SaveGame();
-        DataPersistenceManager.Instance.LoadGame();
     }
 
     public void UpdateSkin(string objectName)
@@ -163,38 +138,82 @@ public class Shop : MonoBehaviour, IDataPersistence
     }
 
     //============================================ Button Event ============================================//
+    public void OnShopItemClick(ShopItem item)
+    {
+        if (!item.isPurchased)
+        {
+            if (currentTotalCoin >= item.price)
+            {
+                currentTotalCoin -= item.price;
+                item.SetPurchased(true);
+            }
+            else
+                return;
+        }
+
+        if (item.type == ShopItemType.SKIN)
+        {
+            currentSkinId = item.id;
+            item.SetUsing(ref skinCheckMark);
+            UpdateSkin("player");
+        }
+        else
+        {
+            currentStageId = item.id;
+            item.SetUsing(ref stageCheckMark);
+            UpdateSkin("stage");
+        }
+
+        DataPersistenceManager.Instance.SaveGame();
+        DataPersistenceManager.Instance.LoadGame();
+    }
+
     public void OnShopClick()
     {
         if (shopBttn.isOn)
         {
-            skinBttnRT.DOAnchorPosX(skinBttnRT.rect.width, 0.2f);
-            stageBttnRT.DOAnchorPosX(stageBttnRT.rect.width, 0.2f);
-            shopMenu.DOAnchorPosY(shopMenu.rect.height, 0.2f);
-
             DataPersistenceManager.Instance.RefreshDataPersistenceObjs();
             DataPersistenceManager.Instance.LoadGame();
 
-            skinScrollView.gameObject.SetActive(true);
-            stageScrollView.gameObject.SetActive(false);
+            shopMenu.DOAnchorPosY(shopMenu.rect.height, 0.2f);
+            mainMenu.gameObject.SetActive(false);
+
+            OnSkinClick();
         }
         else
         {
-            skinBttnRT.DOAnchorPosX(0, 0.2f);
-            stageBttnRT.DOAnchorPosX(0, 0.2f);
-            shopMenu.DOAnchorPosY(0, 0.2f);
+            shopBttn.isOn = false;
+            skinBttnRT.DOAnchorPosX(0, 0.15f);
+            stageBttnRT.DOAnchorPosX(0, 0.15f);
+            shopMenu.DOAnchorPosY(0, 0.15f);
+            mainMenu.gameObject.SetActive(true);
         }
+    }
+
+    public void CloseShop()
+    {
+        shopBttn.isOn = false;
     }
 
     public void OnSkinClick()
     {
+        skinBttn.Select();
         skinScrollView.gameObject.SetActive(true);
         stageScrollView.gameObject.SetActive(false);
+        skinBttnIMG.sprite = Resources.Load<Sprite>("Sprites/bttn_skin_selected");
+        stageBttnIMG.sprite = Resources.Load<Sprite>("Sprites/bttn_stage_default");
+        skinBttnRT.DOAnchorPosX(skinBttnRT.rect.width - 20f, 0.05f);
+        stageBttnRT.DOAnchorPosX(stageBttnRT.rect.width, 0.1f);
     }
 
     public void OnStageClick()
     {
         skinScrollView.gameObject.SetActive(false);
         stageScrollView.gameObject.SetActive(true);
+        skinBttnIMG.sprite = Resources.Load<Sprite>("Sprites/bttn_skin_default");
+        stageBttnIMG.sprite = Resources.Load<Sprite>("Sprites/bttn_stage_selected");
+        skinBttnRT.DOAnchorPosX(skinBttnRT.rect.width, 0.1f);
+        stageBttnRT.DOAnchorPosX(stageBttnRT.rect.width - 20f, 0.05f);
     }
 
     public void LoadData(GameData data)

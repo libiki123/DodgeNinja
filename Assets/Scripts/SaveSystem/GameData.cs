@@ -11,6 +11,7 @@ public class GameData
     public string currentSkinId;
     public string currentStageId;
     public SerializableDictionary<string, bool> skinPurchased;
+    public int controlType;
 
     public GameData()
     {
@@ -20,5 +21,6 @@ public class GameData
         currentSkinId = "";
         currentStageId = "";
         skinPurchased = new SerializableDictionary<string, bool>();
+        controlType = 0;
     }
 }
