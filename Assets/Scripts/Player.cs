@@ -4,12 +4,13 @@ using UnityEngine;
 using EZCameraShake;
 
 [RequireComponent(typeof(Animator))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDataPersistence
 {
     public enum MoveDirection { LEFT, RIGHT, UP, DOWN }
 
     public bool isAlive = true;
     [SerializeField] private GameObject impactVFX;
+    [SerializeField] private Shop_SO skinData;
 
     private Animator animator;
 
@@ -57,4 +58,33 @@ public class Player : MonoBehaviour
         UIManager.Instance.ShowEndGameMenu();
     }
 
+    private void UpdateSkin(GameData data)
+    {
+        SkinnedMeshRenderer SMR = GetComponentInChildren<SkinnedMeshRenderer>();
+
+        if (data.currentSkinId == "")
+        {
+            SMR.sharedMesh = skinData.skins[0].mesh;
+            SMR.material = skinData.skins[0].material;
+        }
+
+        foreach (var skin in skinData.skins)
+        {
+            if (skin.id == data.currentSkinId)
+            {
+                SMR.sharedMesh = skin.mesh;
+                SMR.material = skin.material;
+            }
+        }
+    }
+
+    public void LoadData(GameData data)
+    {
+        UpdateSkin(data);
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        
+    }
 }

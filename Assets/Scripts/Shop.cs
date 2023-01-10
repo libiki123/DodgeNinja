@@ -55,27 +55,32 @@ public class Shop : MonoBehaviour, IDataPersistence
         skinBttnRT = skinBttn.GetComponent<RectTransform>();
         stageBttnRT = stageBttn.GetComponent<RectTransform>();
 
+        DataPersistenceManager.Instance.RefreshDataPersistenceObjs();
         DataPersistenceManager.Instance.LoadGame();
         InitShop();
     }
 
     private void InitShop()
     {
-        foreach(ShopItemData skin in ShopData.skins)
+        for (int i = 0; i < ShopData.skins.Count; i++)
         {
             GameObject g = Instantiate(shopSkinPrefab, skinScrollView);
             g.SetActive(true);
-            g.GetComponent<ShopItem>().Init(skin, ShopItemType.SKIN);
-            if (skin.id == currentSkinId)
+            g.GetComponent<ShopItem>().Init(ShopData.skins[i], ShopItemType.SKIN);
+            if (currentSkinId == "" && i == 0)
+                g.GetComponent<ShopItem>().SetUsing(ref skinCheckMark);
+            else if(ShopData.skins[i].id == currentSkinId)
                 g.GetComponent<ShopItem>().SetUsing(ref skinCheckMark);
         }
 
-        foreach (ShopItemData stage in ShopData.stages)
+        for (int i = 0; i < ShopData.stages.Count; i++)
         {
             GameObject g = Instantiate(shopStagePrefab, stageScrollView);
             g.SetActive(true);
-            g.GetComponent<ShopItem>().Init(stage, ShopItemType.STAGE);
-            if (stage.id == currentStageId)
+            g.GetComponent<ShopItem>().Init(ShopData.stages[i], ShopItemType.STAGE);
+            if (currentStageId == "" && i == 0)
+                g.GetComponent<ShopItem>().SetUsing(ref stageCheckMark);
+            else if (ShopData.stages[i].id == currentStageId)
                 g.GetComponent<ShopItem>().SetUsing(ref stageCheckMark);
         }
 
@@ -110,6 +115,7 @@ public class Shop : MonoBehaviour, IDataPersistence
         }
 
         DataPersistenceManager.Instance.SaveGame();
+        DataPersistenceManager.Instance.LoadGame();
     }
 
     public void UpdateSkin(string objectName)

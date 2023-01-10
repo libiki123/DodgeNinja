@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6878251dccd5f4fb059987b0019a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SaveSystem: {fileID: 0}
   gameSceneName: Game
   menuSceneName: MainMenu
 --- !u!114 &1727485160018733560
