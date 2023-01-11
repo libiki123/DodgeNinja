@@ -136,7 +136,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5138339946112956243
 Transform:
   m_ObjectHideFlags: 0
@@ -165,6 +165,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4396060622e4348a72c0b507a91b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rewardCollectedSound:
+    Guid:
+      Data1: -2081353525
+      Data2: 1240018460
+      Data3: 307918764
+      Data4: -1827332382
+    Path: event:/ScrollCollected
 --- !u!135 &1413472949037983140
 SphereCollider:
   m_ObjectHideFlags: 0
