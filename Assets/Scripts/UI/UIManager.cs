@@ -8,7 +8,7 @@ using Unity.Mathematics;
 
 public class UIManager : MonoBehaviour, IDataPersistence
 {
-    public static UIManager Instance { get; private set; }
+    public static UIManager instance { get; private set; }
 
     [Header("Texts")]
     [SerializeField] private TMP_Text scoreText;
@@ -32,19 +32,19 @@ public class UIManager : MonoBehaviour, IDataPersistence
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        if (instance != null && instance != this)
             Destroy(this);
         else
-            Instance = this;
+            instance = this;
     }
 
     private void Start()
     {
-        DataPersistenceManager.Instance.RefreshDataPersistenceObjs();
-        DataPersistenceManager.Instance.LoadGame();
+        DataPersistenceManager.instance.RefreshDataPersistenceObjs();
+        DataPersistenceManager.instance.LoadGame();
 
         controlPicker.SetActive(true);
-        GameManager.Instance.PauseGame();
+        GameManager.instance.PauseGame();
     }
 
     public void LoadData(GameData data)
@@ -94,7 +94,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
 
     public void ShowEndGameMenu()
     {
-        GameManager.Instance.PauseGame();
+        GameManager.instance.PauseGame();
         endGameMenu.SetActive(true);
         finalScoreText.text = score.ToString();
     }
@@ -102,14 +102,14 @@ public class UIManager : MonoBehaviour, IDataPersistence
     //============================================ Button Event ============================================//
     public void Replay()
     {
-        GameManager.Instance.ResumeGame();
-        GameManager.Instance.StartGame();
+        GameManager.instance.ResumeGame();
+        GameManager.instance.StartGame();
     }
 
     public void Home()
     {
-        GameManager.Instance.ResumeGame();
-        GameManager.Instance.LoadMainMenu();
+        GameManager.instance.ResumeGame();
+        GameManager.instance.LoadMainMenu();
     }
 
     public void UseButton()
@@ -117,8 +117,8 @@ public class UIManager : MonoBehaviour, IDataPersistence
         controlPicker.SetActive(false);
         bttnControl.SetActive(true);
         swipeControl.SetActive(false);
-        GameManager.Instance.ResumeGame();
-        CameraManager.Instance.StartZoomIn();
+        GameManager.instance.ResumeGame();
+        CameraManager.instance.StartZoomIn();
     }
 
     public void UseSwipe()
@@ -126,19 +126,19 @@ public class UIManager : MonoBehaviour, IDataPersistence
         controlPicker.SetActive(false);
         bttnControl.SetActive(false);
         swipeControl.SetActive(true);
-        GameManager.Instance.ResumeGame();
-        CameraManager.Instance.StartZoomIn();
+        GameManager.instance.ResumeGame();
+        CameraManager.instance.StartZoomIn();
     }
 
     public void PauseGame()
     {
-        GameManager.Instance.PauseGame();
+        GameManager.instance.PauseGame();
         pauseMenu.SetActive(true);
     }
 
     public void ResumeGame()
     {
-        GameManager.Instance.ResumeGame();
+        GameManager.instance.ResumeGame();
         pauseMenu.SetActive(false);
     }
 }
