@@ -85,7 +85,7 @@ public class SwipeControl : MonoBehaviour
             stopTouch = false;
             endTouchPos = Input.GetTouch(0).position;
             Vector2 distance = endTouchPos - startTouchPos;
-            Destroy(currentTrail, 1f);
+            Destroy(currentTrail, 0.5f);
 
             if(Mathf.Abs(distance.x) < tapRange && Mathf.Abs(distance.y) < tapRange) // Tap
             {

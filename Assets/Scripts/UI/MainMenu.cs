@@ -46,4 +46,9 @@ public class MainMenu : MonoBehaviour, IDataPersistence
     {
         GameManager.instance.StartGame();
     }
+
+    public void PlayButtonClickSound()
+    {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, Vector3.zero);
+    }
 }

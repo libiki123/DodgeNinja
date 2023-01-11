@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1727485160018733563}
   - component: {fileID: 1727485160018733560}
   - component: {fileID: 1528929415}
+  - component: {fileID: 2318822555910655316}
+  - component: {fileID: 1528929420}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -74,3 +76,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fileName: SaveData_
   saveDataIndex: 0
+  useEncryption: 0
+--- !u!114 &2318822555910655316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727485160018733542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11ab246a67c23540874b32b18874475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1528929420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727485160018733542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe8ac0be091ca84ba265c3172dc4f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <dash>k__BackingField:
+    Guid:
+      Data1: 524138753
+      Data2: 1106667818
+      Data3: -75404870
+      Data4: 28542863
+    Path: event:/SFX/Player/Dash
+  <coinCollected>k__BackingField:
+    Guid:
+      Data1: -979865729
+      Data2: 1108335832
+      Data3: -1150203251
+      Data4: -2103097553
+    Path: event:/SFX/Reward/CoinCollected
+  <scrollCollected>k__BackingField:
+    Guid:
+      Data1: -2081353525
+      Data2: 1240018460
+      Data3: 307918764
+      Data4: -1827332382
+    Path: event:/SFX/Reward/ScrollCollected
+  <gameplayBMG>k__BackingField:
+    Guid:
+      Data1: -1329181126
+      Data2: 1145112840
+      Data3: 1135521165
+      Data4: 241966523
+    Path: event:/Music/GameplayBMG
+  <buttonClick>k__BackingField:
+    Guid:
+      Data1: 1107589452
+      Data2: 1296547406
+      Data3: 332666772
+      Data4: 1244577636
+    Path: event:/SFX/UI/ButtonClick

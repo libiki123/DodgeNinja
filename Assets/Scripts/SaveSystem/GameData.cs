@@ -11,7 +11,7 @@ public class GameData
     public string currentSkinId;
     public string currentStageId;
     public SerializableDictionary<string, bool> skinPurchased;
-    public int controlType;
+    public GameSetting gameSetting;
 
     public GameData()
     {
@@ -21,6 +21,21 @@ public class GameData
         currentSkinId = "";
         currentStageId = "";
         skinPurchased = new SerializableDictionary<string, bool>();
-        controlType = 0;
+        gameSetting = new GameSetting();
+    }
+}
+
+[System.Serializable]
+public class GameSetting
+{
+    public bool sound;
+    public bool sfx;
+    public int contronlType;
+
+    public GameSetting()
+    {
+        sound = true;
+        sfx = true;
+        contronlType = 0;
     }
 }

@@ -6,9 +6,16 @@ using FMODUnity;
 
 public class Reward : MonoBehaviour
 {
-    [SerializeField] private EventReference rewardCollectedSound;
+    [SerializeField] private bool isCoin;
     [SerializeField] private GameObject collectedVFX;
     public event Action OnRewardCollected;
+
+    private EventReference rewardCollectedSound;
+
+    private void Start()
+    {
+        rewardCollectedSound = isCoin ? FMODEvents.instance.coinCollected : FMODEvents.instance.scrollCollected;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
