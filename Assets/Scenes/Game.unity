@@ -708,11 +708,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin
       objectReference: {fileID: 0}
-    - target: {fileID: 6888667332284887945, guid: 08ac66990fefa3b4fb835fda73570b57,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08ac66990fefa3b4fb835fda73570b57, type: 3}
 --- !u!4 &39623387 stripped
@@ -10574,6 +10569,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11ab246a67c23540874b32b18874475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1528929420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1528929414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afe8ac0be091ca84ba265c3172dc4f79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1545236282 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8616634762950917018, guid: 9e893a4bfc23a594a8bab5e763da021e,
@@ -17541,31 +17548,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 784756576}
     m_Modifications:
-    - target: {fileID: 1413472949037983138, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
-        type: 3}
-      propertyPath: rewardCollectedSound.Path
-      value: event:/ScrollCollected
-      objectReference: {fileID: 0}
-    - target: {fileID: 1413472949037983138, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
-        type: 3}
-      propertyPath: rewardCollectedSound.Guid.Data1
-      value: -2081353525
-      objectReference: {fileID: 0}
-    - target: {fileID: 1413472949037983138, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
-        type: 3}
-      propertyPath: rewardCollectedSound.Guid.Data2
-      value: 1240018460
-      objectReference: {fileID: 0}
-    - target: {fileID: 1413472949037983138, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
-        type: 3}
-      propertyPath: rewardCollectedSound.Guid.Data3
-      value: 307918764
-      objectReference: {fileID: 0}
-    - target: {fileID: 1413472949037983138, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
-        type: 3}
-      propertyPath: rewardCollectedSound.Guid.Data4
-      value: -1827332382
-      objectReference: {fileID: 0}
     - target: {fileID: 5138339946112956243, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
         type: 3}
       propertyPath: m_RootOrder
@@ -17625,11 +17607,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Battery
-      objectReference: {fileID: 0}
-    - target: {fileID: 5477745319149268457, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f67d8ae11e876a4c84633c4fac13c4b, type: 3}
