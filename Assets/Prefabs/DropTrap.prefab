@@ -407,8 +407,7 @@ PrefabInstance:
       propertyPath: startDelay.scalar
       value: 0.25
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 8285908, guid: c481baf706285d246a53bdc1d1c99aa1, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c481baf706285d246a53bdc1d1c99aa1, type: 3}
 --- !u!4 &7196048158895596258 stripped
 Transform:

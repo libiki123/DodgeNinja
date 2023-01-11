@@ -18,7 +18,7 @@ public class SpawnerManager : MonoBehaviour
     private int currentWaveGroupIndex = 0;
     void Start()
     {
-        UIManager.instance.PointAdded += SpwanTrapWave;
+        UIManager.Instance.PointAdded += SpwanTrapWave;
 
         rewardSpawner.SpawnCoin();
 
@@ -49,7 +49,7 @@ public class SpawnerManager : MonoBehaviour
         UpdateWaveGroupIndex();
         if (totalTrapCount == maxTrapAmount) return;
 
-        switch (UIManager.instance.score)
+        switch (UIManager.Instance.score)
         {
             case 2:
                 trapSpawner.SpawnSpikeTrap();
@@ -60,7 +60,7 @@ public class SpawnerManager : MonoBehaviour
                 totalTrapCount++;
                 break;
             default:
-                if(UIManager.instance.score % 5 == 0)
+                if(UIManager.Instance.score % 5 == 0)
                 {
                     if(spikeTrapCount >= 3)
                     {
@@ -83,7 +83,7 @@ public class SpawnerManager : MonoBehaviour
     {
         while (true)
         {
-            if (UIManager.instance.score >= 5)
+            if (UIManager.Instance.score >= 5)
             {
                 yield return new WaitForSeconds(dropTrapWaveDelay);
 
@@ -96,7 +96,7 @@ public class SpawnerManager : MonoBehaviour
 
     private void UpdateWaveGroupIndex()
     {
-        switch (UIManager.instance.score)
+        switch (UIManager.Instance.score)
         {
             case < 10: // wave group 1-9
                 currentWaveGroupIndex = 0;
@@ -215,6 +215,6 @@ public class SpawnerManager : MonoBehaviour
 
     private void OnDestroy()
     {
-        UIManager.instance.PointAdded -= SpwanTrapWave;
+        UIManager.Instance.PointAdded -= SpwanTrapWave;
     }
 }

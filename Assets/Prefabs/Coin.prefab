@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6112131110234089779
 Transform:
   m_ObjectHideFlags: 0
@@ -187,13 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4396060622e4348a72c0b507a91b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardCollectedSound:
-    Guid:
-      Data1: -979865729
-      Data2: 1108335832
-      Data3: -1150203251
-      Data4: -2103097553
-    Path: event:/CoinCollected
 --- !u!135 &173456324
 SphereCollider:
   m_ObjectHideFlags: 0

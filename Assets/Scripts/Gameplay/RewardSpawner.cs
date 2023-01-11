@@ -53,7 +53,7 @@ public class RewardSpawner : MonoBehaviour
 
     private void CoinCollected()
     {
-        UIManager.instance.AddPoint();
+        UIManager.Instance.AddPoint();
         coinCount++;
         coinCell.haveReward = false;
         coinCell = null;
@@ -62,7 +62,7 @@ public class RewardSpawner : MonoBehaviour
 
     private void BatteryCollected()
     {
-        UIManager.instance.AddBattery();
+        UIManager.Instance.AddBattery();
         isBatteryCollected = true;
         coinCount = 0;
         batteryCell.haveReward = false;

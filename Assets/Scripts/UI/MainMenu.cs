@@ -8,7 +8,7 @@ using DG.Tweening;
 
 public class MainMenu : MonoBehaviour, IDataPersistence
 {
-    public static MainMenu instance { get; private set; }
+    public static MainMenu Instance { get; private set; }
 
     [Header ("Player Resources")]
     [SerializeField] private RectMask2D batteryProgressBar;
@@ -19,11 +19,11 @@ public class MainMenu : MonoBehaviour, IDataPersistence
     public int totalCoin { get; private set; }
     private void Awake()
     {
-        if (instance != null && instance != this)
+        if (Instance != null && Instance != this)
             Destroy(this);
         else
         {
-            instance = this;
+            Instance = this;
         }
     }
 
@@ -44,6 +44,6 @@ public class MainMenu : MonoBehaviour, IDataPersistence
 
     public void OnPlayClick()
     {
-        GameManager.instance.StartGame();
+        GameManager.Instance.StartGame();
     }
 }
