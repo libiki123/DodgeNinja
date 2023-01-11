@@ -648,6 +648,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 784756576}
     m_Modifications:
+    - target: {fileID: 173456322, guid: 08ac66990fefa3b4fb835fda73570b57, type: 3}
+      propertyPath: collectedVFX
+      value: 
+      objectReference: {fileID: 8386376088691673294, guid: 29af62c7681d0794e8f47346b38d6266,
+        type: 3}
     - target: {fileID: 6112131110234089779, guid: 08ac66990fefa3b4fb835fda73570b57,
         type: 3}
       propertyPath: m_RootOrder
@@ -10581,6 +10586,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afe8ac0be091ca84ba265c3172dc4f79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <coinCollected>k__BackingField:
+    Guid:
+      Data1: -979865729
+      Data2: 1108335832
+      Data3: -1150203251
+      Data4: -2103097553
+    Path: event:/CoinCollected
+  <scrollCollected>k__BackingField:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!4 &1545236282 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8616634762950917018, guid: 9e893a4bfc23a594a8bab5e763da021e,
@@ -17439,7 +17458,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 1
-  impactVFX: {fileID: 130848, guid: 7ec4892948822804cb23976de13bc9b0, type: 3}
+  impactVFX: {fileID: 1265636974550578468, guid: fdf5d840aae932b46bf6ffcc152fcf13,
+    type: 3}
   skinData: {fileID: 11400000, guid: 7fc1dfc1f253e2c49aeb8b0cb8cbb744, type: 2}
 --- !u!1 &3398084805563792445
 GameObject:
@@ -17548,6 +17568,37 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 784756576}
     m_Modifications:
+    - target: {fileID: 1413472949037983138, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
+        type: 3}
+      propertyPath: collectedVFX
+      value: 
+      objectReference: {fileID: 8386376088691673294, guid: 29af62c7681d0794e8f47346b38d6266,
+        type: 3}
+    - target: {fileID: 1413472949037983138, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
+        type: 3}
+      propertyPath: rewardCollectedSound.Path
+      value: event:/ScrollCollected
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413472949037983138, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
+        type: 3}
+      propertyPath: rewardCollectedSound.Guid.Data1
+      value: -2081353525
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413472949037983138, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
+        type: 3}
+      propertyPath: rewardCollectedSound.Guid.Data2
+      value: 1240018460
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413472949037983138, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
+        type: 3}
+      propertyPath: rewardCollectedSound.Guid.Data3
+      value: 307918764
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413472949037983138, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
+        type: 3}
+      propertyPath: rewardCollectedSound.Guid.Data4
+      value: -1827332382
+      objectReference: {fileID: 0}
     - target: {fileID: 5138339946112956243, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
         type: 3}
       propertyPath: m_RootOrder
@@ -17607,6 +17658,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Battery
+      objectReference: {fileID: 0}
+    - target: {fileID: 5477745319149268457, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f67d8ae11e876a4c84633c4fac13c4b, type: 3}
