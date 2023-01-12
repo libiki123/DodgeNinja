@@ -95,6 +95,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
     public void ShowEndGameMenu()
     {
         GameManager.instance.PauseGame();
+        AudioManager.instance.musicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         endGameMenu.SetActive(true);
         finalScoreText.text = score.ToString();
     }
@@ -119,6 +120,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
         swipeControl.SetActive(false);
         GameManager.instance.ResumeGame();
         CameraManager.instance.StartZoomIn();
+        AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBMG);
     }
 
     public void UseSwipe()
@@ -128,17 +130,26 @@ public class UIManager : MonoBehaviour, IDataPersistence
         swipeControl.SetActive(true);
         GameManager.instance.ResumeGame();
         CameraManager.instance.StartZoomIn();
+        AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBMG);
     }
 
     public void PauseGame()
     {
         GameManager.instance.PauseGame();
         pauseMenu.SetActive(true);
+        AudioManager.instance.musicEventInstance.setPaused(true);
     }
 
     public void ResumeGame()
     {
         GameManager.instance.ResumeGame();
         pauseMenu.SetActive(false);
+        AudioManager.instance.musicEventInstance.setPaused(false);
     }
+
+    public void PlayButtonClickSound()
+    {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, Vector3.zero);
+    }
+
 }

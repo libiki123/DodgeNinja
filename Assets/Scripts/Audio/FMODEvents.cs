@@ -5,10 +5,19 @@ using FMODUnity;
 
 public class FMODEvents : MonoBehaviour
 {
-    [field: Header ("Coin SFX")]
+    [field: Header("Player")]
+    [field: SerializeField] public EventReference dash { get; private set; }
+
+    [field: Header ("Reward SFX")]
     [field: SerializeField] public EventReference coinCollected { get; private set; } // Field keyword help show in inspector if setter is private
-    [field: Header("Scroll SFX")]
     [field: SerializeField] public EventReference scrollCollected { get; private set; }
+
+    [field: Header("Music")]
+    [field: SerializeField] public EventReference gameplayBMG { get; private set; }
+
+    [field: Header("UI")]
+    [field: SerializeField] public EventReference buttonClick { get; private set; }
+
 
     public static FMODEvents instance { get; private set; }
 

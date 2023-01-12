@@ -14721,7 +14721,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5138339946112956243
 Transform:
   m_ObjectHideFlags: 0
@@ -14751,14 +14751,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4396060622e4348a72c0b507a91b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardCollectedSound:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  collectedVFX: {fileID: 0}
+  isCoin: 0
+  collectedVFX: {fileID: 8386376088691673294, guid: 29af62c7681d0794e8f47346b38d6266,
+    type: 3}
 --- !u!135 &1413472949037983140
 SphereCollider:
   m_ObjectHideFlags: 0

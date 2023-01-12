@@ -648,11 +648,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 784756576}
     m_Modifications:
-    - target: {fileID: 173456322, guid: 08ac66990fefa3b4fb835fda73570b57, type: 3}
-      propertyPath: collectedVFX
-      value: 
-      objectReference: {fileID: 8386376088691673294, guid: 29af62c7681d0794e8f47346b38d6266,
-        type: 3}
     - target: {fileID: 6112131110234089779, guid: 08ac66990fefa3b4fb835fda73570b57,
         type: 3}
       propertyPath: m_RootOrder
@@ -3642,6 +3637,7 @@ GameObject:
   - component: {fileID: 518461873}
   - component: {fileID: 518461872}
   - component: {fileID: 518461871}
+  - component: {fileID: 518461874}
   m_Layer: 5
   m_Name: PauseBttn
   m_TagString: Untagged
@@ -3763,6 +3759,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 518461869}
   m_CullTransparentMesh: 1
+--- !u!114 &518461874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518461869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2047723133}
+          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+          m_MethodName: PlayButtonClickSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &533558326
 GameObject:
   m_ObjectHideFlags: 0
@@ -5194,7 +5219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a477245319fe6db4db0200456129ecbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeRange: 30
+  swipeRange: 35
   tapRange: 10
   swipeTrailPrefab: {fileID: 6201472113529123117, guid: 1e055e4b17869d84aa14af6a645b136e,
     type: 3}
@@ -7565,6 +7590,7 @@ GameObject:
   - component: {fileID: 1100991238}
   - component: {fileID: 1100991237}
   - component: {fileID: 1100991236}
+  - component: {fileID: 1100991239}
   m_Layer: 5
   m_Name: Home
   m_TagString: Untagged
@@ -7686,6 +7712,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100991234}
   m_CullTransparentMesh: 1
+--- !u!114 &1100991239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100991234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2047723133}
+          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+          m_MethodName: PlayButtonClickSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1105286156
 GameObject:
   m_ObjectHideFlags: 0
@@ -10494,11 +10549,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 1727485160018733542, guid: e243144eef78f33449947046043b60ef,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1727485160018733562, guid: e243144eef78f33449947046043b60ef,
         type: 3}
       propertyPath: m_RootOrder
@@ -10556,50 +10606,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e243144eef78f33449947046043b60ef, type: 3}
---- !u!1 &1528929414 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1727485160018733542, guid: e243144eef78f33449947046043b60ef,
-    type: 3}
-  m_PrefabInstance: {fileID: 1528929413}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1528929415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1528929414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c11ab246a67c23540874b32b18874475, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1528929420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1528929414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afe8ac0be091ca84ba265c3172dc4f79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  <coinCollected>k__BackingField:
-    Guid:
-      Data1: -979865729
-      Data2: 1108335832
-      Data3: -1150203251
-      Data4: -2103097553
-    Path: event:/CoinCollected
-  <scrollCollected>k__BackingField:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
 --- !u!4 &1545236282 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8616634762950917018, guid: 9e893a4bfc23a594a8bab5e763da021e,
@@ -13587,6 +13593,7 @@ GameObject:
   - component: {fileID: 1969782769}
   - component: {fileID: 1969782768}
   - component: {fileID: 1969782767}
+  - component: {fileID: 1969782770}
   m_Layer: 5
   m_Name: Resume
   m_TagString: Untagged
@@ -13708,6 +13715,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1969782765}
   m_CullTransparentMesh: 1
+--- !u!114 &1969782770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969782765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2047723133}
+          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+          m_MethodName: PlayButtonClickSound
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1976586339
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17568,37 +17604,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 784756576}
     m_Modifications:
-    - target: {fileID: 1413472949037983138, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
-        type: 3}
-      propertyPath: collectedVFX
-      value: 
-      objectReference: {fileID: 8386376088691673294, guid: 29af62c7681d0794e8f47346b38d6266,
-        type: 3}
-    - target: {fileID: 1413472949037983138, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
-        type: 3}
-      propertyPath: rewardCollectedSound.Path
-      value: event:/ScrollCollected
-      objectReference: {fileID: 0}
-    - target: {fileID: 1413472949037983138, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
-        type: 3}
-      propertyPath: rewardCollectedSound.Guid.Data1
-      value: -2081353525
-      objectReference: {fileID: 0}
-    - target: {fileID: 1413472949037983138, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
-        type: 3}
-      propertyPath: rewardCollectedSound.Guid.Data2
-      value: 1240018460
-      objectReference: {fileID: 0}
-    - target: {fileID: 1413472949037983138, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
-        type: 3}
-      propertyPath: rewardCollectedSound.Guid.Data3
-      value: 307918764
-      objectReference: {fileID: 0}
-    - target: {fileID: 1413472949037983138, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
-        type: 3}
-      propertyPath: rewardCollectedSound.Guid.Data4
-      value: -1827332382
-      objectReference: {fileID: 0}
     - target: {fileID: 5138339946112956243, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
         type: 3}
       propertyPath: m_RootOrder
@@ -17658,11 +17663,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Battery
-      objectReference: {fileID: 0}
-    - target: {fileID: 5477745319149268457, guid: 3f67d8ae11e876a4c84633c4fac13c4b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f67d8ae11e876a4c84633c4fac13c4b, type: 3}

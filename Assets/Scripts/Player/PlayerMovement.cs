@@ -60,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
                 startPos = transform.position;
                 moving = true;
                 player.TriggerMoveAnim(Player.MoveDirection.UP);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.dash, startPos);
             }
             else
             {
@@ -74,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
                 startPos = transform.position;
                 moving = true;
                 player.TriggerMoveAnim(Player.MoveDirection.DOWN);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.dash, startPos);
             }
             else
             {
@@ -88,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
                 startPos = transform.position;
                 moving = true;
                 player.TriggerMoveAnim(Player.MoveDirection.LEFT);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.dash, startPos);
             }
             else
             {
@@ -102,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
                 startPos = transform.position;
                 moving = true;
                 player.TriggerMoveAnim(Player.MoveDirection.RIGHT);
+                AudioManager.instance.PlayOneShot(FMODEvents.instance.dash, startPos);
             }
             else
             {
