@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SettingMenu : MonoBehaviour
+public class SettingMenu : MonoBehaviour, IDataPersistence
 {
-    [SerializeField] private Sprite toggle_ON;
-    [SerializeField] private Sprite toggle_OFF;
-    [SerializeField] private Sprite switch_Right;
-    [SerializeField] private Sprite switch_Left;
     [SerializeField] private GameObject buttonControlIcon;
     [SerializeField] private GameObject swipeControlIcon;
     [SerializeField] private GameObject controlTypePciker;
@@ -22,7 +18,7 @@ public class SettingMenu : MonoBehaviour
     private Image musicToggleIMG;
     private Image controlTypeSwitchIMG;
 
-    private void Start()
+    private void Awake()
     {
         sfxToggleIMG = sfxToggle.GetComponent<Image>();
         musicToggleIMG = musicToggle.GetComponent<Image>();
@@ -33,12 +29,15 @@ public class SettingMenu : MonoBehaviour
     {
         if (sfxToggle.isOn)
         {
-            sfxToggleIMG.sprite = toggle_OFF;
+            sfxToggleIMG.sprite = Resources.Load<Sprite>("Sprites/toggle_setting_off");
+            AudioManager.instance.sfxMute = true;
+            AudioManager.instance.UpdateAudioVolume();
         }
         else
         {
-            sfxToggleIMG.sprite = toggle_ON;
-
+            sfxToggleIMG.sprite = Resources.Load<Sprite>("Sprites/toggle_setting_on");
+            AudioManager.instance.sfxMute = false;
+            AudioManager.instance.UpdateAudioVolume();
         }
     }
 
@@ -46,12 +45,15 @@ public class SettingMenu : MonoBehaviour
     {
         if (musicToggle.isOn)
         {
-            musicToggleIMG.sprite = toggle_OFF;
+            musicToggleIMG.sprite = Resources.Load<Sprite>("Sprites/toggle_setting_off");
+            AudioManager.instance.musicMute = true;
+            AudioManager.instance.UpdateAudioVolume();
         }
         else
         {
-            musicToggleIMG.sprite = toggle_ON;
-
+            musicToggleIMG.sprite = Resources.Load<Sprite>("Sprites/toggle_setting_on");
+            AudioManager.instance.musicMute = false;
+            AudioManager.instance.UpdateAudioVolume();
         }
     }
 
@@ -59,15 +61,57 @@ public class SettingMenu : MonoBehaviour
     {
         if (controlTypeSwitch.isOn)
         {
-            controlTypeSwitchIMG.sprite = switch_Left;
+            controlTypeSwitchIMG.sprite = Resources.Load<Sprite>("Sprites/toggle_control_left");
             buttonControlIcon.SetActive(true);
             swipeControlIcon.SetActive(false);
         }
         else
         {
-            controlTypeSwitchIMG.sprite = switch_Right;
+            controlTypeSwitchIMG.sprite = Resources.Load<Sprite>("Sprites/toggle_control_right");
             buttonControlIcon.SetActive(false);
             swipeControlIcon.SetActive(true);
         }
     }
+
+    public void OnCloseSettingClick()
+    {
+        DataPersistenceManager.instance.SaveGame();
+        gameObject.SetActive(false);
+    }
+
+    public void LoadData(GameData data)
+    {
+        switch (data.gameSetting.contronlType)
+        {
+            case 0:
+                controlTypePciker.SetActive(false);
+                break;
+            case 1:
+                controlTypePciker.SetActive(true);
+                controlTypeSwitch.isOn = false;
+                break;
+            case 2:
+                controlTypePciker.SetActive(true);
+                controlTypeSwitch.isOn = true;
+                break;
+        }
+        
+        musicToggle.isOn = data.gameSetting.muteMusic;
+        sfxToggle.isOn = data.gameSetting.muteSFX;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.gameSetting.muteMusic = musicToggle.isOn;
+        data.gameSetting.muteSFX = sfxToggle.isOn;
+        if(controlTypePciker.activeSelf)
+            data.gameSetting.contronlType = controlTypeSwitch.isOn? 2 : 1;
+    }
+
+    private void OnEnable()
+    {
+        DataPersistenceManager.instance.RefreshDataPersistenceObjs();
+        DataPersistenceManager.instance.LoadGame();
+    }
+
 }

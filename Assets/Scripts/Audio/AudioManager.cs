@@ -4,9 +4,18 @@ using UnityEngine;
 using FMODUnity;
 using FMOD.Studio;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : MonoBehaviour, IDataPersistence
 {
     public static AudioManager instance { get; private set; }
+
+    [Header("Volume")]
+    public bool musicMute = true;
+    public bool sfxMute = true;
+
+    private Bus masterBus;
+    private Bus musicBus;
+    private Bus sfxBus;
+
     private List<EventInstance> eventInstances;
     private List<StudioEventEmitter> eventEmitters;
 
@@ -22,6 +31,16 @@ public class AudioManager : MonoBehaviour
 
         eventInstances = new List<EventInstance>();
         eventEmitters = new List<StudioEventEmitter>();
+
+        masterBus = RuntimeManager.GetBus("bus:/");
+        musicBus = RuntimeManager.GetBus("bus:/Music");
+        sfxBus = RuntimeManager.GetBus("bus:/SFX");
+    }
+
+    public void UpdateAudioVolume()
+    {
+        musicBus.setMute(musicMute);
+        sfxBus.setMute(sfxMute);
     }
 
     public void InitializeAmbience(EventReference ambienceEventReference)
@@ -78,5 +97,17 @@ public class AudioManager : MonoBehaviour
     private void OnDestroy()
     {
         CleanUp();
+    }
+
+    public void LoadData(GameData data)
+    {
+        musicMute = data.gameSetting.muteMusic;
+        sfxMute = data.gameSetting.muteSFX;
+        UpdateAudioVolume();
+    }
+
+    public void SaveData(ref GameData data)
+    {
+ 
     }
 }

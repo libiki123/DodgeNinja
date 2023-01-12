@@ -5219,7 +5219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a477245319fe6db4db0200456129ecbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeRange: 30
+  swipeRange: 35
   tapRange: 10
   swipeTrailPrefab: {fileID: 6201472113529123117, guid: 1e055e4b17869d84aa14af6a645b136e,
     type: 3}

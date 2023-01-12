@@ -15,6 +15,9 @@ public class MainMenu : MonoBehaviour, IDataPersistence
     [SerializeField] private TMP_Text batteryProgressText;
     [SerializeField] private TMP_Text coinText;
 
+    [Header("Setting")]
+    [SerializeField] private GameObject SettingMenu;
+
     private int battery;
     public int totalCoin { get; private set; }
     private void Awake()
@@ -45,6 +48,11 @@ public class MainMenu : MonoBehaviour, IDataPersistence
     public void OnPlayClick()
     {
         GameManager.instance.StartGame();
+    }
+
+    public void OnSettingClick()
+    {
+        SettingMenu.SetActive(true);
     }
 
     public void PlayButtonClickSound()
