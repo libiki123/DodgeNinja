@@ -2179,8 +2179,8 @@ MonoBehaviour:
   buttonControlIcon: {fileID: 1794745039}
   swipeControlIcon: {fileID: 1827851960}
   controlTypePciker: {fileID: 1101420869}
-  sfxToggle: {fileID: 552768891}
-  musicToggle: {fileID: 995875017}
+  sfxToggle: {fileID: 995875017}
+  musicToggle: {fileID: 552768891}
   controlTypeSwitch: {fileID: 264499498}
 --- !u!114 &678991518
 MonoBehaviour:
