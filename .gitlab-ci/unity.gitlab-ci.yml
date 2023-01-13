@@ -59,7 +59,7 @@ image: $IMAGE:$UNITY_VERSION-base-$IMAGE_VERSION
 ########################################################## Get activation #####################################################################
 # run this job when you need to request a license
 # you may need to follow activation steps from documentation
-get-activation-file:
+.get-activation-file:
   tags:
     - $MACOS_RUNNER_TAG
   <<: *unity_before_script
