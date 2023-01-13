@@ -12,6 +12,10 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference coinCollected { get; private set; } // Field keyword help show in inspector if setter is private
     [field: SerializeField] public EventReference scrollCollected { get; private set; }
 
+    [field: Header("Trap SFX")]
+    [field: SerializeField] public EventReference shotFire { get; private set; }
+    [field: SerializeField] public EventReference trapDroped { get; private set; }
+
     [field: Header("Music")]
     [field: SerializeField] public EventReference gameplayBMG { get; private set; }
 

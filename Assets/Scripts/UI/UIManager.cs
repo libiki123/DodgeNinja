@@ -29,6 +29,8 @@ public class UIManager : MonoBehaviour, IDataPersistence
     public int battery { get; private set; }
     public int highScore { get; private set; }
 
+    private int controlType;
+
 
     private void Awake()
     {
@@ -43,8 +45,13 @@ public class UIManager : MonoBehaviour, IDataPersistence
         DataPersistenceManager.instance.RefreshDataPersistenceObjs();
         DataPersistenceManager.instance.LoadGame();
 
-        controlPicker.SetActive(true);
-        GameManager.instance.PauseGame();
+        if (controlType == 0)
+        {
+            controlPicker.SetActive(true);
+            GameManager.instance.PauseGame();
+        }
+        else
+            StartWihoutPickingControl();
     }
 
     public void LoadData(GameData data)
@@ -56,6 +63,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
         batteryProgressText.text = battery.ToString() + " / 50";
         this.highScore = data.highScore;
         highscoreText.text = highScore.ToString();
+        controlType = data.gameSetting.contronlType;
     }
 
     public void SaveData(ref GameData data)
@@ -63,6 +71,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
         data.totalCoin += score;
         data.batteryProgress = battery;
         data.highScore = highScore;
+        data.gameSetting.contronlType = controlType;
     }
 
 
@@ -100,6 +109,17 @@ public class UIManager : MonoBehaviour, IDataPersistence
         finalScoreText.text = score.ToString();
     }
 
+    public void StartWihoutPickingControl()
+    {
+        if(controlType == 1)
+            bttnControl.SetActive(true);
+        else
+            swipeControl.SetActive(true);
+
+        CameraManager.instance.StartZoomIn();
+        AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBMG);
+    }
+
     //============================================ Button Event ============================================//
     public void Replay()
     {
@@ -115,22 +135,26 @@ public class UIManager : MonoBehaviour, IDataPersistence
 
     public void UseButton()
     {
+        controlType = 1;
         controlPicker.SetActive(false);
         bttnControl.SetActive(true);
         swipeControl.SetActive(false);
         GameManager.instance.ResumeGame();
         CameraManager.instance.StartZoomIn();
         AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBMG);
+        DataPersistenceManager.instance.SaveGame();
     }
 
     public void UseSwipe()
     {
+        controlType = 2;
         controlPicker.SetActive(false);
         bttnControl.SetActive(false);
         swipeControl.SetActive(true);
         GameManager.instance.ResumeGame();
         CameraManager.instance.StartZoomIn();
         AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBMG);
+        DataPersistenceManager.instance.SaveGame();
     }
 
     public void PauseGame()
