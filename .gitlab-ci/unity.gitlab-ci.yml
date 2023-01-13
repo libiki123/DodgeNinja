@@ -34,7 +34,7 @@ image: $IMAGE:$UNITY_VERSION-base-$IMAGE_VERSION
 ######################################################## Template ############################################################################
 .unity_before_script: &unity_before_script
   before_script:
-    - chmod +x $SCRIPTS_DIR/before_script.sh && $SCRIPTS_DIR/before_script.sh
+    - chmod +x $SCRIPT_DIR/before_script.sh && $SCRIPT_DIR/before_script.sh
   # needs:
   #   - job: get-unity-version
   #     artifacts: true
@@ -68,7 +68,7 @@ get-activation-file:
       when: manual
   stage: prepare
   script:
-    - chmod +x $SCRIPTS_DIR/get_activation_file.sh && $SCRIPTS_DIR/get_activation_file.sh
+    - chmod +x $SCIRPT_DIR/get_activation_file.sh && $SCIRPT_DIR/get_activation_file.sh
   artifacts:
     paths:
       - $UNITY_ACTIVATION_FILE
@@ -80,7 +80,7 @@ get-activation-file:
   stage: build
   <<: *unity_defaults
   script:
-    - chmod +x $SCRIPTS_DIR/build.sh && $SCRIPTS_DIR/build.sh
+    - chmod +x $SCIRPT_DIR/build.sh && $SCIRPT_DIR/build.sh
   artifacts:
     paths:
       - $UNITY_DIR/Builds/
