@@ -58,7 +58,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
     {
         scoreText.text = score.ToString();
         battery = data.batteryProgress;
-        float percentage = math.remap(0, 50, 210, 5, battery);
+        float percentage = math.remap(0, 50, 285, 5, battery);
         batteryProgressBar.padding = new Vector4(percentage, 0, 0, 0);
         batteryProgressText.text = battery.ToString() + " / 50";
         this.highScore = data.highScore;

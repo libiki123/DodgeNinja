@@ -15,6 +15,7 @@ public class CharacterPreview : MonoBehaviour
     {
         rotateRect = GetComponent<RectTransform>();
         cam = Camera.main;
+        rotateRect.sizeDelta = new Vector2(rotateRect.sizeDelta.x, Screen.height * 0.4f);
     }
 
     void Update()

@@ -22,6 +22,7 @@ public class SwipeControl : MonoBehaviour
     {
         swipableArea = GetComponent<RectTransform>();
         mainCam = Camera.main;
+        //swipableArea.sizeDelta = 
     }
 
     void Update()

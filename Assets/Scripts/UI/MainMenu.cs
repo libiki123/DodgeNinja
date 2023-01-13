@@ -33,7 +33,7 @@ public class MainMenu : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         battery = data.batteryProgress;
-        float percentage = math.remap(0, 50, 210, 5, battery);
+        float percentage = math.remap(0, 50, 360, 5, battery);
         batteryProgressBar.padding = new Vector4(0, 0, 0, percentage);
         batteryProgressText.text = battery.ToString() + " / 50";
         totalCoin = data.totalCoin;
