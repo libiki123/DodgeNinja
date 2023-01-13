@@ -68,10 +68,10 @@ image: $IMAGE:$UNITY_VERSION-base-$IMAGE_VERSION
       when: manual
   stage: prepare
   script:
-    - chmod +x $SCRIPT_DIR/get_activation_file.sh && $SCRIPT_DIR/get_activation_file.sh
+    - chmod +x $SCRIPT_DIR/get_activation_file.sh && $SCRIPT_DIR/get_activation_file.sh $CI_PROJECT_DIR
   artifacts:
     paths:
-      - $UNITY_ACTIVATION_FILE
+      - $UNITY_ACTIVATION_FILE  
     expire_in: 10 min # Expiring this as artifacts may contain sensitive data and should not be kept public
 
 ########################################################## Build  #########################################################################

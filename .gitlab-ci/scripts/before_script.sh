@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
+CI_PROJECT_DIR=$1
+set -e #  use to exit when the command exits with a non-zero status
+set -x # Turn on debug
+mkdir -p $CI_PROJECT_DIR/.cache/unity3d
+mkdir -p $CI_PROJECT_DIR/.local/share/unity3d/Unity/
+set +x # Turn off debug
 
-set -e
-set -x
-mkdir -p /root/.cache/unity3d
-mkdir -p /root/.local/share/unity3d/Unity/
-set +x
-
-unity_license_destination=/root/.local/share/unity3d/Unity/Unity_lic.ulf
+unity_license_destination=$CI_PROJECT_DIR/.local/share/unity3d/Unity/Unity_lic.ulf
 android_keystore_destination=keystore.keystore
 
 
