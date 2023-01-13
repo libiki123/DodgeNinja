@@ -69,7 +69,7 @@ public class Shop : MonoBehaviour, IDataPersistence
     {
         for (int i = 0; i < ShopData.skins.Count; i++)
         {
-            GameObject g = Instantiate(shopSkinPrefab, skinScrollView);
+            GameObject g = Instantiate(shopSkinPrefab, shopSkinPrefab.transform.parent);
             g.SetActive(true);
             g.GetComponent<ShopItem>().Init(ShopData.skins[i], ShopItemType.SKIN);
             if (currentSkinId == "" && i == 0)
@@ -80,7 +80,7 @@ public class Shop : MonoBehaviour, IDataPersistence
 
         for (int i = 0; i < ShopData.stages.Count; i++)
         {
-            GameObject g = Instantiate(shopStagePrefab, stageScrollView);
+            GameObject g = Instantiate(shopStagePrefab, shopStagePrefab.transform.parent);
             g.SetActive(true);
             g.GetComponent<ShopItem>().Init(ShopData.stages[i], ShopItemType.STAGE);
             if (currentStageId == "" && i == 0)
@@ -185,7 +185,7 @@ public class Shop : MonoBehaviour, IDataPersistence
             shopBttn.isOn = false;
             skinBttnRT.DOAnchorPosX(0, 0.15f);
             stageBttnRT.DOAnchorPosX(0, 0.15f);
-            shopMenu.DOAnchorPosY(0, 0.15f);
+            shopMenu.DOAnchorPosY(-150, 0.15f);
             mainMenu.gameObject.SetActive(true);
         }
     }

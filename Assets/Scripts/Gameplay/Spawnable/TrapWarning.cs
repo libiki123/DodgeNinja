@@ -5,10 +5,11 @@ using UnityEngine;
 public class TrapWarning : Trap
 {
     public GameObject rootParent;
-    public GameObject warningMark;
-    public float warningTime = 0.5f;
-    public float dropStartTime = 2f;
-    public Animator anim;
+    [SerializeField] private GameObject warningMark;
+    [SerializeField] private float warningTime = 0.5f;
+    [SerializeField] private float dropStartTime = 2f;
+    [SerializeField] private float explodeSoundDelay = 0.25f;
+    [SerializeField] private Animator anim;
 
     public override void SpawnTrap()
     {
@@ -28,6 +29,7 @@ public class TrapWarning : Trap
     void StartAnim()
     {
         anim.SetTrigger("Trigger");
+        Invoke("PlayExplodeSound", explodeSoundDelay);
         StartCoroutine(Utils.CheckAnimationCompleted(anim, "Spikeball_Drop", () =>
         {
             rootParent.SetActive(false);
@@ -35,5 +37,8 @@ public class TrapWarning : Trap
         ));
     }
 
-
+    void PlayExplodeSound()
+    {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.trapDroped, transform.position);
+    }
 }

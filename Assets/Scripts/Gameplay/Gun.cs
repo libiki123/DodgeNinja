@@ -34,6 +34,7 @@ public class Gun : MonoBehaviour
 
     public void Shoot()
     {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.shotFire, transform.position);
         GameObject a = ObjectsPool.instance.GetBullet();
         a.SetActive(true);
         a.transform.position = transform.position + new Vector3(0, 0.25f, 0);
