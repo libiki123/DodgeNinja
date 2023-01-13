@@ -12,6 +12,7 @@ variables:
   IMAGE_VERSION: 1 # This will automatically use latest v1.x.x, see https://github.com/game-ci/docker/releases
   UNITY_VERSION: 2021.3.15f1 # Need to be change if u use different Unity version
   UNITY_DIR: $CI_PROJECT_DIR # this needs to be an absolute path. Defaults to the root of your tree.
+  SCIRPT_DIR: $CI_PROJECT_DIR/.gitlab-ci/scripts
   # You can expose this in Unity via Application.version
   # VERSION_NUMBER_VAR: $CI_COMMIT_REF_SLUG-$CI_PIPELINE_ID-$CI_JOB_ID
   # VERSION_BUILD_VAR: $CI_PIPELINE_IID
@@ -33,7 +34,7 @@ image: $IMAGE:$UNITY_VERSION-base-$IMAGE_VERSION
 ######################################################## Template ############################################################################
 .unity_before_script: &unity_before_script
   before_script:
-    - chmod +x ./ci/before_script.sh && ./ci/before_script.sh
+    - chmod +x $SCRIPTS_DIR/before_script.sh && $SCRIPTS_DIR/before_script.sh
   # needs:
   #   - job: get-unity-version
   #     artifacts: true
@@ -67,7 +68,7 @@ get-activation-file:
       when: manual
   stage: prepare
   script:
-    - chmod +x ./ci/get_activation_file.sh && ./ci/get_activation_file.sh
+    - chmod +x $SCRIPTS_DIR/get_activation_file.sh && $SCRIPTS_DIR/get_activation_file.sh
   artifacts:
     paths:
       - $UNITY_ACTIVATION_FILE
@@ -79,7 +80,7 @@ get-activation-file:
   stage: build
   <<: *unity_defaults
   script:
-    - chmod +x ./ci/build.sh && ./ci/build.sh
+    - chmod +x $SCRIPTS_DIR/build.sh && $SCRIPTS_DIR/build.sh
   artifacts:
     paths:
       - $UNITY_DIR/Builds/
@@ -105,11 +106,11 @@ build-android-il2cpp:
 
 ########################################################## Release #########################################################################
 
-release-job: 
+release-package: 
   stage: release
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   tags: 
-    - docker-inspirelab
+    - $MACOS_RUNNER_TAG
   needs: ["build-android", "build-android-il2cpp"]
   rules:                               
     - if: $CI_COMMIT_BRANCH == "SRE-66"  # Run this job when commits are pushed or merged to the default branch
@@ -125,9 +126,9 @@ release-job:
     assets:
       links:
         - name: 'Android Excutable'
-          url: https://gitlab.com/ilt-game-studio/ilt-fresher/mini-battle/-/jobs/artifacts/$CI_COMMIT_BRANCH/download?job=build-android
+          url: https://gitlab.com/inspirelab/gamelab/projectT/-/jobs/artifacts/$CI_COMMIT_BRANCH/download?job=build-android
         - name: 'Android IL2CPP Executable'
-          url: https://gitlab.com/ilt-game-studio/ilt-fresher/mini-battle/-/jobs/artifacts/$CI_COMMIT_BRANCH/download?job=build-android-il2cpp
+          url: https://gitlab.com/inspirelab/gamelab/projectT/-/jobs/artifacts/$CI_COMMIT_BRANCH/download?job=build-android-il2cpp
 
 
 
