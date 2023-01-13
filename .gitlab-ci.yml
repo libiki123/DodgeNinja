@@ -1,6 +1,7 @@
 stages:
   - manual
   - release
+  - prepare
   - build
   - dev
   - stg
