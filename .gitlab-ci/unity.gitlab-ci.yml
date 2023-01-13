@@ -107,7 +107,7 @@ build-android-il2cpp:
 ########################################################## Release #########################################################################
 
 release-package: 
-  stage: release
+  stage: dev
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   tags: 
     - $MACOS_RUNNER_TAG
