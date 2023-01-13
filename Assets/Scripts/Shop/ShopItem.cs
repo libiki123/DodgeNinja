@@ -59,16 +59,16 @@ public class ShopItem : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        data.skinPurchased.TryGetValue(id, out isPurchased);
+        data.itemPurchased.TryGetValue(id, out isPurchased);
         SetPurchased(isPurchased);
     }
 
     public void SaveData(ref GameData data)
     {
-        if (data.skinPurchased.ContainsKey(id))
+        if (data.itemPurchased.ContainsKey(id))
         {
-            data.skinPurchased.Remove(id);
+            data.itemPurchased.Remove(id);
         }
-        data.skinPurchased.Add(id, isPurchased);
+        data.itemPurchased.Add(id, isPurchased);
     }
 }

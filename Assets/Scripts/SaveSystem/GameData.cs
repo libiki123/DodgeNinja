@@ -10,8 +10,8 @@ public class GameData
     public int batteryProgress;
     public string currentSkinId;
     public string currentStageId;
-    public SerializableDictionary<string, bool> skinPurchased;
-    public int controlType;
+    public SerializableDictionary<string, bool> itemPurchased;
+    public GameSetting gameSetting;
 
     public GameData()
     {
@@ -20,7 +20,22 @@ public class GameData
         batteryProgress = 0;
         currentSkinId = "";
         currentStageId = "";
-        skinPurchased = new SerializableDictionary<string, bool>();
-        controlType = 0;
+        itemPurchased = new SerializableDictionary<string, bool>();
+        gameSetting = new GameSetting();
+    }
+}
+
+[System.Serializable]
+public class GameSetting
+{
+    public bool muteMusic;
+    public bool muteSFX;
+    public int contronlType;
+
+    public GameSetting()
+    {
+        muteMusic = false;
+        muteSFX = false;
+        contronlType = 0;
     }
 }
