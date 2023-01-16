@@ -10469,55 +10469,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1528929420, guid: e243144eef78f33449947046043b60ef, type: 3}
-      propertyPath: <shotFire>k__BackingField.Path
-      value: event:/SFX/Trap/Shoot
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528929420, guid: e243144eef78f33449947046043b60ef, type: 3}
-      propertyPath: <trapDroped>k__BackingField.Path
-      value: event:/SFX/Trap/Drop
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528929420, guid: e243144eef78f33449947046043b60ef, type: 3}
-      propertyPath: <shotFire>k__BackingField.Guid.Data1
-      value: -851121610
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528929420, guid: e243144eef78f33449947046043b60ef, type: 3}
-      propertyPath: <shotFire>k__BackingField.Guid.Data2
-      value: 1123305155
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528929420, guid: e243144eef78f33449947046043b60ef, type: 3}
-      propertyPath: <shotFire>k__BackingField.Guid.Data3
-      value: -1116365664
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528929420, guid: e243144eef78f33449947046043b60ef, type: 3}
-      propertyPath: <shotFire>k__BackingField.Guid.Data4
-      value: 1602104875
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528929420, guid: e243144eef78f33449947046043b60ef, type: 3}
-      propertyPath: <trapDroped>k__BackingField.Guid.Data1
-      value: 1231436200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528929420, guid: e243144eef78f33449947046043b60ef, type: 3}
-      propertyPath: <trapDroped>k__BackingField.Guid.Data2
-      value: 1283838062
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528929420, guid: e243144eef78f33449947046043b60ef, type: 3}
-      propertyPath: <trapDroped>k__BackingField.Guid.Data3
-      value: -418333560
-      objectReference: {fileID: 0}
-    - target: {fileID: 1528929420, guid: e243144eef78f33449947046043b60ef, type: 3}
-      propertyPath: <trapDroped>k__BackingField.Guid.Data4
-      value: 2034224233
-      objectReference: {fileID: 0}
     - target: {fileID: 1727485160018733542, guid: e243144eef78f33449947046043b60ef,
         type: 3}
       propertyPath: m_Name
       value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 1727485160018733560, guid: e243144eef78f33449947046043b60ef,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1727485160018733562, guid: e243144eef78f33449947046043b60ef,
         type: 3}

@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11ab246a67c23540874b32b18874475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicMute: 1
+  sfxMute: 1
 --- !u!114 &1528929420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +124,20 @@ MonoBehaviour:
       Data3: 307918764
       Data4: -1827332382
     Path: event:/SFX/Reward/ScrollCollected
+  <shotFire>k__BackingField:
+    Guid:
+      Data1: -851121610
+      Data2: 1123305155
+      Data3: -1116365664
+      Data4: 1602104875
+    Path: event:/SFX/Trap/Shoot
+  <trapDroped>k__BackingField:
+    Guid:
+      Data1: 1231436200
+      Data2: 1283838062
+      Data3: -418333560
+      Data4: 2034224233
+    Path: event:/SFX/Trap/Drop
   <gameplayBMG>k__BackingField:
     Guid:
       Data1: -1329181126
