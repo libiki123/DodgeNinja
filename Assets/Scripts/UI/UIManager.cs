@@ -57,10 +57,10 @@ public class UIManager : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         scoreText.text = score.ToString();
-        battery = data.batteryProgress;
-        float percentage = math.remap(0, 50, 285, 5, battery);
-        batteryProgressBar.padding = new Vector4(percentage, 0, 0, 0);
-        batteryProgressText.text = battery.ToString() + " / 50";
+        //battery = data.batteryProgress;
+        //float percentage = math.remap(0, 50, 285, 5, battery);
+        //batteryProgressBar.padding = new Vector4(percentage, 0, 0, 0);
+        batteryProgressText.text = battery.ToString();
         this.highScore = data.highScore;
         highscoreText.text = highScore.ToString();
         controlType = data.gameSetting.contronlType;
@@ -93,11 +93,11 @@ public class UIManager : MonoBehaviour, IDataPersistence
     public void AddBattery()
     {
         battery++;
-        batteryProgressText.text = battery.ToString() + " / 50";
-        if (battery == 50)
-        {
-            battery = 0;
-        }
+        batteryProgressText.text = battery.ToString();
+        //if (battery == 50)
+        //{
+        //    battery = 0;
+        //}
 
     }
 

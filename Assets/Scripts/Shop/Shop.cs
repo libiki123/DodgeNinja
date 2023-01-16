@@ -39,6 +39,7 @@ public class Shop : MonoBehaviour, IDataPersistence
     private string currentSkinId = "";
     private string currentStageId = "";
     private int currentTotalCoin;
+    private int currentTotalScroll;
 
     private void Awake()
     {
@@ -88,6 +89,8 @@ public class Shop : MonoBehaviour, IDataPersistence
             else if (ShopData.stages[i].id == currentStageId)
                 g.GetComponent<ShopItem>().SetUsing(ref stageCheckMark);
         }
+
+        
 
         UpdateSkin("player");
         UpdateSkin("stage");
@@ -142,13 +145,26 @@ public class Shop : MonoBehaviour, IDataPersistence
     {
         if (!item.isPurchased)
         {
-            if (currentTotalCoin >= item.price)
+            if (item.type == ShopItemType.SKIN)
             {
-                currentTotalCoin -= item.price;
-                item.SetPurchased(true);
+                if (currentTotalCoin >= item.price)
+                {
+                    currentTotalCoin -= item.price;
+                    item.SetPurchased(true);
+                }
+                else
+                    return;
             }
             else
-                return;
+            {
+                if (currentTotalScroll >= item.price)
+                {
+                    currentTotalScroll -= item.price;
+                    item.SetPurchased(true);
+                }
+                else
+                    return;
+            }
         }
 
         if (item.type == ShopItemType.SKIN)
@@ -221,6 +237,7 @@ public class Shop : MonoBehaviour, IDataPersistence
         currentSkinId = data.currentSkinId;
         currentStageId = data.currentStageId;
         currentTotalCoin = data.totalCoin;
+        currentTotalScroll = data.batteryProgress;
     }
 
     public void SaveData(ref GameData data)
@@ -228,6 +245,6 @@ public class Shop : MonoBehaviour, IDataPersistence
         data.currentSkinId = currentSkinId;
         data.currentStageId = currentStageId;
         data.totalCoin = currentTotalCoin;
-
+        data.batteryProgress = currentTotalScroll;
     }
 }

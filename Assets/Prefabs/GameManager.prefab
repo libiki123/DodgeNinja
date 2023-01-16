@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1528929415}
   - component: {fileID: 2318822555910655316}
   - component: {fileID: 1528929420}
+  - component: {fileID: 1727485159895061387}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -152,3 +153,15 @@ MonoBehaviour:
       Data3: 332666772
       Data4: 1244577636
     Path: event:/SFX/UI/ButtonClick
+--- !u!114 &1727485159895061387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727485160018733542}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a01e2378a49e1104696dfe3ae2c106d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

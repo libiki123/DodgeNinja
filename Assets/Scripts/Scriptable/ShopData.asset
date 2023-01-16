@@ -56,3 +56,9 @@ MonoBehaviour:
     mesh: {fileID: -3415877117910875990, guid: bf94d71396d16cd4dae010ab349a0368, type: 3}
     material: {fileID: 2100000, guid: 76aa8dfc4fe92874fb4e438c504d09b8, type: 2}
     isDefault: 0
+  - id: b4586e83-7078-4daa-8988-4c851f42c247
+    icon: {fileID: 21300000, guid: e6153562524300e4fb31a77b19bad8dd, type: 3}
+    price: 1
+    mesh: {fileID: 656730518686515840, guid: 9099b2fedfe7e8b419c1d888bc6bbc68, type: 3}
+    material: {fileID: 2100000, guid: 0ab331119996cff449c1d83d6e64a2ed, type: 2}
+    isDefault: 0

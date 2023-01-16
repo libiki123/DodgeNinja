@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using System;
+using System.IO;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -23,12 +24,15 @@ public class DataPersistenceManager : MonoBehaviour
             Destroy(this);
         else
             instance = this;
+
+        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName + saveDataIndex, useEncryption);
     }
 
     private void Start()
     {
-        dataHandler = new FileDataHandler(Application.persistentDataPath, fileName + saveDataIndex, useEncryption);
+        
         dataPersistenceObjects = FindAllDataPersistenceObjects();
+        LoadGame();
     }
 
     public void RefreshDataPersistenceObjs()
@@ -38,6 +42,8 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void NewGame()
     {
+        DirectoryInfo dataDir = new DirectoryInfo(Application.persistentDataPath);
+        dataDir.Delete(true);
         gameData = new GameData();
         SaveGame();
     }
@@ -46,12 +52,12 @@ public class DataPersistenceManager : MonoBehaviour
     {
         gameData = dataHandler.Load();
 
-        if(gameData == null)
+        if (gameData == null)
         {
             Debug.Log("NO DATA WAS FOUND, Initializing data to defaults.");
             NewGame();
         }
-
+           
         foreach(IDataPersistence dataPersistenceObj in dataPersistenceObjects)
         {
             dataPersistenceObj.LoadData(gameData);
@@ -64,7 +70,7 @@ public class DataPersistenceManager : MonoBehaviour
         {
             dataPersistenceObj.SaveData(ref gameData);
         }
-
+        
         dataHandler.Save(gameData);
     }
 

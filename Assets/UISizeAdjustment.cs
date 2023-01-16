@@ -29,8 +29,9 @@ public class UISizeAdjustment : MonoBehaviour
         }
         else if(screenPercentage != Vector2.zero)
         {
-            x = screenPercentage.x == 0 ? ET.sizeDelta.x : Screen.width * screenPercentage.x / 100f;
-            y = screenPercentage.y == 0 ? ET.sizeDelta.y : Screen.height * screenPercentage.y / 100f;
+            RectTransform canvasRT = transform.root.GetComponent<RectTransform>();
+            x = screenPercentage.x == 0 ? ET.sizeDelta.x : canvasRT.rect.width * screenPercentage.x / 100f;
+            y = screenPercentage.y == 0 ? ET.sizeDelta.y : canvasRT.rect.height * screenPercentage.y / 100f;
             ET.sizeDelta = new Vector2(x, y);
         }
     }
