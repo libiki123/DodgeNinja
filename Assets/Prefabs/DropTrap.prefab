@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7579048982504503105}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -28.670538, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 83.97099, y: 180, z: 180}
 --- !u!135 &2088680292797011348
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -63,6 +63,7 @@ MonoBehaviour:
   warningMark: {fileID: 8805540560891325254}
   warningTime: 4
   dropStartTime: 3
+  explodeSoundDelay: 0.25
   anim: {fileID: 7972648533401898719}
 --- !u!1 &6104522110068733962
 GameObject:
@@ -369,7 +370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 490358, guid: c481baf706285d246a53bdc1d1c99aa1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 490358, guid: c481baf706285d246a53bdc1d1c99aa1, type: 3}
       propertyPath: m_LocalPosition.z
