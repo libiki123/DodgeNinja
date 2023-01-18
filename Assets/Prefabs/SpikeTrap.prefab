@@ -61,7 +61,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2422712776903192632}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &8336033123246561532
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,8 +197,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1934832476112516341, guid: a803be9fafeced94aa7cb2af399d53e6, type: 3}
-  - {fileID: 4481385670534184470, guid: a803be9fafeced94aa7cb2af399d53e6, type: 3}
+  - {fileID: 2100000, guid: f0286365e9b32cd49a1f378c89551202, type: 2}
+  - {fileID: 2100000, guid: f0286365e9b32cd49a1f378c89551202, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -223,7 +223,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: -1275187236462199345, guid: a803be9fafeced94aa7cb2af399d53e6, type: 3}
+  m_Mesh: {fileID: 3923861796112220750, guid: a803be9fafeced94aa7cb2af399d53e6, type: 3}
   m_Bones:
   - {fileID: 2422712776903192632}
   - {fileID: 7372061069826049190}
@@ -265,4 +265,4 @@ Transform:
   - {fileID: 7372061069826049190}
   m_Father: {fileID: 8711185818056655430}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
