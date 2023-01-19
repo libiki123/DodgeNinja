@@ -47,35 +47,63 @@ public class SpawnerManager : MonoBehaviour
     private void SpwanTrapWave()
     {
         UpdateWaveGroupIndex();
-        if (totalTrapCount == maxTrapAmount) return;
+        //if (totalTrapCount == maxTrapAmount) return;
 
         switch (UIManager.instance.score)
         {
-            case 2:
-                trapSpawner.SpawnSpikeTrap();
-                totalTrapCount++;
-                break;
             case 5:
+                trapSpawner.SpawnSpikeTrap();
+                //totalTrapCount++;
+                break;
+            case 10:
+                trapSpawner.SpawnSpikeTrap();
+                //totalTrapCount++;
+                break;
+            case 20:
+                trapSpawner.SpawnSpikeTrap();
+                //totalTrapCount++;
+                break;
+            case 25:
+                trapSpawner.SpawnSpikeTrap();
+                //totalTrapCount++;
+                break;
+            case 30:
                 trapSpawner.SpawnBlockTrap();
-                totalTrapCount++;
+                //totalTrapCount++;
                 break;
-            default:
-                if(UIManager.instance.score % 5 == 0)
-                {
-                    if(spikeTrapCount >= 3)
-                    {
-                        trapSpawner.SpawnBlockTrap();
-                        spikeTrapCount = 0;
-                        totalTrapCount++;
-                    }
-                    else
-                    {
-                        trapSpawner.SpawnSpikeTrap();
-                        spikeTrapCount++;
-                        totalTrapCount++;
-                    }
-                }
+            case 35:
+                trapSpawner.SpawnBlockTrap();
+                //totalTrapCount++;
                 break;
+            case 40:
+                trapSpawner.SpawnSpikeTrap();
+                //totalTrapCount++;
+                break;
+            case 45:
+                trapSpawner.SpawnSpikeTrap();
+                //totalTrapCount++;
+                break;
+            case 50:
+                trapSpawner.SpawnBlockTrap();
+                //totalTrapCount++;
+                break;
+                //default:
+                //    if(UIManager.instance.score % 10 == 0)
+                //    {
+                //        if(spikeTrapCount >= 3)
+                //        {
+                //            trapSpawner.SpawnBlockTrap();
+                //            spikeTrapCount = 0;
+                //            totalTrapCount++;
+                //        }
+                //        else
+                //        {
+                //            trapSpawner.SpawnSpikeTrap();
+                //            spikeTrapCount++;
+                //            totalTrapCount++;
+                //        }
+                //    }
+                //    break;
         }
     }
 
@@ -83,7 +111,7 @@ public class SpawnerManager : MonoBehaviour
     {
         while (true)
         {
-            if (UIManager.instance.score >= 5)
+            if (UIManager.instance.score >= 15)
             {
                 yield return new WaitForSeconds(dropTrapWaveDelay);
 

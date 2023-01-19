@@ -25,6 +25,7 @@ public class Shop : MonoBehaviour, IDataPersistence
     [SerializeField] private Transform stageScrollView;
     [SerializeField] private RectTransform skinCheckMark;
     [SerializeField] private RectTransform stageCheckMark;
+    [SerializeField] private GameObject confirmGroup;
 
     [Header("Shop Data")]
     [SerializeField] private Shop_SO ShopData;
@@ -35,6 +36,7 @@ public class Shop : MonoBehaviour, IDataPersistence
     private RectTransform stageBttnRT;
     private Image skinBttnIMG;
     private Image stageBttnIMG;
+    private ShopItem selectedItem;
 
     private string currentSkinId = "";
     private string currentStageId = "";
@@ -143,45 +145,116 @@ public class Shop : MonoBehaviour, IDataPersistence
     //============================================ Button Event ============================================//
     public void OnShopItemClick(ShopItem item)
     {
-        if (!item.isPurchased)
+        
+
+        if (selectedItem != null)
         {
-            if (item.type == ShopItemType.SKIN)
+            if (selectedItem == item)
+                return;
+            selectedItem.transform.DOScale(Vector3.one, 0.1f);
+        }
+
+        selectedItem = item;
+
+        if (!selectedItem.isPurchased)
+        {
+            if (selectedItem.type == ShopItemType.SKIN)
             {
-                if (currentTotalCoin >= item.price)
+                if (currentTotalCoin >= selectedItem.price)
                 {
-                    currentTotalCoin -= item.price;
-                    item.SetPurchased(true);
-                }
-                else
+                    selectedItem.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.1f);
+                    skinCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+                    stageCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+                    confirmGroup.SetActive(true);
                     return;
+                }
             }
             else
             {
-                if (currentTotalScroll >= item.price)
+                if (currentTotalScroll >= selectedItem.price)
                 {
-                    currentTotalScroll -= item.price;
-                    item.SetPurchased(true);
-                }
-                else
+                    selectedItem.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.1f);
+                    skinCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+                    stageCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+                    confirmGroup.SetActive(true);
                     return;
+                }
             }
+
+            selectedItem.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.1f);
+            skinCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+            stageCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+            confirmGroup.SetActive(false);
+            return;
         }
 
-        if (item.type == ShopItemType.SKIN)
+        confirmGroup.SetActive(false);
+        selectedItem.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.1f);
+        skinCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+        stageCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+
+        if (selectedItem.type == ShopItemType.SKIN)
         {
-            currentSkinId = item.id;
-            item.SetUsing(ref skinCheckMark);
+            currentSkinId = selectedItem.id;
+            selectedItem.SetUsing(ref skinCheckMark);
             UpdateSkin("player");
         }
         else
         {
-            currentStageId = item.id;
-            item.SetUsing(ref stageCheckMark);
+            currentStageId = selectedItem.id;
+            selectedItem.SetUsing(ref stageCheckMark);
             UpdateSkin("stage");
         }
 
         DataPersistenceManager.instance.SaveGame();
         DataPersistenceManager.instance.LoadGame();
+    }
+
+    public void purchaseConfirm()
+    {
+        if (selectedItem.type == ShopItemType.SKIN)
+        {
+            if (currentTotalCoin >= selectedItem.price)
+            {
+                currentTotalCoin -= selectedItem.price;
+                selectedItem.SetPurchased(true);
+            }
+            else
+                return;
+        }
+        else
+        {
+            if (currentTotalScroll >= selectedItem.price)
+            {
+                currentTotalScroll -= selectedItem.price;
+                selectedItem.SetPurchased(true);
+            }
+            else
+                return;
+        }
+
+        confirmGroup.SetActive(false);
+
+        if (selectedItem.type == ShopItemType.SKIN)
+        {
+            currentSkinId = selectedItem.id;
+            selectedItem.SetUsing(ref skinCheckMark);
+            UpdateSkin("player");
+        }
+        else
+        {
+            currentStageId = selectedItem.id;
+            selectedItem.SetUsing(ref stageCheckMark);
+            UpdateSkin("stage");
+        }
+
+        DataPersistenceManager.instance.SaveGame();
+        DataPersistenceManager.instance.LoadGame();
+    }
+
+    public void purchaseCancel()
+    {
+        confirmGroup.SetActive(false);
     }
 
     public void OnShopClick()
@@ -201,7 +274,7 @@ public class Shop : MonoBehaviour, IDataPersistence
             shopBttn.isOn = false;
             skinBttnRT.DOAnchorPosX(0, 0.15f);
             stageBttnRT.DOAnchorPosX(0, 0.15f);
-            shopMenu.DOAnchorPosY(-150, 0.15f);
+            shopMenu.DOAnchorPosY(-550, 0.15f);
             mainMenu.gameObject.SetActive(true);
         }
     }
@@ -214,22 +287,28 @@ public class Shop : MonoBehaviour, IDataPersistence
     public void OnSkinClick()
     {
         skinBttn.Select();
+        confirmGroup.SetActive(false);
         skinScrollView.gameObject.SetActive(true);
         stageScrollView.gameObject.SetActive(false);
-        skinBttnIMG.sprite = Resources.Load<Sprite>("Sprites/bttn_skin_selected");
-        stageBttnIMG.sprite = Resources.Load<Sprite>("Sprites/bttn_stage_default");
-        skinBttnRT.DOAnchorPosX(skinBttnRT.rect.width - 20f, 0.05f);
-        stageBttnRT.DOAnchorPosX(stageBttnRT.rect.width, 0.1f);
+        //skinBttnIMG.sprite = Resources.Load<Sprite>("Sprites/bttn_skin_default");
+        //stageBttnIMG.sprite = Resources.Load<Sprite>("Sprites/bttn_stage_selected");
+        skinBttn.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.1f);
+        stageBttnRT.transform.DOScale(new Vector3(1f, 1f, 1f), 0.1f);
+        stageBttnRT.DOAnchorPosX(skinBttnRT.rect.width - 30f, 0.05f);
+        skinBttnRT.DOAnchorPosX(stageBttnRT.rect.width, 0.1f);
     }
 
     public void OnStageClick()
     {
+        confirmGroup.SetActive(false);
         skinScrollView.gameObject.SetActive(false);
         stageScrollView.gameObject.SetActive(true);
-        skinBttnIMG.sprite = Resources.Load<Sprite>("Sprites/bttn_skin_default");
-        stageBttnIMG.sprite = Resources.Load<Sprite>("Sprites/bttn_stage_selected");
-        skinBttnRT.DOAnchorPosX(skinBttnRT.rect.width, 0.1f);
-        stageBttnRT.DOAnchorPosX(stageBttnRT.rect.width - 20f, 0.05f);
+        //skinBttnIMG.sprite = Resources.Load<Sprite>("Sprites/bttn_skin_selected");
+        //stageBttnIMG.sprite = Resources.Load<Sprite>("Sprites/bttn_stage_default");
+        stageBttnRT.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.1f);
+        skinBttnRT.transform.DOScale(new Vector3(1f, 1f, 1f), 0.1f);
+        stageBttnRT.DOAnchorPosX(skinBttnRT.rect.width, 0.1f);
+        skinBttnRT.DOAnchorPosX(stageBttnRT.rect.width - 30f, 0.05f);
     }
 
     public void LoadData(GameData data)
