@@ -10,6 +10,8 @@ public class MainMenu : MonoBehaviour, IDataPersistence
 {
     public static MainMenu instance { get; private set; }
 
+    [SerializeField] private SceneLoader sceneLoader;
+
     [Header ("Player Resources")]
     [SerializeField] private RectMask2D batteryProgressBar;
     [SerializeField] private TMP_Text batteryProgressText;
@@ -30,6 +32,11 @@ public class MainMenu : MonoBehaviour, IDataPersistence
         }
     }
 
+    private void Start()
+    {
+        //AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBMG);
+    }
+
     public void LoadData(GameData data)
     {
         battery = data.batteryProgress;
@@ -47,7 +54,7 @@ public class MainMenu : MonoBehaviour, IDataPersistence
 
     public void OnPlayClick()
     {
-        GameManager.instance.StartGame();
+        StartCoroutine(sceneLoader.EndTransition());
     }
 
     public void OnSettingClick()
@@ -58,5 +65,6 @@ public class MainMenu : MonoBehaviour, IDataPersistence
     public void PlayButtonClickSound()
     {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, Vector3.zero);
+        AudioManager.instance.musicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 }
