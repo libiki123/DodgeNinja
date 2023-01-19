@@ -55,7 +55,7 @@ public class Player : MonoBehaviour, IDataPersistence
 
     public void Die()
     {
-        UIManager.instance.ShowEndGameMenu();
+        StartCoroutine(UIManager.instance.ShowEndGameMenu());
     }
 
     private void UpdateSkin(GameData data)
@@ -76,6 +76,7 @@ public class Player : MonoBehaviour, IDataPersistence
                 SMR.material = skin.material;
             }
         }
+
     }
 
     public void LoadData(GameData data)
@@ -86,5 +87,10 @@ public class Player : MonoBehaviour, IDataPersistence
     public void SaveData(ref GameData data)
     {
         
+    }
+
+    public void SpawnPlayer()
+    {
+        animator.Play("Spawn", -1, 0f);
     }
 }

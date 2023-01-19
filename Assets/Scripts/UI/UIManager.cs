@@ -5,6 +5,8 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using Unity.Mathematics;
+using DG.Tweening;
+using Spine.Unity;
 
 public class UIManager : MonoBehaviour, IDataPersistence
 {
@@ -22,7 +24,6 @@ public class UIManager : MonoBehaviour, IDataPersistence
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject endGameMenu;
     [SerializeField] private GameObject controlPicker;
-    [SerializeField] private RectMask2D batteryProgressBar;
 
     public event Action PointAdded;
     public int score { get; private set; }
@@ -30,6 +31,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
     public int highScore { get; private set; }
 
     private int controlType;
+    private float fadeTime = 0.6f;
 
 
     private void Awake()
@@ -44,7 +46,10 @@ public class UIManager : MonoBehaviour, IDataPersistence
     {
         DataPersistenceManager.instance.RefreshDataPersistenceObjs();
         DataPersistenceManager.instance.LoadGame();
+    }
 
+    public void InitControl()
+    {
         if (controlType == 0)
         {
             controlPicker.SetActive(true);
@@ -69,7 +74,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
     public void SaveData(ref GameData data)
     {
         data.totalCoin += score;
-        data.batteryProgress = battery;
+        data.batteryProgress += battery;
         data.highScore = highScore;
         data.gameSetting.contronlType = controlType;
     }
@@ -101,12 +106,15 @@ public class UIManager : MonoBehaviour, IDataPersistence
 
     }
 
-    public void ShowEndGameMenu()
+    public IEnumerator ShowEndGameMenu()
     {
-        GameManager.instance.PauseGame();
         AudioManager.instance.musicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        endGameMenu.transform.GetChild(0).localScale = Vector3.zero;
         endGameMenu.SetActive(true);
+        endGameMenu.transform.GetChild(0).DOScale(1.3f, fadeTime).SetEase(Ease.OutElastic);
         finalScoreText.text = score.ToString();
+        yield return new WaitForSeconds(fadeTime);
+        GameManager.instance.PauseGame();
     }
 
     public void StartWihoutPickingControl()
@@ -116,6 +124,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
         else
             swipeControl.SetActive(true);
 
+        GameManager.instance.ResumeGame();
         CameraManager.instance.StartZoomIn();
         AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBMG);
     }
@@ -175,5 +184,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
     {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, Vector3.zero);
     }
+
+
 
 }
