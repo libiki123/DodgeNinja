@@ -305,7 +305,7 @@ public class Shop : MonoBehaviour, IDataPersistence
         stageScrollView.gameObject.SetActive(false);
         //skinBttnIMG.sprite = Resources.Load<Sprite>("Sprites/bttn_skin_default");
         //stageBttnIMG.sprite = Resources.Load<Sprite>("Sprites/bttn_stage_selected");
-        skinBttn.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.1f);
+        skinBttn.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.2f);
         stageBttnRT.transform.DOScale(new Vector3(1f, 1f, 1f), 0.1f);
         stageBttnRT.DOAnchorPosX(skinBttnRT.rect.width - 30f, 0.05f);
         skinBttnRT.DOAnchorPosX(stageBttnRT.rect.width, 0.1f);
@@ -318,7 +318,7 @@ public class Shop : MonoBehaviour, IDataPersistence
         stageScrollView.gameObject.SetActive(true);
         //skinBttnIMG.sprite = Resources.Load<Sprite>("Sprites/bttn_skin_selected");
         //stageBttnIMG.sprite = Resources.Load<Sprite>("Sprites/bttn_stage_default");
-        stageBttnRT.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.1f);
+        stageBttnRT.transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.2f);
         skinBttnRT.transform.DOScale(new Vector3(1f, 1f, 1f), 0.1f);
         stageBttnRT.DOAnchorPosX(skinBttnRT.rect.width, 0.1f);
         skinBttnRT.DOAnchorPosX(stageBttnRT.rect.width - 30f, 0.05f);

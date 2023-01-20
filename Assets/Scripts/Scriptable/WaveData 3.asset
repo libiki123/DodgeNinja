@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ad42f36f26bd7414baa7c2348c05f1f7, type: 3}
-  m_Name: WaveData 2
+  m_Name: WaveData 3
   m_EditorClassIdentifier: 
   waveGroupInfo:
   - name: 1-4
