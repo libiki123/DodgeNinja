@@ -24,7 +24,7 @@ public class SceneLoader : MonoBehaviour
         {
             StartCoroutine(StartTransition());
         }
-        else
+        else if(!isMainMenu)
         {
             StartCoroutine(StartWithoutTransition());
         }
@@ -35,10 +35,9 @@ public class SceneLoader : MonoBehaviour
     {
         skgp.enabled = true;
         skgp.AnimationState.SetAnimation(0, "animation2", false);
-        yield return new WaitForSeconds(skgp.Skeleton.Data.FindAnimation("animation2").Duration);
+        yield return new WaitForSeconds(skgp.Skeleton.Data.FindAnimation("animation2").Duration - 0.08f);
         UIManager.instance.InitControl();
         player.GetComponent<Player>().SpawnPlayer();
-        
     }
 
     public IEnumerator EndTransition()

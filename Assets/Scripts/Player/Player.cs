@@ -11,7 +11,7 @@ public class Player : MonoBehaviour, IDataPersistence
     public bool isAlive = true;
     [SerializeField] private GameObject impactVFX;
     [SerializeField] private Shop_SO skinData;
-    [SerializeField] private GameObject playerSkin;
+    [SerializeField] private GameObject playerShadow;
 
     private Animator animator;
     SkinnedMeshRenderer SMR;
@@ -98,5 +98,6 @@ public class Player : MonoBehaviour, IDataPersistence
         //animator.SetTrigger("Spawn");
         animator.enabled = true;
         SMR.enabled = true;
+        playerShadow.SetActive(true);
     }
 }
