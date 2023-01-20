@@ -5165,7 +5165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a477245319fe6db4db0200456129ecbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeRange: 35
+  swipeRange: 50
   tapRange: 10
   swipeTrailPrefab: {fileID: 6201472113529123117, guid: 1e055e4b17869d84aa14af6a645b136e,
     type: 3}
@@ -17564,7 +17564,6 @@ MonoBehaviour:
   impactVFX: {fileID: 1265636974550578468, guid: fdf5d840aae932b46bf6ffcc152fcf13,
     type: 3}
   skinData: {fileID: 11400000, guid: 7fc1dfc1f253e2c49aeb8b0cb8cbb744, type: 2}
-  playerSkin: {fileID: 732505111378089594}
   playerShadow: {fileID: 2057554920}
 --- !u!1 &3398084805563792445
 GameObject:
