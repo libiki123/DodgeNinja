@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/SpawnManager_SO")]
 public class SpawnerManager_SO : ScriptableObject
 {
-    public WaveGroupInfo[] waveGroupInfo = new WaveGroupInfo[6];
+    public WaveGroupInfo[] waveGroupInfo = new WaveGroupInfo[11];
 }
 
 [System.Serializable]

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: WaveData 2
   m_EditorClassIdentifier: 
   waveGroupInfo:
-  - name: 1-9
+  - name: 1-4
     waveDelay:
       _1sChance: 75
       _1_5sChance: 25
@@ -41,7 +41,7 @@ MonoBehaviour:
         _1_BulletChance: 0
         _2_BulletChance: 0
         _3_BulletChance: 0
-  - name: 10-19
+  - name: 5-9
     waveDelay:
       _1sChance: 80
       _1_5sChance: 20
@@ -69,7 +69,7 @@ MonoBehaviour:
         _1_BulletChance: 0
         _2_BulletChance: 0
         _3_BulletChance: 0
-  - name: 20-29
+  - name: 10-14
     waveDelay:
       _1sChance: 60
       _1_5sChance: 30
@@ -97,7 +97,7 @@ MonoBehaviour:
         _1_BulletChance: 0
         _2_BulletChance: 0
         _3_BulletChance: 0
-  - name: 30-39
+  - name: 15-19
     waveDelay:
       _1sChance: 20
       _1_5sChance: 30
@@ -125,7 +125,7 @@ MonoBehaviour:
         _1_BulletChance: 100
         _2_BulletChance: 0
         _3_BulletChance: 0
-  - name: 40-39
+  - name: 20-24
     waveDelay:
       _1sChance: 20
       _1_5sChance: 35
@@ -149,6 +149,146 @@ MonoBehaviour:
         _2_BulletChance: 2
         _3_BulletChance: 0
       _4MachineChance: 15
+      _4M_NumOfBullet:
+        _1_BulletChance: 100
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+  - name: 25-29
+    waveDelay:
+      _1sChance: 25
+      _1_5sChance: 35
+      _2sChance: 15
+      _2_5sChance: 15
+      _3sChance: 0
+    numOfMerchine:
+      _1MachineChance: 10
+      _1M_NumOfBullet:
+        _1_BulletChance: 20
+        _2_BulletChance: 80
+        _3_BulletChance: 0
+      _2MachineChance: 40
+      _2M_NumOfBullet:
+        _1_BulletChance: 60
+        _2_BulletChance: 35
+        _3_BulletChance: 5
+      _3MachineChance: 30
+      _3M_NumOfBullet:
+        _1_BulletChance: 90
+        _2_BulletChance: 10
+        _3_BulletChance: 0
+      _4MachineChance: 20
+      _4M_NumOfBullet:
+        _1_BulletChance: 100
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+  - name: 30-34
+    waveDelay:
+      _1sChance: 25
+      _1_5sChance: 35
+      _2sChance: 15
+      _2_5sChance: 15
+      _3sChance: 0
+    numOfMerchine:
+      _1MachineChance: 10
+      _1M_NumOfBullet:
+        _1_BulletChance: 20
+        _2_BulletChance: 80
+        _3_BulletChance: 0
+      _2MachineChance: 40
+      _2M_NumOfBullet:
+        _1_BulletChance: 60
+        _2_BulletChance: 35
+        _3_BulletChance: 5
+      _3MachineChance: 30
+      _3M_NumOfBullet:
+        _1_BulletChance: 90
+        _2_BulletChance: 10
+        _3_BulletChance: 0
+      _4MachineChance: 20
+      _4M_NumOfBullet:
+        _1_BulletChance: 100
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+  - name: 35-39
+    waveDelay:
+      _1sChance: 25
+      _1_5sChance: 35
+      _2sChance: 15
+      _2_5sChance: 15
+      _3sChance: 0
+    numOfMerchine:
+      _1MachineChance: 10
+      _1M_NumOfBullet:
+        _1_BulletChance: 20
+        _2_BulletChance: 80
+        _3_BulletChance: 0
+      _2MachineChance: 40
+      _2M_NumOfBullet:
+        _1_BulletChance: 60
+        _2_BulletChance: 35
+        _3_BulletChance: 5
+      _3MachineChance: 30
+      _3M_NumOfBullet:
+        _1_BulletChance: 90
+        _2_BulletChance: 10
+        _3_BulletChance: 0
+      _4MachineChance: 20
+      _4M_NumOfBullet:
+        _1_BulletChance: 100
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+  - name: 40-44
+    waveDelay:
+      _1sChance: 25
+      _1_5sChance: 35
+      _2sChance: 15
+      _2_5sChance: 15
+      _3sChance: 0
+    numOfMerchine:
+      _1MachineChance: 10
+      _1M_NumOfBullet:
+        _1_BulletChance: 20
+        _2_BulletChance: 80
+        _3_BulletChance: 0
+      _2MachineChance: 40
+      _2M_NumOfBullet:
+        _1_BulletChance: 60
+        _2_BulletChance: 35
+        _3_BulletChance: 5
+      _3MachineChance: 30
+      _3M_NumOfBullet:
+        _1_BulletChance: 90
+        _2_BulletChance: 10
+        _3_BulletChance: 0
+      _4MachineChance: 20
+      _4M_NumOfBullet:
+        _1_BulletChance: 100
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+  - name: 45-49
+    waveDelay:
+      _1sChance: 25
+      _1_5sChance: 35
+      _2sChance: 15
+      _2_5sChance: 15
+      _3sChance: 0
+    numOfMerchine:
+      _1MachineChance: 10
+      _1M_NumOfBullet:
+        _1_BulletChance: 20
+        _2_BulletChance: 80
+        _3_BulletChance: 0
+      _2MachineChance: 40
+      _2M_NumOfBullet:
+        _1_BulletChance: 60
+        _2_BulletChance: 35
+        _3_BulletChance: 5
+      _3MachineChance: 30
+      _3M_NumOfBullet:
+        _1_BulletChance: 90
+        _2_BulletChance: 10
+        _3_BulletChance: 0
+      _4MachineChance: 20
       _4M_NumOfBullet:
         _1_BulletChance: 100
         _2_BulletChance: 0
