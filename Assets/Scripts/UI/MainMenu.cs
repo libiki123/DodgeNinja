@@ -34,7 +34,7 @@ public class MainMenu : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
-        //AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBMG);
+        AudioManager.instance.InitializeMusic(FMODEvents.instance.mainMenuBMG);
     }
 
     public void LoadData(GameData data)
@@ -54,6 +54,7 @@ public class MainMenu : MonoBehaviour, IDataPersistence
 
     public void OnPlayClick()
     {
+        AudioManager.instance.musicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         StartCoroutine(sceneLoader.EndTransition());
     }
 

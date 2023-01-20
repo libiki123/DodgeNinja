@@ -111,6 +111,13 @@ MonoBehaviour:
       Data3: -75404870
       Data4: 28542863
     Path: event:/SFX/Player/Dash
+  <hit>k__BackingField:
+    Guid:
+      Data1: -82633491
+      Data2: 1204537289
+      Data3: -1801603709
+      Data4: 1387361845
+    Path: event:/SFX/Player/Hit
   <coinCollected>k__BackingField:
     Guid:
       Data1: -979865729
@@ -146,6 +153,13 @@ MonoBehaviour:
       Data3: 1135521165
       Data4: 241966523
     Path: event:/Music/GameplayBMG
+  <mainMenuBMG>k__BackingField:
+    Guid:
+      Data1: 1087090299
+      Data2: 1319615522
+      Data3: 1915753375
+      Data4: -1251743086
+    Path: event:/Music/MainMenuBMG
   <buttonClick>k__BackingField:
     Guid:
       Data1: 1107589452
