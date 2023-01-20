@@ -34,6 +34,7 @@ public class Trap : MonoBehaviour
         if (other.gameObject.tag == "Player")
         //if (other.gameObject.tag == "")
         {
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.hit, transform.position);
             Vector3 tmpContactPoint = other.ClosestPoint(transform.position);
             other.GetComponent<Player>().KillPLayer(tmpContactPoint);
         }
