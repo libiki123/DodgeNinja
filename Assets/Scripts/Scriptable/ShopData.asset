@@ -34,7 +34,7 @@ MonoBehaviour:
     price: 25
     mesh: {fileID: -2923391862508124051, guid: 7efb9bd3e0249a04dbcd1d298ff2339e, type: 3}
     material: {fileID: 2100000, guid: 1b785635d119000498857721ee9ad78c, type: 2}
-    effect: {fileID: 5160765824188894905, guid: 833290134503bd5499196f50fda15892,
+    effect: {fileID: 5160765824188894905, guid: fc4fec404ed66fb4f96dc69d2df3e960,
       type: 3}
     isDefault: 0
   - id: b5311b29-c7ba-46d4-98ac-0d419b657c10
@@ -50,7 +50,7 @@ MonoBehaviour:
     price: 45
     mesh: {fileID: -47426840601899951, guid: 185fadeef6aa513409998f8f14523e44, type: 3}
     material: {fileID: 2100000, guid: 9b607c637f3c3734280e8a78785ce3f7, type: 2}
-    effect: {fileID: 5160765824188894905, guid: e0e70115253d6be46a9bde0ef5a27ad7,
+    effect: {fileID: 5160765824188894905, guid: 03d0a44cdfa37c441b79cd5cc012dfd9,
       type: 3}
     isDefault: 0
   - id: 9dee3f0a-1d57-40cf-a14d-b8436a6f0afb
@@ -58,7 +58,7 @@ MonoBehaviour:
     price: 1
     mesh: {fileID: 3023821055701972402, guid: cfcb03b82f444ad479f17600cba557c1, type: 3}
     material: {fileID: 2100000, guid: 3022452930acea4479243bdb9afd0752, type: 2}
-    effect: {fileID: 5160765824188894905, guid: 50c5180a2fcb6c14d8881823e36fac3c,
+    effect: {fileID: 5160765824188894905, guid: 0f0cdbb18779ca14eab1310440f4d20f,
       type: 3}
     isDefault: 0
   - id: ee4ff3c1-f6c7-4670-a2f6-fc74c141ce9a
@@ -66,7 +66,7 @@ MonoBehaviour:
     price: 1
     mesh: {fileID: 7466548762232585006, guid: fe72ea4719333cf41b0e89d078d799d4, type: 3}
     material: {fileID: 2100000, guid: f7d2f9f0338bfd04db3ee50007dfc361, type: 2}
-    effect: {fileID: 5160765824188894905, guid: 28b0f07b143a0f7438258bd657ff5491,
+    effect: {fileID: 5160765824188894905, guid: 814a1ae0d4fb5714f8c5c2acfaad77c3,
       type: 3}
     isDefault: 0
   stages:
