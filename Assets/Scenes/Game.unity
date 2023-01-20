@@ -6195,7 +6195,7 @@ MonoBehaviour:
   - {fileID: 2013172746}
   trapSpawner: {fileID: 1205684081}
   rewardSpawner: {fileID: 1205684079}
-  waveData: {fileID: 11400000, guid: 31706b2b36333c14f90b6e1a097ff7dd, type: 2}
+  waveData: {fileID: 11400000, guid: 8822083e2c9ae4e4f9995f04049f310e, type: 2}
   gunWaveDelay: 1.4
   dropTrapWaveDelay: 4
 --- !u!1 &889200337
@@ -17512,7 +17512,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3389844793912811430}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 474926864a691e943b7711a6b02a693e, type: 2}
   m_CullingMode: 0
@@ -17554,6 +17554,7 @@ MonoBehaviour:
   impactVFX: {fileID: 1265636974550578468, guid: fdf5d840aae932b46bf6ffcc152fcf13,
     type: 3}
   skinData: {fileID: 11400000, guid: 7fc1dfc1f253e2c49aeb8b0cb8cbb744, type: 2}
+  playerSkin: {fileID: 732505111378089594}
 --- !u!1 &3398084805563792445
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,18 +7,28 @@ public class SceneLoader : MonoBehaviour
 {
     public bool isMainMenu = false;
     private SkeletonGraphic skgp;
+    private GameObject player;
 
     private void Awake()
     {
         skgp = gameObject.GetComponent<SkeletonGraphic>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Start()
     {
-        if (!isMainMenu)
+        DataPersistenceManager.instance.RefreshDataPersistenceObjs();
+        DataPersistenceManager.instance.LoadGame();
+
+        if (!isMainMenu && !GameManager.isRestart)
         {
             StartCoroutine(StartTransition());
         }
+        else
+        {
+            StartCoroutine(StartWithoutTransition());
+        }
+            
     }
 
     public IEnumerator StartTransition()
@@ -27,7 +37,6 @@ public class SceneLoader : MonoBehaviour
         skgp.AnimationState.SetAnimation(0, "animation2", false);
         yield return new WaitForSeconds(skgp.Skeleton.Data.FindAnimation("animation2").Duration);
         UIManager.instance.InitControl();
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<Player>().SpawnPlayer();
         
     }
@@ -38,6 +47,13 @@ public class SceneLoader : MonoBehaviour
         skgp.AnimationState.SetAnimation(0, "animation1", false);
         yield return new WaitForSeconds(skgp.Skeleton.Data.FindAnimation("animation1").Duration);
         GameManager.instance.StartGame();
+    }
+
+    public IEnumerator StartWithoutTransition()
+    {
+        yield return new WaitForSeconds(0.05f);
+        UIManager.instance.InitControl();
+        player.GetComponent<Player>().SpawnPlayer();
     }
 
 }

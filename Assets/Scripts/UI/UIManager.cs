@@ -44,8 +44,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
-        DataPersistenceManager.instance.RefreshDataPersistenceObjs();
-        DataPersistenceManager.instance.LoadGame();
+        
     }
 
     public void InitControl()
@@ -133,12 +132,14 @@ public class UIManager : MonoBehaviour, IDataPersistence
     public void Replay()
     {
         GameManager.instance.ResumeGame();
+        GameManager.isRestart = true;
         GameManager.instance.StartGame();
     }
 
     public void Home()
     {
         GameManager.instance.ResumeGame();
+        GameManager.isRestart = false;
         GameManager.instance.LoadMainMenu();
     }
 

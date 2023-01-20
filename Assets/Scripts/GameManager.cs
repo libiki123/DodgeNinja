@@ -11,15 +11,14 @@ public class GameManager : MonoBehaviour
 
     public string gameSceneName;
     public string menuSceneName;
-    public GameData saveData { get; private set; }
+    public static bool isRestart = false;
 
 
     private void Awake()
     {
         if (instance != null && instance != this)
         {
-            gameObject.SetActive(false);
-            Destroy(this);
+            Destroy(gameObject);
         }
         else
         {
