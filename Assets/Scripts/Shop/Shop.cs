@@ -37,6 +37,8 @@ public class Shop : MonoBehaviour, IDataPersistence
     private Image skinBttnIMG;
     private Image stageBttnIMG;
     private ShopItem selectedItem;
+    private GameObject currentSkinEffect;
+    private GameObject currentStageEffect;
 
     private string currentSkinId = "";
     private string currentStageId = "";
@@ -108,6 +110,9 @@ public class Shop : MonoBehaviour, IDataPersistence
             {
                 SMR.sharedMesh = ShopData.skins[0].mesh;
                 SMR.material = ShopData.skins[0].material;
+
+                if (currentSkinEffect != null) Destroy(currentSkinEffect);
+                if (ShopData.skins[0].effect != null) currentSkinEffect = Instantiate(ShopData.skins[0].effect, player.transform.Find("Root_M"));
             }
 
             foreach (var skin in ShopData.skins)
@@ -116,6 +121,9 @@ public class Shop : MonoBehaviour, IDataPersistence
                 {
                     SMR.sharedMesh = skin.mesh;
                     SMR.material = skin.material;
+
+                    if (currentSkinEffect != null) Destroy(currentSkinEffect);
+                    if (skin.effect != null) currentSkinEffect = Instantiate(skin.effect, player.transform.Find("Root_M"));
                 }
             }
         }
@@ -128,14 +136,19 @@ public class Shop : MonoBehaviour, IDataPersistence
             {
                 SF.sharedMesh = ShopData.stages[0].mesh;
                 SR.material = ShopData.stages[0].material;
+                if (currentStageEffect != null) Destroy(currentStageEffect);
+                if (ShopData.skins[0].effect != null) currentStageEffect = Instantiate(ShopData.stages[0].effect, stage.transform);
             }
 
-            foreach (var skin in ShopData.stages)
+            foreach (var stage in ShopData.stages)
             {
-                if (skin.id == currentStageId)
+                if (stage.id == currentStageId)
                 {
-                    SF.sharedMesh = skin.mesh;
-                    SR.material = skin.material;
+                    SF.sharedMesh = stage.mesh;
+                    SR.material = stage.material;
+
+                    if (currentStageEffect != null) Destroy(currentStageEffect);
+                    if (stage.effect != null) currentStageEffect = Instantiate(stage.effect, this.stage.transform);
                 }
             }
         }

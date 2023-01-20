@@ -17,7 +17,7 @@ public struct ShopItemData
     public int price;
     public Mesh mesh;
     public Material material;
-    public GameObject skinEffect;
+    public GameObject effect;
     public bool isDefault;
 }
 
