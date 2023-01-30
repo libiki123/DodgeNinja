@@ -24,7 +24,7 @@ then
 fi
 
 if [ -n "$UNITY_LICENSE" ]
-    sudo touch unity_license_destination
+    sudo touch $unity_license_destination
     echo "Writing '\$UNITY_LICENSE' to license file ${unity_license_destination}"
     # echo "${UNITY_LICENSE}" | tr -d '\r' > ${unity_license_destination}
     sudo bash -c "echo '${UNITY_LICENSE}' | tr -d '\r' > ${unity_license_destination}"
