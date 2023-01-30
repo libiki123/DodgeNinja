@@ -34,7 +34,6 @@ image: $IMAGE:$UNITY_VERSION-base-$IMAGE_VERSION
 ######################################################## Template ############################################################################
 .unity_before_script: &unity_before_script
   before_script:
-    - echo $UNITY_LICENSE
     - chmod +x $SCRIPT_DIR/before_script.sh && $SCRIPT_DIR/before_script.sh $CI_PROJECT_DIR
   # needs:
   #   - job: get-unity-version

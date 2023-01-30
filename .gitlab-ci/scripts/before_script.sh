@@ -25,7 +25,7 @@ fi
 
 if [ -n "$UNITY_LICENSE" ]
 then
-    ls /root/.local/share/unity3d/Unity
+    echo "${UNITY_LICENSE}"
     echo "Writing '\$UNITY_LICENSE' to license file ${unity_license_destination}"
     echo "${UNITY_LICENSE}" | tr -d '\r' > ${unity_license_destination}
 else
