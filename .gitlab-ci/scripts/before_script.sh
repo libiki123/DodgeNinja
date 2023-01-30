@@ -6,7 +6,7 @@ mkdir -p $CI_PROJECT_DIR/.cache/unity3d
 mkdir -p $CI_PROJECT_DIR/.local/share/unity3d/Unity/
 set +x # Turn off debug
 
-unity_license_destination=/root/.local/share/unity3d/Unity/Unity_lic.ulf
+unity_license_destination=$CI_PROJECT_DIR/.local/share/unity3d/Unity/Unity_lic.ulf
 android_keystore_destination=keystore.keystore
 
 
@@ -24,10 +24,9 @@ then
 fi
 
 if [ -n "$UNITY_LICENSE" ]
-    sudo touch $unity_license_destination
     echo "Writing '\$UNITY_LICENSE' to license file ${unity_license_destination}"
     # echo "${UNITY_LICENSE}" | tr -d '\r' > ${unity_license_destination}
-    sudo bash -c "echo '${UNITY_LICENSE}' | tr -d '\r' > ${unity_license_destination}"
+    echo '${UNITY_LICENSE}' | tr -d '\r' > ${unity_license_destination}
 else
     echo "'\$UNITY_LICENSE' env var not found"
 fi
