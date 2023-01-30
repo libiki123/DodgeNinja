@@ -24,10 +24,9 @@ then
 fi
 
 if [ -n "$UNITY_LICENSE" ]
+then
     echo "Writing '\$UNITY_LICENSE' to license file ${unity_license_destination}"
-    # echo "${UNITY_LICENSE}" | tr -d '\r' > ${unity_license_destination}
-    echo '${UNITY_LICENSE}' | tr -d '\r' > ${unity_license_destination}
+    echo "${UNITY_LICENSE}" | tr -d '\r' > ${unity_license_destination}
 else
     echo "'\$UNITY_LICENSE' env var not found"
 fi
-
