@@ -60,13 +60,13 @@ image: $IMAGE:$UNITY_VERSION-base-$IMAGE_VERSION
 # run this job when you need to request a license
 # you may need to follow activation steps from documentation
 .get-activation-file:
+  stage: prepare
   tags:
-    - $MACOS_RUNNER_TAG
+    - $LINUX_RUNNER_TAG 
   <<: *unity_before_script
   rules:
     - if: '$UNITY_LICENSE == null'
       when: manual
-  stage: prepare
   script:
     - chmod +x $SCRIPT_DIR/get_activation_file.sh && $SCRIPT_DIR/get_activation_file.sh
   artifacts:
@@ -78,16 +78,14 @@ image: $IMAGE:$UNITY_VERSION-base-$IMAGE_VERSION
 
 .build: &build
   stage: build
+  tags:
+    - $LINUX_RUNNER_TAG 
   <<: *unity_defaults
   script:
     - chmod +x $SCRIPT_DIR/build.sh && $SCRIPT_DIR/build.sh
   artifacts:
     paths:
       - $UNITY_DIR/Builds/
-  # https://gitlab.com/gableroux/unity3d-gitlab-ci-example/-/issues/83
-  # you may need to remove or replace these to fit your need if you are using your own runners
-  tags:
-    - $MACOS_RUNNER_TAG
 
 build-android:
   <<: *build
@@ -110,7 +108,7 @@ release-package:
   stage: dev
   image: registry.gitlab.com/gitlab-org/release-cli:latest
   tags: 
-    - $MACOS_RUNNER_TAG
+    - $LINUX_RUNNER_TAG 
   needs: ["build-android", "build-android-il2cpp"]
   rules:                               
     - if: $CI_COMMIT_BRANCH == "SRE-66"  # Run this job when commits are pushed or merged to the default branch
