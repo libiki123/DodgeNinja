@@ -4,6 +4,7 @@ set -e #  use to exit when the command exits with a non-zero status
 set -x # Turn on debug
 mkdir -p $CI_PROJECT_DIR/.cache/unity3d
 mkdir -p $CI_PROJECT_DIR/.local/share/unity3d/Unity/
+touch $CI_PROJECT_DIR/.local/share/unity3d/Unity/Unity_lic.ulf
 set +x # Turn off debug
 
 unity_license_destination=/root/.local/share/unity3d/Unity/Unity_lic.ulf
@@ -25,7 +26,6 @@ fi
 
 if [ -n "$UNITY_LICENSE" ]
 then
-    echo "${UNITY_LICENSE}"
     echo "Writing '\$UNITY_LICENSE' to license file ${unity_license_destination}"
     echo "${UNITY_LICENSE}" | tr -d '\r' > ${unity_license_destination}
 else
