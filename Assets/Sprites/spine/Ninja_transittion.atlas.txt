@@ -1,0 +1,55 @@
+Ninja_transittion.png
+	size: 4096, 2048
+	filter: Linear, Linear
+	pma: true
+door
+	bounds: 0, 805, 1202, 2438
+	rotate: 90
+slash
+	bounds: 3347, 1368, 395, 639
+	offsets: 0, 15, 412, 662
+slash_001
+	bounds: 0, 644, 905, 159
+	offsets: 0, 80, 905, 293
+slash_002
+	bounds: 2440, 1848, 905, 159
+	offsets: 0, 80, 905, 293
+slash_004
+	bounds: 0, 483, 905, 159
+	offsets: 0, 80, 905, 293
+slash_005
+	bounds: 907, 644, 905, 159
+	offsets: 0, 80, 905, 293
+slash_006
+	bounds: 2440, 1687, 905, 159
+	offsets: 0, 80, 905, 293
+slash_007
+	bounds: 0, 322, 905, 159
+	offsets: 0, 80, 905, 293
+slash_008
+	bounds: 907, 483, 905, 159
+	offsets: 0, 80, 905, 293
+slash_009
+	bounds: 2440, 1526, 905, 159
+	offsets: 0, 80, 905, 293
+slash_010
+	bounds: 0, 161, 905, 159
+	offsets: 0, 80, 905, 293
+slash_011
+	bounds: 907, 322, 905, 159
+	offsets: 0, 80, 905, 293
+slash_012
+	bounds: 2440, 1365, 905, 159
+	offsets: 0, 80, 905, 293
+slash_013
+	bounds: 0, 0, 905, 159
+	offsets: 0, 80, 905, 293
+slash_014
+	bounds: 907, 161, 905, 159
+	offsets: 0, 80, 905, 293
+slash_015
+	bounds: 2440, 1204, 905, 159
+	offsets: 0, 80, 905, 293
+slash_016
+	bounds: 907, 0, 905, 159
+	offsets: 0, 80, 905, 293

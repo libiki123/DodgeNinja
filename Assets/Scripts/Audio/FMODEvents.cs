@@ -7,13 +7,19 @@ public class FMODEvents : MonoBehaviour
 {
     [field: Header("Player")]
     [field: SerializeField] public EventReference dash { get; private set; }
+    [field: SerializeField] public EventReference hit { get; private set; }
 
     [field: Header ("Reward SFX")]
     [field: SerializeField] public EventReference coinCollected { get; private set; } // Field keyword help show in inspector if setter is private
     [field: SerializeField] public EventReference scrollCollected { get; private set; }
 
+    [field: Header("Trap SFX")]
+    [field: SerializeField] public EventReference shotFire { get; private set; }
+    [field: SerializeField] public EventReference trapDroped { get; private set; }
+
     [field: Header("Music")]
     [field: SerializeField] public EventReference gameplayBMG { get; private set; }
+    [field: SerializeField] public EventReference mainMenuBMG { get; private set; }
 
     [field: Header("UI")]
     [field: SerializeField] public EventReference buttonClick { get; private set; }

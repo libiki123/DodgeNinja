@@ -10,6 +10,8 @@ public class MainMenu : MonoBehaviour, IDataPersistence
 {
     public static MainMenu instance { get; private set; }
 
+    [SerializeField] private SceneLoader sceneLoader;
+
     [Header ("Player Resources")]
     [SerializeField] private RectMask2D batteryProgressBar;
     [SerializeField] private TMP_Text batteryProgressText;
@@ -30,12 +32,17 @@ public class MainMenu : MonoBehaviour, IDataPersistence
         }
     }
 
+    private void Start()
+    {
+        AudioManager.instance.InitializeMusic(FMODEvents.instance.mainMenuBMG);
+    }
+
     public void LoadData(GameData data)
     {
         battery = data.batteryProgress;
-        float percentage = math.remap(0, 50, 210, 5, battery);
-        batteryProgressBar.padding = new Vector4(0, 0, 0, percentage);
-        batteryProgressText.text = battery.ToString() + " / 50";
+        //float percentage = math.remap(0, 50, 360, 5, battery);
+        //batteryProgressBar.padding = new Vector4(0, 0, 0, percentage);
+        batteryProgressText.text = battery.ToString();
         totalCoin = data.totalCoin;
         coinText.text = totalCoin.ToString();
     }
@@ -47,7 +54,8 @@ public class MainMenu : MonoBehaviour, IDataPersistence
 
     public void OnPlayClick()
     {
-        GameManager.instance.StartGame();
+        AudioManager.instance.musicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        StartCoroutine(sceneLoader.EndTransition());
     }
 
     public void OnSettingClick()
@@ -58,5 +66,6 @@ public class MainMenu : MonoBehaviour, IDataPersistence
     public void PlayButtonClickSound()
     {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, Vector3.zero);
+        AudioManager.instance.musicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 }

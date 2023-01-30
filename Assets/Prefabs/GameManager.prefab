@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1528929415}
   - component: {fileID: 2318822555910655316}
   - component: {fileID: 1528929420}
+  - component: {fileID: 1727485159895061387}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -89,6 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11ab246a67c23540874b32b18874475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicMute: 1
+  sfxMute: 1
 --- !u!114 &1528929420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +111,13 @@ MonoBehaviour:
       Data3: -75404870
       Data4: 28542863
     Path: event:/SFX/Player/Dash
+  <hit>k__BackingField:
+    Guid:
+      Data1: -82633491
+      Data2: 1204537289
+      Data3: -1801603709
+      Data4: 1387361845
+    Path: event:/SFX/Player/Hit
   <coinCollected>k__BackingField:
     Guid:
       Data1: -979865729
@@ -122,6 +132,20 @@ MonoBehaviour:
       Data3: 307918764
       Data4: -1827332382
     Path: event:/SFX/Reward/ScrollCollected
+  <shotFire>k__BackingField:
+    Guid:
+      Data1: -851121610
+      Data2: 1123305155
+      Data3: -1116365664
+      Data4: 1602104875
+    Path: event:/SFX/Trap/Shoot
+  <trapDroped>k__BackingField:
+    Guid:
+      Data1: 1231436200
+      Data2: 1283838062
+      Data3: -418333560
+      Data4: 2034224233
+    Path: event:/SFX/Trap/Drop
   <gameplayBMG>k__BackingField:
     Guid:
       Data1: -1329181126
@@ -129,6 +153,13 @@ MonoBehaviour:
       Data3: 1135521165
       Data4: 241966523
     Path: event:/Music/GameplayBMG
+  <mainMenuBMG>k__BackingField:
+    Guid:
+      Data1: 1087090299
+      Data2: 1319615522
+      Data3: 1915753375
+      Data4: -1251743086
+    Path: event:/Music/MainMenuBMG
   <buttonClick>k__BackingField:
     Guid:
       Data1: 1107589452
@@ -136,3 +167,15 @@ MonoBehaviour:
       Data3: 332666772
       Data4: 1244577636
     Path: event:/SFX/UI/ButtonClick
+--- !u!114 &1727485159895061387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727485160018733542}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a01e2378a49e1104696dfe3ae2c106d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

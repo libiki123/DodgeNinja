@@ -11,13 +11,16 @@ public class Player : MonoBehaviour, IDataPersistence
     public bool isAlive = true;
     [SerializeField] private GameObject impactVFX;
     [SerializeField] private Shop_SO skinData;
+    [SerializeField] private GameObject playerShadow;
 
     private Animator animator;
+    SkinnedMeshRenderer SMR;
 
     // Start is called before the first frame update
     void Awake()
     {
         animator = GetComponent<Animator>();
+        SMR = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
     public void TriggerMoveAnim(MoveDirection direction)
@@ -55,7 +58,7 @@ public class Player : MonoBehaviour, IDataPersistence
 
     public void Die()
     {
-        UIManager.instance.ShowEndGameMenu();
+        StartCoroutine(UIManager.instance.ShowEndGameMenu());
     }
 
     private void UpdateSkin(GameData data)
@@ -76,6 +79,8 @@ public class Player : MonoBehaviour, IDataPersistence
                 SMR.material = skin.material;
             }
         }
+
+        SMR.enabled = false;
     }
 
     public void LoadData(GameData data)
@@ -86,5 +91,13 @@ public class Player : MonoBehaviour, IDataPersistence
     public void SaveData(ref GameData data)
     {
         
+    }
+
+    public void SpawnPlayer()
+    {
+        //animator.SetTrigger("Spawn");
+        animator.enabled = true;
+        SMR.enabled = true;
+        playerShadow.SetActive(true);
     }
 }

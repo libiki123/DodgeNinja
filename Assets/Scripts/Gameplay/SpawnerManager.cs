@@ -12,9 +12,9 @@ public class SpawnerManager : MonoBehaviour
     [SerializeField] private float gunWaveDelay = 2.0f;
     [SerializeField] private float dropTrapWaveDelay = 4.0f;
 
-    private int maxTrapAmount = 8; //25
-    private int totalTrapCount = 0;
-    private int spikeTrapCount = 0;
+    //private int maxTrapAmount = 8; //25
+    //private int totalTrapCount = 0;
+    //private int spikeTrapCount = 0;
     private int currentWaveGroupIndex = 0;
     void Start()
     {
@@ -47,35 +47,63 @@ public class SpawnerManager : MonoBehaviour
     private void SpwanTrapWave()
     {
         UpdateWaveGroupIndex();
-        if (totalTrapCount == maxTrapAmount) return;
+        //if (totalTrapCount == maxTrapAmount) return;
 
         switch (UIManager.instance.score)
         {
-            case 2:
-                trapSpawner.SpawnSpikeTrap();
-                totalTrapCount++;
-                break;
             case 5:
+                trapSpawner.SpawnSpikeTrap();
+                //totalTrapCount++;
+                break;
+            case 10:
+                trapSpawner.SpawnSpikeTrap();
+                //totalTrapCount++;
+                break;
+            case 20:
+                trapSpawner.SpawnSpikeTrap();
+                //totalTrapCount++;
+                break;
+            case 25:
+                trapSpawner.SpawnSpikeTrap();
+                //totalTrapCount++;
+                break;
+            case 30:
                 trapSpawner.SpawnBlockTrap();
-                totalTrapCount++;
+                //totalTrapCount++;
                 break;
-            default:
-                if(UIManager.instance.score % 5 == 0)
-                {
-                    if(spikeTrapCount >= 3)
-                    {
-                        trapSpawner.SpawnBlockTrap();
-                        spikeTrapCount = 0;
-                        totalTrapCount++;
-                    }
-                    else
-                    {
-                        trapSpawner.SpawnSpikeTrap();
-                        spikeTrapCount++;
-                        totalTrapCount++;
-                    }
-                }
+            case 35:
+                trapSpawner.SpawnBlockTrap();
+                //totalTrapCount++;
                 break;
+            case 40:
+                trapSpawner.SpawnSpikeTrap();
+                //totalTrapCount++;
+                break;
+            case 45:
+                trapSpawner.SpawnSpikeTrap();
+                //totalTrapCount++;
+                break;
+            case 50:
+                trapSpawner.SpawnBlockTrap();
+                //totalTrapCount++;
+                break;
+                //default:
+                //    if(UIManager.instance.score % 10 == 0)
+                //    {
+                //        if(spikeTrapCount >= 3)
+                //        {
+                //            trapSpawner.SpawnBlockTrap();
+                //            spikeTrapCount = 0;
+                //            totalTrapCount++;
+                //        }
+                //        else
+                //        {
+                //            trapSpawner.SpawnSpikeTrap();
+                //            spikeTrapCount++;
+                //            totalTrapCount++;
+                //        }
+                //    }
+                //    break;
         }
     }
 
@@ -83,7 +111,7 @@ public class SpawnerManager : MonoBehaviour
     {
         while (true)
         {
-            if (UIManager.instance.score >= 5)
+            if (UIManager.instance.score >= 15)
             {
                 yield return new WaitForSeconds(dropTrapWaveDelay);
 
@@ -98,23 +126,38 @@ public class SpawnerManager : MonoBehaviour
     {
         switch (UIManager.instance.score)
         {
-            case < 10: // wave group 1-9
+            case < 5: // wave group 1-5
                 currentWaveGroupIndex = 0;
                 break;
-            case < 20:
+            case < 10:
                 currentWaveGroupIndex = 1;
                 break;
-            case < 30:
+            case < 15:
                 currentWaveGroupIndex = 2;
                 break;
-            case < 40:
+            case < 20:
                 currentWaveGroupIndex = 3;
                 break;
-            case < 50:
+            case < 25:
                 currentWaveGroupIndex = 4;
                 break;
-            case >= 50:
+            case < 30:
                 currentWaveGroupIndex = 5;
+                break;
+            case < 35:
+                currentWaveGroupIndex = 6;
+                break;
+            case < 40:
+                currentWaveGroupIndex = 7;
+                break;
+            case < 45:
+                currentWaveGroupIndex = 8;
+                break;
+            case < 50:
+                currentWaveGroupIndex = 9;
+                break;
+            case >= 50:
+                currentWaveGroupIndex = 10;
                 break;
         }
     }

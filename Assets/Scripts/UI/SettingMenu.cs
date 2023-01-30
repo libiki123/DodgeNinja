@@ -88,11 +88,11 @@ public class SettingMenu : MonoBehaviour, IDataPersistence
                 break;
             case 1:
                 controlTypePciker.SetActive(true);
-                controlTypeSwitch.isOn = false;
+                controlTypeSwitch.isOn = true;
                 break;
             case 2:
                 controlTypePciker.SetActive(true);
-                controlTypeSwitch.isOn = true;
+                controlTypeSwitch.isOn = false;
                 break;
         }
         
@@ -105,7 +105,7 @@ public class SettingMenu : MonoBehaviour, IDataPersistence
         data.gameSetting.muteMusic = musicToggle.isOn;
         data.gameSetting.muteSFX = sfxToggle.isOn;
         if(controlTypePciker.activeSelf)
-            data.gameSetting.contronlType = controlTypeSwitch.isOn? 2 : 1;
+            data.gameSetting.contronlType = controlTypeSwitch.isOn? 1 : 2;
     }
 
     private void OnEnable()

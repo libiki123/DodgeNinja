@@ -64,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
+                player.TriggerMoveAnim(Player.MoveDirection.UP);
                 if (buttonControl.gameObject.activeSelf) buttonControl.Reset();
             }
         }
@@ -79,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
+                player.TriggerMoveAnim(Player.MoveDirection.DOWN);
                 if (buttonControl.gameObject.activeSelf) buttonControl.Reset();
             }
         }
@@ -94,6 +96,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
+                player.TriggerMoveAnim(Player.MoveDirection.LEFT);
                 if (buttonControl.gameObject.activeSelf) buttonControl.Reset();
             }
         }
@@ -109,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
+                player.TriggerMoveAnim(Player.MoveDirection.RIGHT);
                 if (buttonControl.gameObject.activeSelf) buttonControl.Reset();
             }
         }

@@ -5,6 +5,8 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using Unity.Mathematics;
+using DG.Tweening;
+using Spine.Unity;
 
 public class UIManager : MonoBehaviour, IDataPersistence
 {
@@ -22,12 +24,14 @@ public class UIManager : MonoBehaviour, IDataPersistence
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject endGameMenu;
     [SerializeField] private GameObject controlPicker;
-    [SerializeField] private RectMask2D batteryProgressBar;
 
     public event Action PointAdded;
     public int score { get; private set; }
     public int battery { get; private set; }
     public int highScore { get; private set; }
+
+    private int controlType;
+    private float fadeTime = 0.6f;
 
 
     private void Awake()
@@ -40,29 +44,38 @@ public class UIManager : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
-        DataPersistenceManager.instance.RefreshDataPersistenceObjs();
-        DataPersistenceManager.instance.LoadGame();
+        
+    }
 
-        controlPicker.SetActive(true);
-        GameManager.instance.PauseGame();
+    public void InitControl()
+    {
+        if (controlType == 0)
+        {
+            controlPicker.SetActive(true);
+            GameManager.instance.PauseGame();
+        }
+        else
+            StartWihoutPickingControl();
     }
 
     public void LoadData(GameData data)
     {
         scoreText.text = score.ToString();
-        battery = data.batteryProgress;
-        float percentage = math.remap(0, 50, 210, 5, battery);
-        batteryProgressBar.padding = new Vector4(percentage, 0, 0, 0);
-        batteryProgressText.text = battery.ToString() + " / 50";
+        //battery = data.batteryProgress;
+        //float percentage = math.remap(0, 50, 285, 5, battery);
+        //batteryProgressBar.padding = new Vector4(percentage, 0, 0, 0);
+        batteryProgressText.text = battery.ToString();
         this.highScore = data.highScore;
         highscoreText.text = highScore.ToString();
+        controlType = data.gameSetting.contronlType;
     }
 
     public void SaveData(ref GameData data)
     {
         data.totalCoin += score;
-        data.batteryProgress = battery;
+        data.batteryProgress += battery;
         data.highScore = highScore;
+        data.gameSetting.contronlType = controlType;
     }
 
 
@@ -84,53 +97,74 @@ public class UIManager : MonoBehaviour, IDataPersistence
     public void AddBattery()
     {
         battery++;
-        batteryProgressText.text = battery.ToString() + " / 50";
-        if (battery == 50)
-        {
-            battery = 0;
-        }
+        batteryProgressText.text = battery.ToString();
+        //if (battery == 50)
+        //{
+        //    battery = 0;
+        //}
 
     }
 
-    public void ShowEndGameMenu()
+    public IEnumerator ShowEndGameMenu()
     {
-        GameManager.instance.PauseGame();
         AudioManager.instance.musicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+        endGameMenu.transform.GetChild(0).localScale = Vector3.zero;
         endGameMenu.SetActive(true);
+        endGameMenu.transform.GetChild(0).DOScale(1.3f, fadeTime).SetEase(Ease.OutElastic);
         finalScoreText.text = score.ToString();
+        yield return new WaitForSeconds(fadeTime);
+        GameManager.instance.PauseGame();
+    }
+
+    public void StartWihoutPickingControl()
+    {
+        if(controlType == 1)
+            bttnControl.SetActive(true);
+        else
+            swipeControl.SetActive(true);
+
+        GameManager.instance.ResumeGame();
+        CameraManager.instance.StartZoomIn();
+        AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBMG);
     }
 
     //============================================ Button Event ============================================//
     public void Replay()
     {
         GameManager.instance.ResumeGame();
+        GameManager.isRestart = true;
         GameManager.instance.StartGame();
     }
 
     public void Home()
     {
         GameManager.instance.ResumeGame();
+        GameManager.isRestart = false;
         GameManager.instance.LoadMainMenu();
     }
 
     public void UseButton()
     {
+        controlType = 1;
         controlPicker.SetActive(false);
         bttnControl.SetActive(true);
         swipeControl.SetActive(false);
         GameManager.instance.ResumeGame();
         CameraManager.instance.StartZoomIn();
         AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBMG);
+        DataPersistenceManager.instance.SaveGame();
     }
 
     public void UseSwipe()
     {
+        controlType = 2;
         controlPicker.SetActive(false);
         bttnControl.SetActive(false);
         swipeControl.SetActive(true);
         GameManager.instance.ResumeGame();
         CameraManager.instance.StartZoomIn();
         AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBMG);
+        DataPersistenceManager.instance.SaveGame();
     }
 
     public void PauseGame()
@@ -151,5 +185,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
     {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, Vector3.zero);
     }
+
+
 
 }
