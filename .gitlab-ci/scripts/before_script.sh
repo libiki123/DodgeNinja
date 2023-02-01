@@ -10,7 +10,7 @@ unity_license_destination=~/.local/share/unity3d/Unity/Unity_lic.ulf
 android_keystore_destination=keystore.keystore
 
 
-# upper_case_build_target=${BUILD_TARGET^^};
+upper_case_build_target="ANDROID";
 
 if [ "$upper_case_build_target" = "ANDROID" ]
 then

@@ -91,14 +91,14 @@ build-android:
   <<: *build
   image: $IMAGE:$UNITY_VERSION-android-$IMAGE_VERSION
   variables:
-    BUILD_TARGET: ANDROID
+    BUILD_TARGET: Android
     BUILD_APP_BUNDLE: "false"
 
 .build-android-il2cpp:
   <<: *build
   image: $IMAGE:$UNITY_VERSION-android-$IMAGE_VERSION
   variables:
-    BUILD_TARGET: ANDROID
+    BUILD_TARGET: Android
     BUILD_APP_BUNDLE: "false"
     SCRIPTING_BACKEND: IL2CPP
 ########################################################## Test Build (tixoa)  #########################################################################
@@ -118,7 +118,7 @@ build-android:
   <<: *build-test
   # image: $IMAGE:$UNITY_VERSION-android-$IMAGE_VERSION
   variables:
-    BUILD_TARGET: ANDROID
+    BUILD_TARGET: Android
     BUILD_APP_BUNDLE: "false"
 ########################################################## Release #########################################################################
 
