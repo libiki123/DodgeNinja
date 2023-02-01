@@ -42,8 +42,8 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void NewGame()
     {
-        DirectoryInfo dataDir = new DirectoryInfo(Application.persistentDataPath);
-        dataDir.Delete(true);
+        //DirectoryInfo dataDir = new DirectoryInfo(Application.persistentDataPath);
+        //dataDir.Delete(true);
         gameData = new GameData();
         SaveGame();
     }
