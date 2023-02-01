@@ -6,15 +6,15 @@ set -x
 echo "Building for $BUILD_TARGET"
 
 export BUILD_PATH=$UNITY_DIR/Builds/$BUILD_TARGET/
-export UNITY_EXECUTABLE=${UNITY_EXECUTABLE:-"/Applications/Unity/Hub/Editor/2021.3.15f1/Unity.app/Contents/MacOS/Unity"}
+export UNITY_EXECUTABLE="/Applications/Unity/Hub/Editor/2021.3.15f1/Unity.app/Contents/MacOS/Unity"
 mkdir -p $BUILD_PATH
 
 
 mkdir -p $UNITY_DIR/Log
 touch $UNITY_DIR/Log/log.txt
-echo "test artifact" > $UNITY_DIR/Log/log.txt
+# echo "test artifact" > $UNITY_DIR/Log/log.txt
 
-${UNITY_EXECUTABLE:-xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' unity-editor} \
+/Applications/Unity/Hub/Editor/2021.3.15f1/Unity.app/Contents/MacOS/Unity \
   -projectPath $UNITY_DIR \
   -quit \
   -batchmode \
