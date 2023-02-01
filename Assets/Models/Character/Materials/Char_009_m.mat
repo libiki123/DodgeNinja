@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Char_07_m
+  m_Name: Char_009_m
   m_Shader: {fileID: 4800000, guid: 51b2dee0ab07bd84d8147601ff89e511, type: 3}
   m_ValidKeywords:
   - _REQUIRE_UV2
