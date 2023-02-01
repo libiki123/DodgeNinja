@@ -10,7 +10,7 @@ public class MyIronSource : MonoBehaviour
 #if UNITY_ANDROID
     string YOUR_APP_KEY = "183ec6055";
 #elif UNITY_IOS
-    string YOUR_APP_KEY = 187371e85;
+    string YOUR_APP_KEY = "187371e85";
 #else
     string YOUR_APP_KEY = "unexpected_platform";
 #endif
