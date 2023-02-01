@@ -87,14 +87,14 @@ image: $IMAGE:$UNITY_VERSION-base-$IMAGE_VERSION
     paths:
       - $UNITY_DIR/Builds/
 
-.build-android:
+build-android:
   <<: *build
   image: $IMAGE:$UNITY_VERSION-android-$IMAGE_VERSION
   variables:
     BUILD_TARGET: Android
     BUILD_APP_BUNDLE: "false"
 
-.build-android-il2cpp:
+build-android-il2cpp:
   <<: *build
   image: $IMAGE:$UNITY_VERSION-android-$IMAGE_VERSION
   variables:
@@ -114,7 +114,7 @@ image: $IMAGE:$UNITY_VERSION-base-$IMAGE_VERSION
     paths:
       - $UNITY_DIR/Builds/
 
-build-android-test:
+.build-android-test:
   <<: *build-test
   # image: $IMAGE:$UNITY_VERSION-android-$IMAGE_VERSION
   variables:
