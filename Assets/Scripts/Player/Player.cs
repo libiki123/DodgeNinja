@@ -46,6 +46,7 @@ public class Player : MonoBehaviour, IDataPersistence
     {
         if (isAlive)
         {
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.hit, transform.position);
             GameObject tmpImpact = Instantiate(impactVFX, contactPoint, Quaternion.identity);
             Destroy(tmpImpact, 1f);
             CameraShaker.Instance.ShakeOnce(4f, 2f, .1f, 1f);
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour, IDataPersistence
             animator.SetTrigger("Die");
             isAlive = false;
             DataPersistenceManager.instance.SaveGame();
+            SpawnerManager.instance.StopSpawningWave();
         }
     }
 

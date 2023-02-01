@@ -747,3 +747,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   warningMark: {fileID: 7435753004983565979}
   warningTime: 1
+  doorSMR: {fileID: 5264317844870784613}

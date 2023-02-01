@@ -1,3 +1,4 @@
+using EZCameraShake;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,5 +41,6 @@ public class TrapWarning : Trap
     void PlayExplodeSound()
     {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.trapDroped, transform.position);
+        CameraShaker.Instance.ShakeOnce(2f, 1f, .1f, .3f);
     }
 }

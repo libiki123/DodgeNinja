@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnerManager : MonoBehaviour
 {
+    public static SpawnerManager instance;
     [SerializeField] private List<SideSpawner> sideSpawners = new List<SideSpawner>();
     [SerializeField] private TrapSpawner trapSpawner;
     [SerializeField] private RewardSpawner rewardSpawner;
@@ -12,10 +13,18 @@ public class SpawnerManager : MonoBehaviour
     [SerializeField] private float gunWaveDelay = 2.0f;
     [SerializeField] private float dropTrapWaveDelay = 4.0f;
 
-    //private int maxTrapAmount = 8; //25
-    //private int totalTrapCount = 0;
-    //private int spikeTrapCount = 0;
     private int currentWaveGroupIndex = 0;
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+            Destroy(this);
+        else
+        {
+            instance = this;
+        }
+    }
+
     void Start()
     {
         UIManager.instance.PointAdded += SpwanTrapWave;
@@ -24,6 +33,11 @@ public class SpawnerManager : MonoBehaviour
 
         StartCoroutine(SpawnWave());
         StartCoroutine(SpawnDropTrap());
+    }
+
+    public void StopSpawningWave()
+    {
+        StopAllCoroutines();
     }
 
     private IEnumerator SpawnWave()
@@ -47,68 +61,42 @@ public class SpawnerManager : MonoBehaviour
     private void SpwanTrapWave()
     {
         UpdateWaveGroupIndex();
-        //if (totalTrapCount == maxTrapAmount) return;
 
         switch (UIManager.instance.score)
         {
             case 5:
                 trapSpawner.SpawnSpikeTrap();
-                //totalTrapCount++;
                 break;
             case 10:
                 trapSpawner.SpawnSpikeTrap();
-                //totalTrapCount++;
                 break;
             case 20:
                 trapSpawner.SpawnSpikeTrap();
-                //totalTrapCount++;
                 break;
             case 25:
                 trapSpawner.SpawnSpikeTrap();
-                //totalTrapCount++;
                 break;
             case 30:
                 trapSpawner.SpawnBlockTrap();
-                //totalTrapCount++;
                 break;
             case 35:
                 trapSpawner.SpawnBlockTrap();
-                //totalTrapCount++;
                 break;
             case 40:
                 trapSpawner.SpawnSpikeTrap();
-                //totalTrapCount++;
                 break;
             case 45:
                 trapSpawner.SpawnSpikeTrap();
-                //totalTrapCount++;
                 break;
             case 50:
                 trapSpawner.SpawnBlockTrap();
-                //totalTrapCount++;
                 break;
-                //default:
-                //    if(UIManager.instance.score % 10 == 0)
-                //    {
-                //        if(spikeTrapCount >= 3)
-                //        {
-                //            trapSpawner.SpawnBlockTrap();
-                //            spikeTrapCount = 0;
-                //            totalTrapCount++;
-                //        }
-                //        else
-                //        {
-                //            trapSpawner.SpawnSpikeTrap();
-                //            spikeTrapCount++;
-                //            totalTrapCount++;
-                //        }
-                //    }
-                //    break;
         }
     }
 
     private IEnumerator SpawnDropTrap()
     {
+
         while (true)
         {
             if (UIManager.instance.score >= 15)

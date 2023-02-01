@@ -15,24 +15,29 @@ public class UIManager : MonoBehaviour, IDataPersistence
     [Header("Texts")]
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text highscoreText;
-    [SerializeField] private TMP_Text batteryProgressText;
-    [SerializeField] private TMP_Text finalScoreText;
+    [SerializeField] private TMP_Text scrollText;
+    [SerializeField] private NumberCounter finalScoreText;
 
     [Header("Refs")]
     [SerializeField] private GameObject bttnControl;
+    [SerializeField] private Button x2Bttn;
     [SerializeField] private GameObject swipeControl;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject endGameMenu;
     [SerializeField] private GameObject controlPicker;
+    [SerializeField] private GameObject newHighScoreText;
+    [SerializeField] private GameObject theme01;
+    [SerializeField] private GameObject theme02;
+    [SerializeField] private Material trapDoorMat;
 
     public event Action PointAdded;
     public int score { get; private set; }
-    public int battery { get; private set; }
+    public int scroll { get; private set; }
     public int highScore { get; private set; }
 
     private int controlType;
     private float fadeTime = 0.6f;
-
+    private bool newHighScore = false;
 
     private void Awake()
     {
@@ -44,7 +49,18 @@ public class UIManager : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
-        
+        if (UnityEngine.Random.Range(0f, 100f) > 50)
+        {
+            theme01.SetActive(true);
+            theme02.SetActive(false);
+            trapDoorMat.mainTexture = Resources.Load<Texture>("Textures/theme01");
+        }
+        else
+        {
+            theme01.SetActive(false);
+            theme02.SetActive(true);
+            trapDoorMat.mainTexture = Resources.Load<Texture>("Textures/theme02");
+        }
     }
 
     public void InitControl()
@@ -64,8 +80,8 @@ public class UIManager : MonoBehaviour, IDataPersistence
         //battery = data.batteryProgress;
         //float percentage = math.remap(0, 50, 285, 5, battery);
         //batteryProgressBar.padding = new Vector4(percentage, 0, 0, 0);
-        batteryProgressText.text = battery.ToString();
-        this.highScore = data.highScore;
+        scrollText.text = scroll.ToString();
+        highScore = data.highScore;
         highscoreText.text = highScore.ToString();
         controlType = data.gameSetting.contronlType;
     }
@@ -73,7 +89,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
     public void SaveData(ref GameData data)
     {
         data.totalCoin += score;
-        data.batteryProgress += battery;
+        data.totalScroll += scroll;
         data.highScore = highScore;
         data.gameSetting.contronlType = controlType;
     }
@@ -89,6 +105,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
         {
             highScore = score;
             highscoreText.text = highScore.ToString();
+            newHighScore = true;
         }
 
         PointAdded?.Invoke();
@@ -96,8 +113,8 @@ public class UIManager : MonoBehaviour, IDataPersistence
 
     public void AddBattery()
     {
-        battery++;
-        batteryProgressText.text = battery.ToString();
+        scroll++;
+        scrollText.text = scroll.ToString();
         //if (battery == 50)
         //{
         //    battery = 0;
@@ -111,9 +128,9 @@ public class UIManager : MonoBehaviour, IDataPersistence
         endGameMenu.transform.GetChild(0).localScale = Vector3.zero;
         endGameMenu.SetActive(true);
         endGameMenu.transform.GetChild(0).DOScale(1.3f, fadeTime).SetEase(Ease.OutElastic);
-        finalScoreText.text = score.ToString();
+        if (newHighScore) newHighScoreText.SetActive(true);
         yield return new WaitForSeconds(fadeTime);
-        GameManager.instance.PauseGame();
+        finalScoreText.value = score;
     }
 
     public void StartWihoutPickingControl()
@@ -126,6 +143,15 @@ public class UIManager : MonoBehaviour, IDataPersistence
         GameManager.instance.ResumeGame();
         CameraManager.instance.StartZoomIn();
         AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBMG);
+    }
+
+    private void X2Coin()
+    {
+        score *= 2;
+        finalScoreText.value = score;
+        x2Bttn.interactable = false;
+        newHighScoreText.SetActive(false);
+        DataPersistenceManager.instance.SaveGame();
     }
 
     //============================================ Button Event ============================================//
@@ -186,6 +212,9 @@ public class UIManager : MonoBehaviour, IDataPersistence
         AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, Vector3.zero);
     }
 
-
+    public void OnX2CoinClick()
+    {
+        MyIronSource.instance.LoadRewardAds(X2Coin);
+    }
 
 }

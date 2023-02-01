@@ -1,13 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MyIronSource : MonoBehaviour
 {
     public static MyIronSource instance;
+#if UNITY_ANDROID
     string YOUR_APP_KEY = "183ec6055";
-    public delegate void OnRewardedEvent();
-    OnRewardedEvent currentOnRewardedEvent;
+#elif UNITY_IOS
+    string YOUR_APP_KEY = 187371e85;
+#else
+    string YOUR_APP_KEY = "unexpected_platform";
+#endif
+    public event Action currentOnRewardedEvent;
+
+
+
     private void Awake()
     {
         if(instance!=null)
@@ -16,7 +26,6 @@ public class MyIronSource : MonoBehaviour
         }
         else
         {
-            DontDestroyOnLoad(this);
             instance = this;
         }
 
@@ -57,35 +66,28 @@ public class MyIronSource : MonoBehaviour
         IronSourceRewardedVideoEvents.onAdClickedEvent += RewardedVideoOnAdClickedEvent;
 
         IronSource.Agent.shouldTrackNetworkState(true);
-        IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.TOP);
+        IronSource.Agent.loadBanner(IronSourceBannerSize.SMART, IronSourceBannerPosition.BOTTOM);
         IronSourceBannerSize.BANNER.SetAdaptive(true);
         IronSource.Agent.validateIntegration();
     }
 
     public void TestLoadBanner()
     {
-        IronSource.Agent.loadBanner(IronSourceBannerSize.BANNER, IronSourceBannerPosition.TOP);
+        IronSource.Agent.loadBanner(IronSourceBannerSize.SMART, IronSourceBannerPosition.BOTTOM);
         IronSource.Agent.displayBanner();
     }
     public void LoadInterstitial()
     {
         IronSource.Agent.loadInterstitial();
     }
-    public void TestLoadRewardAds()
-    {
-        LoadRewardAds(TestLoadRewardAdsOK);
-    }
-    void TestLoadRewardAdsOK()
-    {
-        Debug.LogWarning("TEST REWARD OK");
-    }
-    public async void  LoadRewardAds(OnRewardedEvent onRewarded)
+
+    public void LoadRewardAds(Action onRewarded)
     {
         currentOnRewardedEvent = onRewarded;
         bool available = IronSource.Agent.isRewardedVideoAvailable();
         if(available) IronSource.Agent.showRewardedVideo();
     }
-    // Update is called once per frame
+    
     void Update()
     {
         
