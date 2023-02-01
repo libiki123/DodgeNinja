@@ -16,6 +16,6 @@ public class Intro : MonoBehaviour
     private IEnumerator WaitTillIntroFinish()
     {
         yield return new WaitForSeconds(waitTime);
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadSceneAsync("MainMenu");
     }
 }

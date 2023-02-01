@@ -102,3 +102,11 @@ MonoBehaviour:
     effect: {fileID: 5160765824188894905, guid: c4cc87ec160021549b24eef7ed97e09f,
       type: 3}
     isDefault: 0
+  - id: 4a549baf-f5ec-41f3-b0a8-2ddd725088b8
+    icon: {fileID: 21300000, guid: c08c085764907ce45bd0265ee4b16a4c, type: 3}
+    price: 35
+    mesh: {fileID: -1997736131506515991, guid: 51590fac20b780d429ff217b0fa2859e, type: 3}
+    material: {fileID: 2100000, guid: 54ea70ce151214a44b9cfd3600d3728e, type: 2}
+    effect: {fileID: 5160765824188894905, guid: da15ea85ae4bd9b45bb16805b90535e1,
+      type: 3}
+    isDefault: 0
