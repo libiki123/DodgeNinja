@@ -86,7 +86,7 @@ image: $IMAGE:$UNITY_VERSION-base-$IMAGE_VERSION
   artifacts:
     paths:
       - $UNITY_DIR/Builds/
-      - $UNITY_DIR/log/log.txt
+      - $UNITY_DIR/Log/log.txt
 
 build-android:
   <<: *build

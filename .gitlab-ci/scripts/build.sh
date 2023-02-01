@@ -24,7 +24,7 @@ touch $UNITY_DIR/Log/log.txt
   -customBuildName $BUILD_NAME \
   -customBuildPath $BUILD_PATH \
   -executeMethod BuildCommand.PerformBuild \
-  -logFile $UNITY_DIR/Log/log.txt
+  # -logFile $UNITY_DIR/Log/log.txt
 
 UNITY_EXIT_CODE=$?
 
