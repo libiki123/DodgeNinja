@@ -165,6 +165,8 @@ public class MyIronSource : MonoBehaviour
         Debug.LogWarning("RewardedVideoAdClosedEvent");
         IronSource.Agent.init(YOUR_APP_KEY, IronSourceAdUnits.REWARDED_VIDEO);
         IronSource.Agent.shouldTrackNetworkState(true);
+        currentOnRewardedEvent?.Invoke();
+        currentOnRewardedEvent = null;
     }
 
     //Invoked when there is a change in the ad availability status.
@@ -185,8 +187,6 @@ public class MyIronSource : MonoBehaviour
     void RewardedVideoAdRewardedEvent(IronSourcePlacement placement)
     {
         Debug.LogWarning("RewardedVideoAdRewardedEvent" + placement.ToString());
-        currentOnRewardedEvent?.Invoke();
-        currentOnRewardedEvent = null;
     }
 
     //Invoked when the Rewarded Video failed to show
