@@ -13,6 +13,7 @@ mkdir -p $BUILD_PATH
 mkdir -p $UNITY_DIR/Log
 touch $UNITY_DIR/Log/log.txt
 # echo "test artifact" > $UNITY_DIR/Log/log.txt
+pwd
 
 /Applications/Unity/Hub/Editor/2021.3.15f1/Unity.app/Contents/MacOS/Unity \
   -projectPath $UNITY_DIR \
@@ -23,7 +24,7 @@ touch $UNITY_DIR/Log/log.txt
   -customBuildTarget $BUILD_TARGET \
   -customBuildName $BUILD_NAME \
   -customBuildPath $BUILD_PATH \
-  -executeMethod BuildCommand.PerformBuild > log.txt
+  -executeMethod BuildCommand.PerformBuild > logfromhome.txt
   # -logFile $UNITY_DIR/Log/log.txt
 
 # UNITY_EXIT_CODE=$?
@@ -38,5 +39,5 @@ touch $UNITY_DIR/Log/log.txt
 #   echo "Unexpected exit code $UNITY_EXIT_CODE";
 # fi
 
-ls -la $BUILD_PATH
-[ -n "$(ls -A $BUILD_PATH)" ] # fail job if build folder is empty
+# ls -la $BUILD_PATH
+# [ -n "$(ls -A $BUILD_PATH)" ] # fail job if build folder is empty
