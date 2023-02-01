@@ -4,6 +4,8 @@ set -e
 set -x
 
 echo "Building for $BUILD_TARGET"
+mkdir -p $UNITY_DIR/log
+touch $UNITY_DIR/log/log.txt
 
 export BUILD_PATH=$UNITY_DIR/Builds/$BUILD_TARGET/
 export UNITY_EXECUTABLE=${UNITY_EXECUTABLE:-"/Applications/Unity/Hub/Editor/2021.3.15f1/Unity.app/Contents/MacOS/Unity"}
@@ -19,7 +21,7 @@ ${UNITY_EXECUTABLE:-xvfb-run --auto-servernum --server-args='-screen 0 640x480x2
   -customBuildName $BUILD_NAME \
   -customBuildPath $BUILD_PATH \
   -executeMethod BuildCommand.PerformBuild \
-  -logFile /dev/stdout
+  -logFile $UNITY_DIR/log/log.txt
 
 UNITY_EXIT_CODE=$?
 
