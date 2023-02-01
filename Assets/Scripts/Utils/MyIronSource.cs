@@ -16,8 +16,6 @@ public class MyIronSource : MonoBehaviour
 #endif
     public event Action currentOnRewardedEvent;
 
-
-
     private void Awake()
     {
         if(instance!=null)
@@ -28,16 +26,25 @@ public class MyIronSource : MonoBehaviour
         {
             instance = this;
         }
-
-        IronSource.Agent.init(YOUR_APP_KEY, IronSourceAdUnits.REWARDED_VIDEO);
-        IronSource.Agent.init(YOUR_APP_KEY, IronSourceAdUnits.INTERSTITIAL);
-        IronSource.Agent.init(YOUR_APP_KEY, IronSourceAdUnits.BANNER);
-
     }
     void Start()
     {
+        //IronSource.Agent.init(YOUR_APP_KEY, IronSourceAdUnits.REWARDED_VIDEO);
+        //IronSource.Agent.init(YOUR_APP_KEY, IronSourceAdUnits.INTERSTITIAL);
+        //IronSource.Agent.init(YOUR_APP_KEY, IronSourceAdUnits.BANNER);
+
+        IronSource.Agent.validateIntegration();
+        IronSource.Agent.init(YOUR_APP_KEY);
+
+        IronSource.Agent.loadBanner(IronSourceBannerSize.SMART, IronSourceBannerPosition.BOTTOM);
+        IronSourceBannerSize.BANNER.SetAdaptive(true);
+        IronSource.Agent.shouldTrackNetworkState(true);
+    }
+
+    private void OnEnable()
+    {
         IronSourceEvents.onSdkInitializationCompletedEvent += SdkInitializationCompletedEvent;
-        
+
         IronSourceEvents.onInterstitialAdReadyEvent += InterstitialAdReadyEvent;
         IronSourceEvents.onInterstitialAdLoadFailedEvent += InterstitialAdLoadFailedEvent;
         IronSourceEvents.onInterstitialAdShowSucceededEvent += InterstitialAdShowSucceededEvent;
@@ -64,11 +71,10 @@ public class MyIronSource : MonoBehaviour
         IronSourceRewardedVideoEvents.onAdShowFailedEvent += RewardedVideoOnAdShowFailedEvent;
         IronSourceRewardedVideoEvents.onAdRewardedEvent += RewardedVideoOnAdRewardedEvent;
         IronSourceRewardedVideoEvents.onAdClickedEvent += RewardedVideoOnAdClickedEvent;
+    }
+    void Update()
+    {
 
-        IronSource.Agent.shouldTrackNetworkState(true);
-        IronSource.Agent.loadBanner(IronSourceBannerSize.SMART, IronSourceBannerPosition.BOTTOM);
-        IronSourceBannerSize.BANNER.SetAdaptive(true);
-        IronSource.Agent.validateIntegration();
     }
 
     public void TestLoadBanner()
@@ -84,19 +90,15 @@ public class MyIronSource : MonoBehaviour
     public void LoadRewardAds(Action onRewarded)
     {
         currentOnRewardedEvent = onRewarded;
-        bool available = IronSource.Agent.isRewardedVideoAvailable();
-        if(available) IronSource.Agent.showRewardedVideo();
+        if(IronSource.Agent.isRewardedVideoAvailable()) IronSource.Agent.showRewardedVideo();
     }
     
-    void Update()
-    {
-        
-    }
-    //**********************************************************************TO UNCOMMENT************************************************************************//
     void OnApplicationPause(bool isPaused)
     {
-        //IronSource.Agent.onApplicationPause(isPaused);
+        IronSource.Agent.onApplicationPause(isPaused);
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private void SdkInitializationCompletedEvent()
     {
@@ -184,6 +186,7 @@ public class MyIronSource : MonoBehaviour
     {
         Debug.LogWarning("RewardedVideoAdRewardedEvent" + placement.ToString());
         currentOnRewardedEvent?.Invoke();
+        currentOnRewardedEvent = null;
     }
 
     //Invoked when the Rewarded Video failed to show
