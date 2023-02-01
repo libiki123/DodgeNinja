@@ -79,7 +79,7 @@ image: $IMAGE:$UNITY_VERSION-base-$IMAGE_VERSION
 .build: &build
   stage: build
   tags:
-    - $LINUX_RUNNER_TAG 
+    - $MACOS_RUNNER_TAG 
   <<: *unity_defaults
   script:
     - chmod +x $SCRIPT_DIR/build.sh && $SCRIPT_DIR/build.sh
