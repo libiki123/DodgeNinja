@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-set -e
 set -x
 
 export UNITY_EXECUTABLE=${UNITY_EXECUTABLE:-"/Applications/Unity/Hub/Editor/2021.3.15f1/Unity.app"}
