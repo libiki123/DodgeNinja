@@ -13,15 +13,15 @@ public class MainMenu : MonoBehaviour, IDataPersistence
     [SerializeField] private SceneLoader sceneLoader;
 
     [Header ("Player Resources")]
-    [SerializeField] private RectMask2D batteryProgressBar;
-    [SerializeField] private TMP_Text batteryProgressText;
-    [SerializeField] private TMP_Text coinText;
+    //[SerializeField] private RectMask2D batteryProgressBar;
+    [SerializeField] private NumberCounter scrollText;
+    [SerializeField] private NumberCounter coinText;
 
     [Header("Setting")]
     [SerializeField] private GameObject SettingMenu;
 
-    private int battery;
-    public int totalCoin { get; private set; }
+    public int totalScroll;
+    public int totalCoin;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -39,17 +39,21 @@ public class MainMenu : MonoBehaviour, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        battery = data.batteryProgress;
+        totalScroll = data.totalScroll;
+        scrollText.GetComponent<TMP_Text>().text = totalScroll.ToString();
+        scrollText.SetDirectValue(totalScroll);
         //float percentage = math.remap(0, 50, 360, 5, battery);
         //batteryProgressBar.padding = new Vector4(0, 0, 0, percentage);
-        batteryProgressText.text = battery.ToString();
+
         totalCoin = data.totalCoin;
-        coinText.text = totalCoin.ToString();
+        coinText.GetComponent<TMP_Text>().text = totalCoin.ToString();
+        coinText.SetDirectValue(totalCoin);
     }
 
     public void SaveData(ref GameData data)
     {
-        
+        data.totalCoin = totalCoin;
+        data.totalScroll = totalScroll;
     }
 
     public void OnPlayClick()
@@ -63,9 +67,32 @@ public class MainMenu : MonoBehaviour, IDataPersistence
         SettingMenu.SetActive(true);
     }
 
+    public void OnRewardCoinClick()
+    {
+        MyIronSource.instance.LoadRewardAds(RewardCoin);
+    }
+
+    private void RewardCoin()
+    {
+        totalCoin += 20;
+        coinText.value = totalCoin;
+        DataPersistenceManager.instance.SaveGame();
+    }
+
+    public void OnRewardScrollClick()
+    {
+        MyIronSource.instance.LoadRewardAds(RewardScroll);
+    }
+
+    private void RewardScroll()
+    {
+        totalScroll += 5;
+        scrollText.value = totalScroll;
+        DataPersistenceManager.instance.SaveGame();
+    }
+
     public void PlayButtonClickSound()
     {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, Vector3.zero);
-        AudioManager.instance.musicEventInstance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
     }
 }

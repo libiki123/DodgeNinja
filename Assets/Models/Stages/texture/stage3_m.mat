@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: stage3_m
-  m_Shader: {fileID: 4800000, guid: 51b2dee0ab07bd84d8147601ff89e511, type: 3}
+  m_Shader: {fileID: 4800000, guid: 9294844b15dca184d914a632279b24e1, type: 3}
   m_ValidKeywords:
   - UNITY_UI_ALPHACLIP
   m_InvalidKeywords: []
@@ -285,6 +285,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _AAStrength: 1
     - _AlphaBoostFA: 10
     - _AlphaClip: 0
     - _AlphaMaskMode: 0
@@ -330,6 +331,38 @@ Material:
     - _BacklightReceiveShadow: 1
     - _BacklightViewStrength: 1
     - _BeforeExposureLimit: 10000
+    - _BitKey0: 0
+    - _BitKey1: 0
+    - _BitKey10: 0
+    - _BitKey11: 0
+    - _BitKey12: 0
+    - _BitKey13: 0
+    - _BitKey14: 0
+    - _BitKey15: 0
+    - _BitKey16: 0
+    - _BitKey17: 0
+    - _BitKey18: 0
+    - _BitKey19: 0
+    - _BitKey2: 0
+    - _BitKey20: 0
+    - _BitKey21: 0
+    - _BitKey22: 0
+    - _BitKey23: 0
+    - _BitKey24: 0
+    - _BitKey25: 0
+    - _BitKey26: 0
+    - _BitKey27: 0
+    - _BitKey28: 0
+    - _BitKey29: 0
+    - _BitKey3: 0
+    - _BitKey30: 0
+    - _BitKey31: 0
+    - _BitKey4: 0
+    - _BitKey5: 0
+    - _BitKey6: 0
+    - _BitKey7: 0
+    - _BitKey8: 0
+    - _BitKey9: 0
     - _Blend: 0
     - _BlendOp: 0
     - _BlendOpAlpha: 0
@@ -351,6 +384,7 @@ Material:
     - _DstBlendAlphaFA: 1
     - _DstBlendFA: 1
     - _Emission2ndBlend: 1
+    - _Emission2ndBlendMode: 1
     - _Emission2ndFluorescence: 0
     - _Emission2ndGradSpeed: 1
     - _Emission2ndMainStrength: 0
@@ -358,6 +392,7 @@ Material:
     - _Emission2ndParallaxDepth: 0
     - _Emission2ndUseGrad: 0
     - _EmissionBlend: 1
+    - _EmissionBlendMode: 1
     - _EmissionFluorescence: 0
     - _EmissionGradSpeed: 1
     - _EmissionMainStrength: 0
@@ -501,6 +536,7 @@ Material:
     - _ReflectionNormalStrength: 1
     - _RimApplyTransparency: 1
     - _RimBackfaceMask: 1
+    - _RimBlendMode: 1
     - _RimBlur: 0.65
     - _RimBorder: 0.5
     - _RimDirRange: 0
@@ -637,6 +673,7 @@ Material:
     - _Main2ndDistanceFade: {r: 0.1, g: 0.01, b: 0, a: 0}
     - _Main2ndTexDecalAnimation: {r: 1, g: 1, b: 1, a: 30}
     - _Main2ndTexDecalSubParam: {r: 1, g: 1, b: 0, a: 1}
+    - _Main2ndTex_ScrollRotate: {r: 0, g: 0, b: 0, a: 0}
     - _Main3rdDissolveColor: {r: 1, g: 1, b: 1, a: 1}
     - _Main3rdDissolveNoiseMask_ScrollRotate: {r: 0, g: 0, b: 0, a: 0}
     - _Main3rdDissolveParams: {r: 0, g: 0, b: 0.5, a: 0.1}
@@ -644,6 +681,7 @@ Material:
     - _Main3rdDistanceFade: {r: 0.1, g: 0.01, b: 0, a: 0}
     - _Main3rdTexDecalAnimation: {r: 1, g: 1, b: 1, a: 30}
     - _Main3rdTexDecalSubParam: {r: 1, g: 1, b: 0, a: 1}
+    - _Main3rdTex_ScrollRotate: {r: 0, g: 0, b: 0, a: 0}
     - _MainTexHSVG: {r: 0, g: 1, b: 1, a: 1}
     - _MainTex_ScrollRotate: {r: 0, g: 0, b: 0, a: 0}
     - _MatCap2ndBlendUV1: {r: 0, g: 0, b: 0, a: 0}

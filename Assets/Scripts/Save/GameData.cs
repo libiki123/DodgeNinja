@@ -7,7 +7,7 @@ public class GameData
 {
     public int totalCoin;
     public int highScore;
-    public int batteryProgress;
+    public int totalScroll;
     public string currentSkinId;
     public string currentStageId;
     public SerializableDictionary<string, bool> itemPurchased;
@@ -17,7 +17,7 @@ public class GameData
     {
         totalCoin = 0;
         highScore = 0;
-        batteryProgress = 0;
+        totalScroll = 0;
         currentSkinId = "";
         currentStageId = "";
         itemPurchased = new SerializableDictionary<string, bool>();

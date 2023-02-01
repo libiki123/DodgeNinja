@@ -42,8 +42,6 @@ public class Shop : MonoBehaviour, IDataPersistence
 
     private string currentSkinId = "";
     private string currentStageId = "";
-    private int currentTotalCoin;
-    private int currentTotalScroll;
 
     private void Awake()
     {
@@ -111,8 +109,8 @@ public class Shop : MonoBehaviour, IDataPersistence
                 SMR.sharedMesh = ShopData.skins[0].mesh;
                 SMR.material = ShopData.skins[0].material;
 
-                if (currentSkinEffect != null) Destroy(currentSkinEffect);
-                if (ShopData.skins[0].effect != null) currentSkinEffect = Instantiate(ShopData.skins[0].effect, player.transform.Find("Root_M"));
+                //if (currentSkinEffect != null) Destroy(currentSkinEffect);
+                //if (ShopData.skins[0].effect != null) currentSkinEffect = Instantiate(ShopData.skins[0].effect, player.transform.Find("Root_M"));
             }
 
             foreach (var skin in ShopData.skins)
@@ -122,8 +120,8 @@ public class Shop : MonoBehaviour, IDataPersistence
                     SMR.sharedMesh = skin.mesh;
                     SMR.material = skin.material;
 
-                    if (currentSkinEffect != null) Destroy(currentSkinEffect);
-                    if (skin.effect != null) currentSkinEffect = Instantiate(skin.effect, player.transform.Find("Root_M"));
+                    //if (currentSkinEffect != null) Destroy(currentSkinEffect);
+                    //if (skin.effect != null) currentSkinEffect = Instantiate(skin.effect, player.transform.Find("Root_M"));
                 }
             }
         }
@@ -136,8 +134,9 @@ public class Shop : MonoBehaviour, IDataPersistence
             {
                 SF.sharedMesh = ShopData.stages[0].mesh;
                 SR.material = ShopData.stages[0].material;
-                if (currentStageEffect != null) Destroy(currentStageEffect);
-                if (ShopData.skins[0].effect != null) currentStageEffect = Instantiate(ShopData.stages[0].effect, stage.transform);
+
+                //if (currentStageEffect != null) Destroy(currentStageEffect);
+                //if (ShopData.skins[0].effect != null) currentStageEffect = Instantiate(ShopData.stages[0].effect, stage.transform);
             }
 
             foreach (var stage in ShopData.stages)
@@ -147,8 +146,8 @@ public class Shop : MonoBehaviour, IDataPersistence
                     SF.sharedMesh = stage.mesh;
                     SR.material = stage.material;
 
-                    if (currentStageEffect != null) Destroy(currentStageEffect);
-                    if (stage.effect != null) currentStageEffect = Instantiate(stage.effect, this.stage.transform);
+                    //if (currentStageEffect != null) Destroy(currentStageEffect);
+                    //if (stage.effect != null) currentStageEffect = Instantiate(stage.effect, this.stage.transform);
                 }
             }
         }
@@ -173,7 +172,7 @@ public class Shop : MonoBehaviour, IDataPersistence
         {
             if (selectedItem.type == ShopItemType.SKIN)
             {
-                if (currentTotalCoin >= selectedItem.price)
+                if (MainMenu.instance.totalCoin >= selectedItem.price)
                 {
                     selectedItem.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.1f);
                     skinCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
@@ -184,7 +183,7 @@ public class Shop : MonoBehaviour, IDataPersistence
             }
             else
             {
-                if (currentTotalScroll >= selectedItem.price)
+                if (MainMenu.instance.totalScroll >= selectedItem.price)
                 {
                     selectedItem.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.1f);
                     skinCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
@@ -227,9 +226,9 @@ public class Shop : MonoBehaviour, IDataPersistence
     {
         if (selectedItem.type == ShopItemType.SKIN)
         {
-            if (currentTotalCoin >= selectedItem.price)
+            if (MainMenu.instance.totalCoin >= selectedItem.price)
             {
-                currentTotalCoin -= selectedItem.price;
+                MainMenu.instance.totalCoin -= selectedItem.price;
                 selectedItem.SetPurchased(true);
             }
             else
@@ -237,9 +236,9 @@ public class Shop : MonoBehaviour, IDataPersistence
         }
         else
         {
-            if (currentTotalScroll >= selectedItem.price)
+            if (MainMenu.instance.totalScroll >= selectedItem.price)
             {
-                currentTotalScroll -= selectedItem.price;
+                MainMenu.instance.totalScroll -= selectedItem.price;
                 selectedItem.SetPurchased(true);
             }
             else
@@ -328,15 +327,11 @@ public class Shop : MonoBehaviour, IDataPersistence
     {
         currentSkinId = data.currentSkinId;
         currentStageId = data.currentStageId;
-        currentTotalCoin = data.totalCoin;
-        currentTotalScroll = data.batteryProgress;
     }
 
     public void SaveData(ref GameData data)
     {
         data.currentSkinId = currentSkinId;
         data.currentStageId = currentStageId;
-        data.totalCoin = currentTotalCoin;
-        data.batteryProgress = currentTotalScroll;
     }
 }
