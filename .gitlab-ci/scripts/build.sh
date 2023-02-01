@@ -12,6 +12,7 @@ mkdir -p $BUILD_PATH
 
 mkdir -p $UNITY_DIR/log
 touch $UNITY_DIR/log/log.txt
+echo "test artifact" > $UNITY_DIR/log/log.txt
 
 ${UNITY_EXECUTABLE:-xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' unity-editor} \
   -projectPath $UNITY_DIR \
