@@ -10,9 +10,9 @@ export UNITY_EXECUTABLE=${UNITY_EXECUTABLE:-"/Applications/Unity/Hub/Editor/2021
 mkdir -p $BUILD_PATH
 
 
-mkdir -p $UNITY_DIR/log
-touch $UNITY_DIR/log/log.txt
-echo "test artifact" > $UNITY_DIR/log/log.txt
+mkdir -p $UNITY_DIR/Log
+touch $UNITY_DIR/Log/log.txt
+echo "test artifact" > $UNITY_DIR/Log/log.txt
 
 ${UNITY_EXECUTABLE:-xvfb-run --auto-servernum --server-args='-screen 0 640x480x24' unity-editor} \
   -projectPath $UNITY_DIR \
@@ -24,7 +24,7 @@ ${UNITY_EXECUTABLE:-xvfb-run --auto-servernum --server-args='-screen 0 640x480x2
   -customBuildName $BUILD_NAME \
   -customBuildPath $BUILD_PATH \
   -executeMethod BuildCommand.PerformBuild \
-  -logFile $UNITY_DIR/log/log.txt
+  -logFile $UNITY_DIR/Log/log.txt
 
 UNITY_EXIT_CODE=$?
 
