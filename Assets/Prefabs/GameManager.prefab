@@ -89,8 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11ab246a67c23540874b32b18874475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicMute: 1
-  sfxMute: 1
+  musicMute: 0
+  sfxMute: 0
 --- !u!114 &1528929420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +173,13 @@ MonoBehaviour:
       Data3: 147160252
       Data4: -776252370
     Path: event:/SFX/UI/WrongClick
+  <doorSlice>k__BackingField:
+    Guid:
+      Data1: 1124260637
+      Data2: 1283998244
+      Data3: -520230256
+      Data4: 855242129
+    Path: event:/SFX/Transition/DoorSlice
   <introBGM>k__BackingField:
     Guid:
       Data1: 1989197812

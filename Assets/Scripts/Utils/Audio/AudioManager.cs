@@ -9,8 +9,8 @@ public class AudioManager : MonoBehaviour, IDataPersistence
     public static AudioManager instance { get; private set; }
 
     [Header("Volume")]
-    public bool musicMute = true;
-    public bool sfxMute = true;
+    public bool musicMute = false;
+    public bool sfxMute = false;
 
     private Bus masterBus;
     private Bus musicBus;

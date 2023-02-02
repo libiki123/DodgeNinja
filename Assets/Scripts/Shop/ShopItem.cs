@@ -11,12 +11,12 @@ public class ShopItem : MonoBehaviour, IDataPersistence
     [SerializeField] private TMP_Text priceText;
     [SerializeField] private Transform checkMarkPos;
     [SerializeField] private GameObject lockBackground;
+    [SerializeField] private ParticleSystem unlockEffect;
 
-    [Header("Item Info - Auto Populate")]
-    public Shop.ShopItemType type;
-    public int price;
-    public string id;
-    public bool isPurchased = false;
+    [HideInInspector] public Shop.ShopItemType type;
+    [HideInInspector] public int price;
+    [HideInInspector] public string id;
+    [HideInInspector] public bool isPurchased = false;
 
     private bool isDefault = false;
 
@@ -55,6 +55,11 @@ public class ShopItem : MonoBehaviour, IDataPersistence
     public void OnItemClick()
     {
         Shop.instance.OnShopItemClick(this);
+    }
+
+    public void PlayUnlockEffect()
+    {
+        unlockEffect.Play();
     }
 
     public void LoadData(GameData data)

@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{40cbae7b-bc22-4ea7-9f13-307292ea63b5}">
 		<property name="name">
-			<value>MainMenuBMG</value>
+			<value>MainMenuBGM</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -32,7 +32,7 @@
 			<destination>{ccabc821-73bf-415d-b95c-d2af6be0da0b}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{2aadb44e-a3f5-446f-b60b-9aeb0d0a7110}</destination>
+			<destination>{ed313eb7-b573-41ff-97d0-91b5b4018224}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{7a42fc78-b3ca-489d-9fbe-fb9c786a9c96}">
@@ -53,7 +53,7 @@
 			<destination>{95a56e89-a3c0-4ad1-84bb-67ef81f7f6e0}</destination>
 		</relationship>
 		<relationship name="output">
-			<destination>{44616366-c2ec-487d-887a-49c88f3b6d8e}</destination>
+			<destination>{89cb6a98-0aa6-46b4-99f7-695509c37ad9}</destination>
 		</relationship>
 	</object>
 	<object class="EventAutomatableProperties" id="{c1e1c7c4-8945-4944-94de-bdb2401500df}" />

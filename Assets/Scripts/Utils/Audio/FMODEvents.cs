@@ -25,6 +25,9 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference buttonClick { get; private set; }
     [field: SerializeField] public EventReference wrongClick { get; private set; }
 
+    [field: Header("Transition")]
+    [field: SerializeField] public EventReference doorSlice { get; private set; }
+
     [field: Header("Intro")]
     [field: SerializeField] public EventReference introBGM { get; private set; }
 

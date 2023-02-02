@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{b0c64e3a-0908-4441-8dad-ae43bb1d6c0e}">
 		<property name="name">
-			<value>GameplayBMG</value>
+			<value>GameplayBGM</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -32,7 +32,7 @@
 			<destination>{77c91bc3-174b-4564-95d1-15c70f1a7e79}</destination>
 		</relationship>
 		<relationship name="banks">
-			<destination>{2aadb44e-a3f5-446f-b60b-9aeb0d0a7110}</destination>
+			<destination>{ed313eb7-b573-41ff-97d0-91b5b4018224}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixer" id="{db81561b-f5ea-4313-abd4-9666a13fbb52}">

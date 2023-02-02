@@ -26,6 +26,7 @@ public class Shop : MonoBehaviour, IDataPersistence
     [SerializeField] private RectTransform skinCheckMark;
     [SerializeField] private RectTransform stageCheckMark;
     [SerializeField] private GameObject confirmGroup;
+    [SerializeField] private ParticleSystem skinChangeEffect;
 
     [Header("Shop Data")]
     [SerializeField] private Shop_SO ShopData;
@@ -124,6 +125,7 @@ public class Shop : MonoBehaviour, IDataPersistence
                     //if (skin.effect != null) currentSkinEffect = Instantiate(skin.effect, player.transform.Find("Root_M"));
                 }
             }
+
         }
         else if (objectName == "stage")
         {
@@ -160,10 +162,10 @@ public class Shop : MonoBehaviour, IDataPersistence
         confirmGroup.SetActive(false);
         confirmGroup.GetComponent<RectTransform>().localPosition = new Vector3(0, -105, 0);
 
+        bool isSameItem = false;
         if (selectedItem != null)
         {
-            //if (selectedItem == item)
-            //    return;
+            if (selectedItem == item) isSameItem = true;
             selectedItem.transform.DOScale(Vector3.one, 0.1f);
         }
 
@@ -213,13 +215,17 @@ public class Shop : MonoBehaviour, IDataPersistence
             skinCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
             stageCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
 
-            if (selectedItem.type == ShopItemType.SKIN)
+
+
+            if (selectedItem.type == ShopItemType.SKIN && !isSameItem)
             {
                 currentSkinId = selectedItem.id;
                 selectedItem.SetUsing(ref skinCheckMark);
                 UpdateSkin("player");
+                skinChangeEffect.Play();
+
             }
-            else
+            else if(selectedItem.type == ShopItemType.STAGE && !isSameItem)
             {
                 currentStageId = selectedItem.id;
                 selectedItem.SetUsing(ref stageCheckMark);
@@ -256,6 +262,7 @@ public class Shop : MonoBehaviour, IDataPersistence
         }
 
         AudioManager.instance.PlayOneShot(FMODEvents.instance.scrollCollected, Vector3.zero);
+        selectedItem.PlayUnlockEffect();
         confirmGroup.SetActive(false);
 
         if (selectedItem.type == ShopItemType.SKIN)
@@ -263,6 +270,7 @@ public class Shop : MonoBehaviour, IDataPersistence
             currentSkinId = selectedItem.id;
             selectedItem.SetUsing(ref skinCheckMark);
             UpdateSkin("player");
+            skinChangeEffect.Play();
         }
         else
         {
