@@ -1,21 +1,51 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
+using FMODUnity;
+using FMOD.Studio;
 
 public class Intro : MonoBehaviour
 {
-    public float waitTime = 3;
+    [SerializeField] private VideoPlayer videoPlayer;
 
+    // Use this for initialization
     void Start()
     {
-        StartCoroutine(WaitTillIntroFinish());
+        Application.runInBackground = true;
+        StartCoroutine(playVideo());
     }
 
-    private IEnumerator WaitTillIntroFinish()
+    IEnumerator playVideo()
     {
-        yield return new WaitForSeconds(waitTime);
+        videoPlayer.Prepare();
+
+        //Wait until video is prepared
+        while (!videoPlayer.isPrepared)
+        {
+            //Debug.Log("Preparing Video");
+            yield return null;
+        }
+
+        Debug.Log("Done Preparing Video");
+
+        //Play Video
+        videoPlayer.Play();
+
+        //Play Sound
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.introBGM, transform.position);
+
+        Debug.Log("Playing Video");
+        while (videoPlayer.isPlaying)
+        {
+            //Debug.LogWarning("Video Time: " + Mathf.FloorToInt((float)videoPlayer.time));
+            yield return null;
+        }
+        
+        Debug.Log("Done Playing Video");
         SceneManager.LoadScene("MainMenu");
     }
 }
+
+

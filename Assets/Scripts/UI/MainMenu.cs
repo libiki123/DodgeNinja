@@ -34,7 +34,7 @@ public class MainMenu : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
-        AudioManager.instance.InitializeMusic(FMODEvents.instance.mainMenuBMG);
+        AudioManager.instance.InitializeMusic(FMODEvents.instance.mainMenuBGM);
     }
 
     public void LoadData(GameData data)
@@ -100,7 +100,7 @@ public class MainMenu : MonoBehaviour, IDataPersistence
     public void PlayButtonClickSound()
     {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, Vector3.zero);
-    }
+    }    
 
     private void resumeMusic()
     {
