@@ -34,7 +34,7 @@ public class MainMenu : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
-        AudioManager.instance.InitializeMusic(FMODEvents.instance.mainMenuBMG);
+        AudioManager.instance.InitializeMusic(FMODEvents.instance.mainMenuBGM);
     }
 
     public void LoadData(GameData data)

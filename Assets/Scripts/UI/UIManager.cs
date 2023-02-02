@@ -142,7 +142,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
 
         GameManager.instance.ResumeGame();
         CameraManager.instance.StartZoomIn();
-        AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBMG);
+        AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBGM);
     }
 
     private void X2Coin()
@@ -178,7 +178,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
         swipeControl.SetActive(false);
         GameManager.instance.ResumeGame();
         CameraManager.instance.StartZoomIn();
-        AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBMG);
+        AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBGM);
         DataPersistenceManager.instance.SaveGame();
     }
 
@@ -190,7 +190,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
         swipeControl.SetActive(true);
         GameManager.instance.ResumeGame();
         CameraManager.instance.StartZoomIn();
-        AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBMG);
+        AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBGM);
         DataPersistenceManager.instance.SaveGame();
     }
 

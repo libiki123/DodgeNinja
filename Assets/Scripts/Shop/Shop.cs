@@ -202,6 +202,7 @@ public class Shop : MonoBehaviour, IDataPersistence
             stageCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
             confirmGroup.SetActive(false);
             confirmGroup.GetComponent<RectTransform>().localPosition = new Vector3(0, -105, 0);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.wrongClick, transform.position);
             return;
         }
         else

@@ -18,11 +18,15 @@ public class FMODEvents : MonoBehaviour
     [field: SerializeField] public EventReference trapDroped { get; private set; }
 
     [field: Header("Music")]
-    [field: SerializeField] public EventReference gameplayBMG { get; private set; }
-    [field: SerializeField] public EventReference mainMenuBMG { get; private set; }
+    [field: SerializeField] public EventReference gameplayBGM { get; private set; }
+    [field: SerializeField] public EventReference mainMenuBGM { get; private set; }
 
     [field: Header("UI")]
     [field: SerializeField] public EventReference buttonClick { get; private set; }
+    [field: SerializeField] public EventReference wrongClick { get; private set; }
+
+    [field: Header("Intro")]
+    [field: SerializeField] public EventReference introBGM { get; private set; }
 
 
     public static FMODEvents instance { get; private set; }
