@@ -10,13 +10,11 @@ public class MyIronSource : MonoBehaviour
 #if UNITY_ANDROID
     string YOUR_APP_KEY = "183ec6055";
 #elif UNITY_IOS
-    string YOUR_APP_KEY = 187371e85;
+    string YOUR_APP_KEY = "187371e85";
 #else
     string YOUR_APP_KEY = "unexpected_platform";
 #endif
     public event Action currentOnRewardedEvent;
-
-
 
     private void Awake()
     {
@@ -28,16 +26,25 @@ public class MyIronSource : MonoBehaviour
         {
             instance = this;
         }
-
-        IronSource.Agent.init(YOUR_APP_KEY, IronSourceAdUnits.REWARDED_VIDEO);
-        IronSource.Agent.init(YOUR_APP_KEY, IronSourceAdUnits.INTERSTITIAL);
-        IronSource.Agent.init(YOUR_APP_KEY, IronSourceAdUnits.BANNER);
-
     }
     void Start()
     {
+        //IronSource.Agent.init(YOUR_APP_KEY, IronSourceAdUnits.REWARDED_VIDEO);
+        //IronSource.Agent.init(YOUR_APP_KEY, IronSourceAdUnits.INTERSTITIAL);
+        //IronSource.Agent.init(YOUR_APP_KEY, IronSourceAdUnits.BANNER);
+
+        IronSource.Agent.validateIntegration();
+        IronSource.Agent.init(YOUR_APP_KEY);
+
+        IronSource.Agent.loadBanner(IronSourceBannerSize.SMART, IronSourceBannerPosition.BOTTOM);
+        IronSourceBannerSize.BANNER.SetAdaptive(true);
+        IronSource.Agent.shouldTrackNetworkState(true);
+    }
+
+    private void OnEnable()
+    {
         IronSourceEvents.onSdkInitializationCompletedEvent += SdkInitializationCompletedEvent;
-        
+
         IronSourceEvents.onInterstitialAdReadyEvent += InterstitialAdReadyEvent;
         IronSourceEvents.onInterstitialAdLoadFailedEvent += InterstitialAdLoadFailedEvent;
         IronSourceEvents.onInterstitialAdShowSucceededEvent += InterstitialAdShowSucceededEvent;
@@ -64,11 +71,10 @@ public class MyIronSource : MonoBehaviour
         IronSourceRewardedVideoEvents.onAdShowFailedEvent += RewardedVideoOnAdShowFailedEvent;
         IronSourceRewardedVideoEvents.onAdRewardedEvent += RewardedVideoOnAdRewardedEvent;
         IronSourceRewardedVideoEvents.onAdClickedEvent += RewardedVideoOnAdClickedEvent;
+    }
+    void Update()
+    {
 
-        IronSource.Agent.shouldTrackNetworkState(true);
-        IronSource.Agent.loadBanner(IronSourceBannerSize.SMART, IronSourceBannerPosition.BOTTOM);
-        IronSourceBannerSize.BANNER.SetAdaptive(true);
-        IronSource.Agent.validateIntegration();
     }
 
     public void TestLoadBanner()
@@ -84,19 +90,15 @@ public class MyIronSource : MonoBehaviour
     public void LoadRewardAds(Action onRewarded)
     {
         currentOnRewardedEvent = onRewarded;
-        bool available = IronSource.Agent.isRewardedVideoAvailable();
-        if(available) IronSource.Agent.showRewardedVideo();
+        if(IronSource.Agent.isRewardedVideoAvailable()) IronSource.Agent.showRewardedVideo();
     }
     
-    void Update()
-    {
-        
-    }
-    //**********************************************************************TO UNCOMMENT************************************************************************//
     void OnApplicationPause(bool isPaused)
     {
-        //IronSource.Agent.onApplicationPause(isPaused);
+        IronSource.Agent.onApplicationPause(isPaused);
     }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     private void SdkInitializationCompletedEvent()
     {
@@ -163,6 +165,8 @@ public class MyIronSource : MonoBehaviour
         Debug.LogWarning("RewardedVideoAdClosedEvent");
         IronSource.Agent.init(YOUR_APP_KEY, IronSourceAdUnits.REWARDED_VIDEO);
         IronSource.Agent.shouldTrackNetworkState(true);
+        currentOnRewardedEvent?.Invoke();
+        currentOnRewardedEvent = null;
     }
 
     //Invoked when there is a change in the ad availability status.
@@ -183,7 +187,6 @@ public class MyIronSource : MonoBehaviour
     void RewardedVideoAdRewardedEvent(IronSourcePlacement placement)
     {
         Debug.LogWarning("RewardedVideoAdRewardedEvent" + placement.ToString());
-        currentOnRewardedEvent?.Invoke();
     }
 
     //Invoked when the Rewarded Video failed to show
