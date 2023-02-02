@@ -255,6 +255,7 @@ public class Shop : MonoBehaviour, IDataPersistence
                 return;
         }
 
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.scrollCollected, Vector3.zero);
         confirmGroup.SetActive(false);
 
         if (selectedItem.type == ShopItemType.SKIN)

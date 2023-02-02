@@ -100,7 +100,7 @@ public class MainMenu : MonoBehaviour, IDataPersistence
     public void PlayButtonClickSound()
     {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, Vector3.zero);
-    }
+    }    
 
     private void resumeMusic()
     {
