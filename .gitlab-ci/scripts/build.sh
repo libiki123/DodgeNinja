@@ -12,8 +12,7 @@ mkdir -p $BUILD_PATH
 
 mkdir -p $UNITY_DIR/Log
 touch $UNITY_DIR/Log/log.txt
-# echo "test artifact" > $UNITY_DIR/Log/log.txt
-pwd
+
 
 /Applications/Unity/Hub/Editor/2021.3.15f1/Unity.app/Contents/MacOS/Unity \
   -projectPath $UNITY_DIR \
