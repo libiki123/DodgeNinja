@@ -101,6 +101,10 @@ public class MainMenu : MonoBehaviour, IDataPersistence
     {
         AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, Vector3.zero);
     }    
+    public void PlayConfirmSound()
+    {
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, Vector3.zero);
+    }
 
     private void resumeMusic()
     {
