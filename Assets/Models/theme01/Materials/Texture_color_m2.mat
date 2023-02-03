@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Texture_color_m2
-  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Shader: {fileID: 4800000, guid: 8d2bb70cbf9db8d4da26e15b26e74248, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -369,6 +369,7 @@ Material:
     - _GlitterVRParallaxStrength: 0
     - _GlossMapScale: 1
     - _Glossiness: 0
+    - _GlossinessSource: 0
     - _GlossyReflections: 1
     - _IgnoreEncryption: 0
     - _Invisible: 0
@@ -529,6 +530,7 @@ Material:
     - _RimNormalStrength: 1
     - _RimShadowMask: 0.5
     - _RimVRParallaxStrength: 0
+    - _SampleGI: 0
     - _Shadow2ndBlur: 0.1
     - _Shadow2ndBorder: 0.15
     - _Shadow2ndNormalStrength: 1
@@ -554,8 +556,11 @@ Material:
     - _ShadowStrength: 0.65
     - _ShadowStrengthMaskLOD: 0
     - _ShiftBackfaceUV: 0
-    - _Smoothness: 1
+    - _Shininess: 0
+    - _Smoothness: 0
+    - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
+    - _SpecSource: 0
     - _SpecularBlur: 0
     - _SpecularBorder: 0.5
     - _SpecularHighlights: 1

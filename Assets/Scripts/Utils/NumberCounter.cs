@@ -37,7 +37,7 @@ public class NumberCounter : MonoBehaviour
     {
         if(countringCoroutine != null)
         {
-            StopCoroutine(countringCoroutine);
+            StopAllCoroutines();
         }
 
         countringCoroutine = StartCoroutine(CountText(newValue));

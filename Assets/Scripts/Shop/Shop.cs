@@ -186,7 +186,7 @@ public class Shop : MonoBehaviour, IDataPersistence
     public void OnShopItemClick(ShopItem item)
     {
         confirmGroup.SetActive(false);
-        confirmGroup.GetComponent<RectTransform>().localScale = Vector3.zero;
+        confirmGroup.GetComponent<RectTransform>().localScale = new Vector3(0.8f, 0.8f, 0.8f);
 
         bool isSameItem = false;
         if (selectedItem != null)
@@ -207,7 +207,7 @@ public class Shop : MonoBehaviour, IDataPersistence
                     skinCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
                     stageCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
                     confirmGroup.SetActive(true);
-                    confirmGroup.GetComponent<RectTransform>().DOScale(1, 0.2f).SetEase(Ease.InBounce);
+                    confirmGroup.GetComponent<RectTransform>().DOScale(1, 0.1f).SetEase(Ease.InSine);
                     AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, transform.position);
                     return;
                 }
@@ -220,7 +220,7 @@ public class Shop : MonoBehaviour, IDataPersistence
                     skinCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
                     stageCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
                     confirmGroup.SetActive(true);
-                    confirmGroup.GetComponent<RectTransform>().DOScale(1, 0.2f).SetEase(Ease.InBounce);
+                    confirmGroup.GetComponent<RectTransform>().DOScale(1, 0.1f).SetEase(Ease.InSine);
                     AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, transform.position);
                     return;
                 }
