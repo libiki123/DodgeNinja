@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   widthHeight: {x: 0, y: 0}
-  screenPercentage: {x: 0, y: 30}
+  screenPercentage: {x: 0, y: 28}
 --- !u!1 &34515283
 GameObject:
   m_ObjectHideFlags: 0

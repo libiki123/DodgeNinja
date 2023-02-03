@@ -7830,7 +7830,7 @@ MonoBehaviour:
   - {fileID: 2013172746}
   trapSpawner: {fileID: 1205684081}
   rewardSpawner: {fileID: 1205684079}
-  waveData: {fileID: 11400000, guid: fe3ad40a9b5733f4db41899ff834fd62, type: 2}
+  waveData: {fileID: 11400000, guid: c5a0e6d6708dca943996b9c24b3c4b38, type: 2}
   gunWaveDelay: 1.4
   dropTrapWaveDelay: 4
 --- !u!1 &889200337

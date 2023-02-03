@@ -15,8 +15,8 @@ MonoBehaviour:
   waveGroupInfo:
   - name: 1-4
     waveDelay:
-      _1sChance: 75
-      _1_5sChance: 25
+      _1sChance: 90
+      _1_5sChance: 10
       _2sChance: 0
       _2_5sChance: 0
       _3sChance: 0
@@ -28,8 +28,8 @@ MonoBehaviour:
         _3_BulletChance: 0
       _2MachineChance: 40
       _2M_NumOfBullet:
-        _1_BulletChance: 90
-        _2_BulletChance: 10
+        _1_BulletChance: 100
+        _2_BulletChance: 0
         _3_BulletChance: 0
       _3MachineChance: 0
       _3M_NumOfBullet:
@@ -43,8 +43,8 @@ MonoBehaviour:
         _3_BulletChance: 0
   - name: 5-9
     waveDelay:
-      _1sChance: 80
-      _1_5sChance: 20
+      _1sChance: 85
+      _1_5sChance: 15
       _2sChance: 0
       _2_5sChance: 0
       _3sChance: 0
@@ -56,8 +56,8 @@ MonoBehaviour:
         _3_BulletChance: 0
       _2MachineChance: 50
       _2M_NumOfBullet:
-        _1_BulletChance: 80
-        _2_BulletChance: 20
+        _1_BulletChance: 100
+        _2_BulletChance: 0
         _3_BulletChance: 0
       _3MachineChance: 0
       _3M_NumOfBullet:
@@ -71,23 +71,23 @@ MonoBehaviour:
         _3_BulletChance: 0
   - name: 10-14
     waveDelay:
-      _1sChance: 60
-      _1_5sChance: 30
-      _2sChance: 10
+      _1sChance: 80
+      _1_5sChance: 20
+      _2sChance: 0
       _2_5sChance: 0
       _3sChance: 0
     numOfMerchine:
-      _1MachineChance: 10
+      _1MachineChance: 40
       _1M_NumOfBullet:
-        _1_BulletChance: 50
-        _2_BulletChance: 50
+        _1_BulletChance: 40
+        _2_BulletChance: 60
         _3_BulletChance: 0
       _2MachineChance: 50
       _2M_NumOfBullet:
-        _1_BulletChance: 70
-        _2_BulletChance: 30
+        _1_BulletChance: 90
+        _2_BulletChance: 10
         _3_BulletChance: 0
-      _3MachineChance: 40
+      _3MachineChance: 10
       _3M_NumOfBullet:
         _1_BulletChance: 100
         _2_BulletChance: 0
@@ -99,11 +99,95 @@ MonoBehaviour:
         _3_BulletChance: 0
   - name: 15-19
     waveDelay:
-      _1sChance: 20
+      _1sChance: 70
+      _1_5sChance: 20
+      _2sChance: 10
+      _2_5sChance: 0
+      _3sChance: 0
+    numOfMerchine:
+      _1MachineChance: 20
+      _1M_NumOfBullet:
+        _1_BulletChance: 40
+        _2_BulletChance: 60
+        _3_BulletChance: 0
+      _2MachineChance: 50
+      _2M_NumOfBullet:
+        _1_BulletChance: 90
+        _2_BulletChance: 10
+        _3_BulletChance: 0
+      _3MachineChance: 30
+      _3M_NumOfBullet:
+        _1_BulletChance: 100
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _4MachineChance: 0
+      _4M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+  - name: 20-24
+    waveDelay:
+      _1sChance: 55
       _1_5sChance: 30
+      _2sChance: 15
+      _2_5sChance: 0
+      _3sChance: 0
+    numOfMerchine:
+      _1MachineChance: 10
+      _1M_NumOfBullet:
+        _1_BulletChance: 50
+        _2_BulletChance: 50
+        _3_BulletChance: 0
+      _2MachineChance: 50
+      _2M_NumOfBullet:
+        _1_BulletChance: 85
+        _2_BulletChance: 15
+        _3_BulletChance: 0
+      _3MachineChance: 40
+      _3M_NumOfBullet:
+        _1_BulletChance: 100
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _4MachineChance: 0
+      _4M_NumOfBullet:
+        _1_BulletChance: 100
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+  - name: 25-29
+    waveDelay:
+      _1sChance: 40
+      _1_5sChance: 35
       _2sChance: 20
-      _2_5sChance: 15
-      _3sChance: 15
+      _2_5sChance: 5
+      _3sChance: 0
+    numOfMerchine:
+      _1MachineChance: 10
+      _1M_NumOfBullet:
+        _1_BulletChance: 50
+        _2_BulletChance: 50
+        _3_BulletChance: 0
+      _2MachineChance: 50
+      _2M_NumOfBullet:
+        _1_BulletChance: 85
+        _2_BulletChance: 15
+        _3_BulletChance: 0
+      _3MachineChance: 40
+      _3M_NumOfBullet:
+        _1_BulletChance: 100
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _4MachineChance: 0
+      _4M_NumOfBullet:
+        _1_BulletChance: 0
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+  - name: 30-34
+    waveDelay:
+      _1sChance: 40
+      _1_5sChance: 35
+      _2sChance: 20
+      _2_5sChance: 10
+      _3sChance: 0
     numOfMerchine:
       _1MachineChance: 10
       _1M_NumOfBullet:
@@ -112,10 +196,10 @@ MonoBehaviour:
         _3_BulletChance: 0
       _2MachineChance: 30
       _2M_NumOfBullet:
-        _1_BulletChance: 40
-        _2_BulletChance: 60
+        _1_BulletChance: 80
+        _2_BulletChance: 20
         _3_BulletChance: 0
-      _3MachineChance: 35
+      _3MachineChance: 45
       _3M_NumOfBullet:
         _1_BulletChance: 100
         _2_BulletChance: 0
@@ -125,12 +209,40 @@ MonoBehaviour:
         _1_BulletChance: 100
         _2_BulletChance: 0
         _3_BulletChance: 0
-  - name: 20-24
+  - name: 35-39
     waveDelay:
-      _1sChance: 20
+      _1sChance: 40
+      _1_5sChance: 30
+      _2sChance: 15
+      _2_5sChance: 10
+      _3sChance: 5
+    numOfMerchine:
+      _1MachineChance: 10
+      _1M_NumOfBullet:
+        _1_BulletChance: 50
+        _2_BulletChance: 50
+        _3_BulletChance: 0
+      _2MachineChance: 30
+      _2M_NumOfBullet:
+        _1_BulletChance: 80
+        _2_BulletChance: 20
+        _3_BulletChance: 0
+      _3MachineChance: 45
+      _3M_NumOfBullet:
+        _1_BulletChance: 100
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+      _4MachineChance: 15
+      _4M_NumOfBullet:
+        _1_BulletChance: 100
+        _2_BulletChance: 0
+        _3_BulletChance: 0
+  - name: 40-44
+    waveDelay:
+      _1sChance: 35
       _1_5sChance: 35
-      _2sChance: 25
-      _2_5sChance: 15
+      _2sChance: 15
+      _2_5sChance: 10
       _3sChance: 5
     numOfMerchine:
       _1MachineChance: 10
@@ -138,127 +250,15 @@ MonoBehaviour:
         _1_BulletChance: 20
         _2_BulletChance: 80
         _3_BulletChance: 0
-      _2MachineChance: 45
-      _2M_NumOfBullet:
-        _1_BulletChance: 65
-        _2_BulletChance: 35
-        _3_BulletChance: 0
-      _3MachineChance: 30
-      _3M_NumOfBullet:
-        _1_BulletChance: 98
-        _2_BulletChance: 2
-        _3_BulletChance: 0
-      _4MachineChance: 15
-      _4M_NumOfBullet:
-        _1_BulletChance: 100
-        _2_BulletChance: 0
-        _3_BulletChance: 0
-  - name: 25-29
-    waveDelay:
-      _1sChance: 25
-      _1_5sChance: 35
-      _2sChance: 15
-      _2_5sChance: 15
-      _3sChance: 0
-    numOfMerchine:
-      _1MachineChance: 10
-      _1M_NumOfBullet:
-        _1_BulletChance: 20
-        _2_BulletChance: 80
-        _3_BulletChance: 0
       _2MachineChance: 40
       _2M_NumOfBullet:
-        _1_BulletChance: 60
-        _2_BulletChance: 35
-        _3_BulletChance: 5
+        _1_BulletChance: 70
+        _2_BulletChance: 30
+        _3_BulletChance: 0
       _3MachineChance: 30
       _3M_NumOfBullet:
-        _1_BulletChance: 90
-        _2_BulletChance: 10
-        _3_BulletChance: 0
-      _4MachineChance: 20
-      _4M_NumOfBullet:
         _1_BulletChance: 100
         _2_BulletChance: 0
-        _3_BulletChance: 0
-  - name: 30-34
-    waveDelay:
-      _1sChance: 25
-      _1_5sChance: 35
-      _2sChance: 15
-      _2_5sChance: 15
-      _3sChance: 0
-    numOfMerchine:
-      _1MachineChance: 10
-      _1M_NumOfBullet:
-        _1_BulletChance: 20
-        _2_BulletChance: 80
-        _3_BulletChance: 0
-      _2MachineChance: 40
-      _2M_NumOfBullet:
-        _1_BulletChance: 60
-        _2_BulletChance: 35
-        _3_BulletChance: 5
-      _3MachineChance: 30
-      _3M_NumOfBullet:
-        _1_BulletChance: 90
-        _2_BulletChance: 10
-        _3_BulletChance: 0
-      _4MachineChance: 20
-      _4M_NumOfBullet:
-        _1_BulletChance: 100
-        _2_BulletChance: 0
-        _3_BulletChance: 0
-  - name: 35-39
-    waveDelay:
-      _1sChance: 25
-      _1_5sChance: 35
-      _2sChance: 15
-      _2_5sChance: 15
-      _3sChance: 0
-    numOfMerchine:
-      _1MachineChance: 10
-      _1M_NumOfBullet:
-        _1_BulletChance: 20
-        _2_BulletChance: 80
-        _3_BulletChance: 0
-      _2MachineChance: 40
-      _2M_NumOfBullet:
-        _1_BulletChance: 60
-        _2_BulletChance: 35
-        _3_BulletChance: 5
-      _3MachineChance: 30
-      _3M_NumOfBullet:
-        _1_BulletChance: 90
-        _2_BulletChance: 10
-        _3_BulletChance: 0
-      _4MachineChance: 20
-      _4M_NumOfBullet:
-        _1_BulletChance: 100
-        _2_BulletChance: 0
-        _3_BulletChance: 0
-  - name: 40-44
-    waveDelay:
-      _1sChance: 25
-      _1_5sChance: 35
-      _2sChance: 15
-      _2_5sChance: 15
-      _3sChance: 0
-    numOfMerchine:
-      _1MachineChance: 10
-      _1M_NumOfBullet:
-        _1_BulletChance: 20
-        _2_BulletChance: 80
-        _3_BulletChance: 0
-      _2MachineChance: 40
-      _2M_NumOfBullet:
-        _1_BulletChance: 60
-        _2_BulletChance: 35
-        _3_BulletChance: 5
-      _3MachineChance: 30
-      _3M_NumOfBullet:
-        _1_BulletChance: 90
-        _2_BulletChance: 10
         _3_BulletChance: 0
       _4MachineChance: 20
       _4M_NumOfBullet:
@@ -267,11 +267,11 @@ MonoBehaviour:
         _3_BulletChance: 0
   - name: 45-49
     waveDelay:
-      _1sChance: 25
+      _1sChance: 35
       _1_5sChance: 35
       _2sChance: 15
-      _2_5sChance: 15
-      _3sChance: 0
+      _2_5sChance: 10
+      _3sChance: 5
     numOfMerchine:
       _1MachineChance: 10
       _1M_NumOfBullet:
@@ -280,13 +280,13 @@ MonoBehaviour:
         _3_BulletChance: 0
       _2MachineChance: 40
       _2M_NumOfBullet:
-        _1_BulletChance: 60
-        _2_BulletChance: 35
-        _3_BulletChance: 5
+        _1_BulletChance: 70
+        _2_BulletChance: 30
+        _3_BulletChance: 0
       _3MachineChance: 30
       _3M_NumOfBullet:
-        _1_BulletChance: 90
-        _2_BulletChance: 10
+        _1_BulletChance: 100
+        _2_BulletChance: 0
         _3_BulletChance: 0
       _4MachineChance: 20
       _4M_NumOfBullet:
@@ -295,10 +295,10 @@ MonoBehaviour:
         _3_BulletChance: 0
   - name: 50+
     waveDelay:
-      _1sChance: 25
+      _1sChance: 40
       _1_5sChance: 35
       _2sChance: 15
-      _2_5sChance: 15
+      _2_5sChance: 10
       _3sChance: 0
     numOfMerchine:
       _1MachineChance: 10
@@ -308,13 +308,13 @@ MonoBehaviour:
         _3_BulletChance: 0
       _2MachineChance: 40
       _2M_NumOfBullet:
-        _1_BulletChance: 60
-        _2_BulletChance: 35
-        _3_BulletChance: 5
+        _1_BulletChance: 69
+        _2_BulletChance: 30
+        _3_BulletChance: 1
       _3MachineChance: 30
       _3M_NumOfBullet:
-        _1_BulletChance: 90
-        _2_BulletChance: 10
+        _1_BulletChance: 100
+        _2_BulletChance: 0
         _3_BulletChance: 0
       _4MachineChance: 20
       _4M_NumOfBullet:
