@@ -81,4 +81,10 @@ public class DataPersistenceManager : MonoBehaviour
 
         return new List<IDataPersistence>(dataPersistenceObjects);
     }
+
+    public void ResetSave()
+    {
+        gameData = new GameData();
+        dataHandler.Save(gameData);
+    }
 }

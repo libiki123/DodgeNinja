@@ -40,6 +40,8 @@ public class Shop : MonoBehaviour, IDataPersistence
     private ShopItem selectedItem;
     private GameObject currentSkinEffect;
     private GameObject currentStageEffect;
+    private List<GameObject> skins = new List<GameObject>();
+    private List<GameObject> stages = new List<GameObject>();
 
     private string currentSkinId = "";
     private string currentStageId = "";
@@ -80,6 +82,8 @@ public class Shop : MonoBehaviour, IDataPersistence
                 g.GetComponent<ShopItem>().SetUsing(ref skinCheckMark);
             else if(ShopData.skins[i].id == currentSkinId)
                 g.GetComponent<ShopItem>().SetUsing(ref skinCheckMark);
+
+            skins.Add(g);
         }
 
         for (int i = 0; i < ShopData.stages.Count; i++)
@@ -91,15 +95,37 @@ public class Shop : MonoBehaviour, IDataPersistence
                 g.GetComponent<ShopItem>().SetUsing(ref stageCheckMark);
             else if (ShopData.stages[i].id == currentStageId)
                 g.GetComponent<ShopItem>().SetUsing(ref stageCheckMark);
-        }
 
-        
+            stages.Add(g);
+        }
 
         UpdateSkin("player");
         UpdateSkin("stage");
     }
 
-    public void UpdateSkin(string objectName)
+    public void RefreshShop()
+    {
+        foreach(var skin in skins)
+        {
+            if (currentSkinId == "")
+                skins[0].GetComponent<ShopItem>().SetUsing(ref skinCheckMark);
+            else if (skin.GetComponent<ShopItem>().id == currentSkinId)
+                skin.GetComponent<ShopItem>().SetUsing(ref skinCheckMark);
+        }
+
+        foreach (var stage in stages)
+        {
+            if (currentSkinId == "")
+                stages[0].GetComponent<ShopItem>().SetUsing(ref stageCheckMark);
+            else if (stage.GetComponent<ShopItem>().id == currentStageId)
+                stage.GetComponent<ShopItem>().SetUsing(ref stageCheckMark);
+        }
+
+        UpdateSkin("player");
+        UpdateSkin("stage");
+    }
+
+    private void UpdateSkin(string objectName)
     {
         if(objectName == "player")
         {
@@ -294,7 +320,8 @@ public class Shop : MonoBehaviour, IDataPersistence
         {
             DataPersistenceManager.instance.RefreshDataPersistenceObjs();
             DataPersistenceManager.instance.LoadGame();
-
+            
+            confirmGroup.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, shopMenu.rect.height + 100, 0);
             shopMenu.DOAnchorPosY(shopMenu.rect.height, 0.2f);
             mainMenu.gameObject.SetActive(false);
 
