@@ -14,7 +14,7 @@ public class Cheat : MonoBehaviour
 
     public void DeleteSave()
     {
-        DataPersistenceManager.instance.ResetSave();
+        DataPersistenceManager.instance.NewGame();
         DataPersistenceManager.instance.LoadGame();
         Shop.instance.RefreshShop();
     }

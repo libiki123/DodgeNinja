@@ -42,10 +42,8 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void NewGame()
     {
-        //DirectoryInfo dataDir = new DirectoryInfo(Application.persistentDataPath);
-        //dataDir.Delete(true);
         gameData = new GameData();
-        SaveGame();
+        dataHandler.Save(gameData);
     }
 
     public void LoadGame()
@@ -80,11 +78,5 @@ public class DataPersistenceManager : MonoBehaviour
             .OfType<IDataPersistence>();
 
         return new List<IDataPersistence>(dataPersistenceObjects);
-    }
-
-    public void ResetSave()
-    {
-        gameData = new GameData();
-        dataHandler.Save(gameData);
     }
 }
