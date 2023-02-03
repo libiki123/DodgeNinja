@@ -3,36 +3,11 @@ guid: cddf4d0ea4f210243b2a15a4e3e2bfd4
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Ground_theme01_01_m
-    second: {fileID: 2100000, guid: 5f5c4055c6fb8fc4685ce00015e54270, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Ground_theme01_02_m
-    second: {fileID: 2100000, guid: 737674847821e454daf8b43d3e689bfc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Texture_color_m
-    second: {fileID: 2100000, guid: 71b092936742eb84d8b21eac89bb0d3d, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Texture_theme01_01_m
-    second: {fileID: 2100000, guid: 5228c2b0dd6343f4387617ed1d3f9ce1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: 466e43b7bfe0e7f48b7c0a0324848435, type: 2}
+  externalObjects: {}
   materials:
-    materialImportMode: 1
-    materialName: 1
-    materialSearch: 0
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
@@ -93,8 +68,8 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 0
   tangentSpace:
-    normalSmoothAngle: 180
-    normalImportMode: 1
+    normalSmoothAngle: 60
+    normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
