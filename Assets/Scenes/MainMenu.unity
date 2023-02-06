@@ -4542,6 +4542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1900f7372a29be4cbfa1c774743387f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 1068884065}
   countFPS: 30
   duration: 1
   numberFormat: N0
@@ -5615,6 +5616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1900f7372a29be4cbfa1c774743387f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 1546468052}
   countFPS: 30
   duration: 1
   numberFormat: N0

@@ -117,6 +117,13 @@ MonoBehaviour:
       Data3: -1801603709
       Data4: 1387361845
     Path: event:/SFX/Player/Hit
+  <spawnDrop>k__BackingField:
+    Guid:
+      Data1: 1874179451
+      Data2: 1324627284
+      Data3: 1544530869
+      Data4: 1323688772
+    Path: event:/SFX/Player/SpawnDrop
   <coinCollected>k__BackingField:
     Guid:
       Data1: -979865729

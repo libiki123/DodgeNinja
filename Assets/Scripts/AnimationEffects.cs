@@ -9,5 +9,6 @@ public class AnimationEffects : MonoBehaviour
     public void PlayLandingEffect()
     {
         landingEffect.Play();
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.spawnDrop, Vector3.zero);
     }
 }
