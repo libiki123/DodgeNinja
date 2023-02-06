@@ -20,11 +20,11 @@ public class IdleBehaviour : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       if(isIdle == false)
-       {
+        if (isIdle == false)
+        {
             idleTime += Time.deltaTime;
 
-            if(idleTime > timeUntilSwitch && stateInfo.normalizedTime % 1 < 0.02f)
+            if (idleTime > timeUntilSwitch && stateInfo.normalizedTime % 1 < 0.02f)
             {
                 isIdle = true;
                 idleAnimIndex = Random.Range(1, numberOfIdleAnim + 1);
@@ -32,20 +32,20 @@ public class IdleBehaviour : StateMachineBehaviour
 
                 animator.SetFloat("IdleBlend", idleAnimIndex - 1);
             }
-       }
-       else if(stateInfo.normalizedTime % 1 > 0.98f)
-       {
+        }
+        else if (stateInfo.normalizedTime % 1 > 0.98f)
+        {
             ResetIdle();
-       }
-
-        animator.SetFloat("IdleBlend", idleAnimIndex, 0.05f, Time.deltaTime);
+        }
+        
+        animator.SetFloat("IdleBlend", idleAnimIndex);
     }
 
     private void ResetIdle()
     {
         if (isIdle)
         {
-            idleAnimIndex--;
+                idleAnimIndex--;
         }
 
         isIdle = false;

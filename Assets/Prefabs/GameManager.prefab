@@ -57,7 +57,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1727485160018733542}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c4a525ffcd273e42b463810fc93b872, type: 3}
   m_Name: 
@@ -89,8 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c11ab246a67c23540874b32b18874475, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicMute: 1
-  sfxMute: 1
+  musicMute: 0
+  sfxMute: 0
 --- !u!114 &1528929420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +117,13 @@ MonoBehaviour:
       Data3: -1801603709
       Data4: 1387361845
     Path: event:/SFX/Player/Hit
+  <spawnDrop>k__BackingField:
+    Guid:
+      Data1: 1874179451
+      Data2: 1324627284
+      Data3: 1544530869
+      Data4: 1323688772
+    Path: event:/SFX/Player/SpawnDrop
   <coinCollected>k__BackingField:
     Guid:
       Data1: -979865729
@@ -145,20 +152,20 @@ MonoBehaviour:
       Data3: -418333560
       Data4: 2034224233
     Path: event:/SFX/Trap/Drop
-  <gameplayBMG>k__BackingField:
+  <gameplayBGM>k__BackingField:
     Guid:
       Data1: -1329181126
       Data2: 1145112840
       Data3: 1135521165
       Data4: 241966523
-    Path: event:/Music/GameplayBMG
-  <mainMenuBMG>k__BackingField:
+    Path: event:/Music/GameplayBGM
+  <mainMenuBGM>k__BackingField:
     Guid:
       Data1: 1087090299
       Data2: 1319615522
       Data3: 1915753375
       Data4: -1251743086
-    Path: event:/Music/MainMenuBMG
+    Path: event:/Music/MainMenuBGM
   <buttonClick>k__BackingField:
     Guid:
       Data1: 1107589452
@@ -166,3 +173,24 @@ MonoBehaviour:
       Data3: 332666772
       Data4: 1244577636
     Path: event:/SFX/UI/ButtonClick
+  <wrongClick>k__BackingField:
+    Guid:
+      Data1: 636220376
+      Data2: 1314298485
+      Data3: 147160252
+      Data4: -776252370
+    Path: event:/SFX/UI/WrongClick
+  <doorSlice>k__BackingField:
+    Guid:
+      Data1: 1124260637
+      Data2: 1283998244
+      Data3: -520230256
+      Data4: 855242129
+    Path: event:/SFX/Transition/DoorSlice
+  <introBGM>k__BackingField:
+    Guid:
+      Data1: 1989197812
+      Data2: 1333590443
+      Data3: 539753634
+      Data4: 1058737964
+    Path: event:/Music/IntroBGM

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.02.00">
-	<object class="Bank" id="{2aadb44e-a3f5-446f-b60b-9aeb0d0a7110}">
+	<object class="Bank" id="{cd19832f-c84f-48fd-9195-26a9d84f7bb4}">
 		<property name="name">
-			<value>Music</value>
+			<value>SFX</value>
 		</property>
 		<relationship name="folder">
 			<destination>{34a38b2f-4fe5-47a9-8556-4a3b2e0d5bb0}</destination>

@@ -26,6 +26,7 @@ public class Shop : MonoBehaviour, IDataPersistence
     [SerializeField] private RectTransform skinCheckMark;
     [SerializeField] private RectTransform stageCheckMark;
     [SerializeField] private GameObject confirmGroup;
+    [SerializeField] private ParticleSystem skinChangeEffect;
 
     [Header("Shop Data")]
     [SerializeField] private Shop_SO ShopData;
@@ -39,6 +40,8 @@ public class Shop : MonoBehaviour, IDataPersistence
     private ShopItem selectedItem;
     private GameObject currentSkinEffect;
     private GameObject currentStageEffect;
+    private List<GameObject> skins = new List<GameObject>();
+    private List<GameObject> stages = new List<GameObject>();
 
     private string currentSkinId = "";
     private string currentStageId = "";
@@ -79,6 +82,8 @@ public class Shop : MonoBehaviour, IDataPersistence
                 g.GetComponent<ShopItem>().SetUsing(ref skinCheckMark);
             else if(ShopData.skins[i].id == currentSkinId)
                 g.GetComponent<ShopItem>().SetUsing(ref skinCheckMark);
+
+            skins.Add(g);
         }
 
         for (int i = 0; i < ShopData.stages.Count; i++)
@@ -90,15 +95,37 @@ public class Shop : MonoBehaviour, IDataPersistence
                 g.GetComponent<ShopItem>().SetUsing(ref stageCheckMark);
             else if (ShopData.stages[i].id == currentStageId)
                 g.GetComponent<ShopItem>().SetUsing(ref stageCheckMark);
-        }
 
-        
+            stages.Add(g);
+        }
 
         UpdateSkin("player");
         UpdateSkin("stage");
     }
 
-    public void UpdateSkin(string objectName)
+    public void RefreshShop()
+    {
+        foreach(var skin in skins)
+        {
+            if (currentSkinId == "")
+                skins[0].GetComponent<ShopItem>().SetUsing(ref skinCheckMark);
+            else if (skin.GetComponent<ShopItem>().id == currentSkinId)
+                skin.GetComponent<ShopItem>().SetUsing(ref skinCheckMark);
+        }
+
+        foreach (var stage in stages)
+        {
+            if (currentSkinId == "")
+                stages[0].GetComponent<ShopItem>().SetUsing(ref stageCheckMark);
+            else if (stage.GetComponent<ShopItem>().id == currentStageId)
+                stage.GetComponent<ShopItem>().SetUsing(ref stageCheckMark);
+        }
+
+        UpdateSkin("player");
+        UpdateSkin("stage");
+    }
+
+    private void UpdateSkin(string objectName)
     {
         if(objectName == "player")
         {
@@ -124,6 +151,7 @@ public class Shop : MonoBehaviour, IDataPersistence
                     //if (skin.effect != null) currentSkinEffect = Instantiate(skin.effect, player.transform.Find("Root_M"));
                 }
             }
+
         }
         else if (objectName == "stage")
         {
@@ -158,12 +186,12 @@ public class Shop : MonoBehaviour, IDataPersistence
     public void OnShopItemClick(ShopItem item)
     {
         confirmGroup.SetActive(false);
-        confirmGroup.GetComponent<RectTransform>().localPosition = new Vector3(0, -105, 0);
+        confirmGroup.GetComponent<RectTransform>().localScale = new Vector3(0.8f, 0.8f, 0.8f);
 
+        bool isSameItem = false;
         if (selectedItem != null)
         {
-            //if (selectedItem == item)
-            //    return;
+            if (selectedItem == item) isSameItem = true;
             selectedItem.transform.DOScale(Vector3.one, 0.1f);
         }
 
@@ -179,7 +207,8 @@ public class Shop : MonoBehaviour, IDataPersistence
                     skinCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
                     stageCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
                     confirmGroup.SetActive(true);
-                    confirmGroup.GetComponent<RectTransform>().DOLocalMoveY(0, 0.3f);
+                    confirmGroup.GetComponent<RectTransform>().DOScale(1, 0.1f).SetEase(Ease.InSine);
+                    AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, transform.position);
                     return;
                 }
             }
@@ -191,8 +220,8 @@ public class Shop : MonoBehaviour, IDataPersistence
                     skinCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
                     stageCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
                     confirmGroup.SetActive(true);
-                    confirmGroup.GetComponent<RectTransform>().DOLocalMoveY(0, 0.3f);
-
+                    confirmGroup.GetComponent<RectTransform>().DOScale(1, 0.1f).SetEase(Ease.InSine);
+                    AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, transform.position);
                     return;
                 }
             }
@@ -200,25 +229,29 @@ public class Shop : MonoBehaviour, IDataPersistence
             selectedItem.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.1f);
             skinCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
             stageCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
-            confirmGroup.SetActive(false);
-            confirmGroup.GetComponent<RectTransform>().localPosition = new Vector3(0, -105, 0);
+            //confirmGroup.SetActive(false);
+            //confirmGroup.GetComponent<RectTransform>().localPosition = new Vector3(0, -105, 0);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.wrongClick, transform.position);
             return;
         }
         else
         {
-            confirmGroup.SetActive(false);
-            confirmGroup.GetComponent<RectTransform>().localPosition = new Vector3(0, -105, 0);
+            //confirmGroup.SetActive(false);
+            //confirmGroup.GetComponent<RectTransform>().localPosition = new Vector3(0, -105, 0);
             selectedItem.transform.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.1f);
             skinCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
             stageCheckMark.transform.localScale = new Vector3(0.6f, 0.6f, 0.6f);
+            AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, transform.position);
 
-            if (selectedItem.type == ShopItemType.SKIN)
+            if (selectedItem.type == ShopItemType.SKIN && !isSameItem)
             {
                 currentSkinId = selectedItem.id;
                 selectedItem.SetUsing(ref skinCheckMark);
                 UpdateSkin("player");
+                skinChangeEffect.Play();
+
             }
-            else
+            else if(selectedItem.type == ShopItemType.STAGE && !isSameItem)
             {
                 currentStageId = selectedItem.id;
                 selectedItem.SetUsing(ref stageCheckMark);
@@ -254,6 +287,8 @@ public class Shop : MonoBehaviour, IDataPersistence
                 return;
         }
 
+        AudioManager.instance.PlayOneShot(FMODEvents.instance.scrollCollected, Vector3.zero);
+        selectedItem.PlayUnlockEffect();
         confirmGroup.SetActive(false);
 
         if (selectedItem.type == ShopItemType.SKIN)
@@ -261,6 +296,7 @@ public class Shop : MonoBehaviour, IDataPersistence
             currentSkinId = selectedItem.id;
             selectedItem.SetUsing(ref skinCheckMark);
             UpdateSkin("player");
+            skinChangeEffect.Play();
         }
         else
         {
@@ -284,7 +320,8 @@ public class Shop : MonoBehaviour, IDataPersistence
         {
             DataPersistenceManager.instance.RefreshDataPersistenceObjs();
             DataPersistenceManager.instance.LoadGame();
-
+            
+            confirmGroup.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, shopMenu.rect.height + 100, 0);
             shopMenu.DOAnchorPosY(shopMenu.rect.height, 0.2f);
             mainMenu.gameObject.SetActive(false);
 
@@ -297,6 +334,7 @@ public class Shop : MonoBehaviour, IDataPersistence
             stageBttnRT.DOAnchorPosX(0, 0.15f);
             shopMenu.DOAnchorPosY(-550, 0.15f);
             mainMenu.gameObject.SetActive(true);
+            confirmGroup.SetActive(false);
         }
     }
 
