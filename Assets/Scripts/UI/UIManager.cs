@@ -129,6 +129,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
         endGameMenu.SetActive(true);
         endGameMenu.transform.GetChild(0).DOScale(1.3f, fadeTime).SetEase(Ease.OutElastic);
         if (newHighScore) newHighScoreText.SetActive(true);
+        if (finalScoreText.value == 0) x2Bttn.interactable = false;
         yield return new WaitForSeconds(fadeTime);
         finalScoreText.value = score;
     }

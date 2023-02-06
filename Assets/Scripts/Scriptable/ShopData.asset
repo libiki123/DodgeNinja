@@ -45,6 +45,13 @@ MonoBehaviour:
     effect: {fileID: 5160765824188894905, guid: b117fadd79f68bc43af0b2330e338fc0,
       type: 3}
     isDefault: 0
+  - id: 4907dae1-2bed-40fd-8fc5-9ab304e5a71c
+    icon: {fileID: 21300000, guid: 940be3c40fbba1443aa5afb26676f8fe, type: 3}
+    price: 575
+    mesh: {fileID: 8789735811205586980, guid: f8bf5c81a8d46b7428ff21e89c98a08b, type: 3}
+    material: {fileID: 2100000, guid: 874b5fffd1bcafd429852564ccd864e6, type: 2}
+    effect: {fileID: 0}
+    isDefault: 0
   - id: e67fcada-c01e-4006-b5d2-c86456587ad4
     icon: {fileID: 21300000, guid: ad9612896d2cb934c9178054aa9cb726, type: 3}
     price: 650
@@ -55,7 +62,7 @@ MonoBehaviour:
     isDefault: 0
   - id: 98196bc4-f004-4b96-8093-72d0671597d7
     icon: {fileID: 21300000, guid: 06fdde04ee730dc46870a02ef01d9384, type: 3}
-    price: 800
+    price: 900
     mesh: {fileID: 6310864383757446190, guid: 80d004d5e0b61794ea9e0c8d73ea8c97, type: 3}
     material: {fileID: 2100000, guid: 46a2f0e4f409cfa4986bd5418b40696a, type: 2}
     effect: {fileID: 0}
