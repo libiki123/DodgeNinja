@@ -140,9 +140,14 @@ public class UIManager : MonoBehaviour, IDataPersistence
         else
             swipeControl.SetActive(true);
 
+        StartGame();
+    }
+    private void StartGame()
+    {
         GameManager.instance.ResumeGame();
         CameraManager.instance.StartZoomIn();
         AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBGM);
+        DataPersistenceManager.instance.SaveGame();
     }
 
     private void X2Coin()
@@ -175,10 +180,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
         controlPicker.SetActive(false);
         bttnControl.SetActive(true);
         swipeControl.SetActive(false);
-        GameManager.instance.ResumeGame();
-        CameraManager.instance.StartZoomIn();
-        AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBGM);
-        DataPersistenceManager.instance.SaveGame();
+        StartGame();
     }
 
     public void UseSwipe()
@@ -187,10 +189,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
         controlPicker.SetActive(false);
         bttnControl.SetActive(false);
         swipeControl.SetActive(true);
-        GameManager.instance.ResumeGame();
-        CameraManager.instance.StartZoomIn();
-        AudioManager.instance.InitializeMusic(FMODEvents.instance.gameplayBGM);
-        DataPersistenceManager.instance.SaveGame();
+        StartGame();
     }
 
     public void PauseGame()
@@ -217,8 +216,4 @@ public class UIManager : MonoBehaviour, IDataPersistence
         MyIronSource.instance.LoadRewardAds(X2Coin);
     }
 
-    private void resumeMusic()
-    {
-        AudioManager.instance.musicEventInstance.setPaused(false);
-    }
 }
