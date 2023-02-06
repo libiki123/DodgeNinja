@@ -89,6 +89,7 @@ public class MyIronSource : MonoBehaviour
 
     public void LoadRewardAds(Action onRewarded)
     {
+        currentOnRewardedEvent = null;
         currentOnRewardedEvent = onRewarded;
         if(IronSource.Agent.isRewardedVideoAvailable()) IronSource.Agent.showRewardedVideo();
     }
@@ -187,7 +188,6 @@ public class MyIronSource : MonoBehaviour
     {
         Debug.LogWarning("RewardedVideoAdRewardedEvent" + placement.ToString());
         currentOnRewardedEvent?.Invoke();
-        currentOnRewardedEvent = null;
     }
 
     //Invoked when the Rewarded Video failed to show
@@ -266,5 +266,10 @@ public class MyIronSource : MonoBehaviour
     void RewardedVideoOnAdClickedEvent(IronSourcePlacement placement, IronSourceAdInfo adInfo)
     {
         Debug.LogWarning("RewardedVideoOnAdClickedEvent " + placement.ToString() + " ||||| " + adInfo.ToString());
+    }
+
+    private void OnDestroy()
+    {
+        currentOnRewardedEvent = null;
     }
 }

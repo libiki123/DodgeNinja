@@ -151,7 +151,6 @@ public class UIManager : MonoBehaviour, IDataPersistence
         finalScoreText.value = score;
         x2Bttn.interactable = false;
         newHighScoreText.SetActive(false);
-        AudioManager.instance.musicEventInstance.setPaused(false);
         DataPersistenceManager.instance.SaveGame();
     }
 
@@ -215,9 +214,7 @@ public class UIManager : MonoBehaviour, IDataPersistence
 
     public void OnX2CoinClick()
     {
-        AudioManager.instance.musicEventInstance.setPaused(true);
         MyIronSource.instance.LoadRewardAds(X2Coin);
-        Invoke("resumeMusic", 30f);
     }
 
     private void resumeMusic()

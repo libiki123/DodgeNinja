@@ -69,31 +69,25 @@ public class MainMenu : MonoBehaviour, IDataPersistence
 
     public void OnRewardCoinClick()
     {
-        AudioManager.instance.musicEventInstance.setPaused(true);
         MyIronSource.instance.LoadRewardAds(RewardCoin);
-        Invoke("resumeMusic", 30f);
     }
 
     private void RewardCoin()
     {
         totalCoin += 20;
         coinText.value = totalCoin;
-        AudioManager.instance.musicEventInstance.setPaused(false);
         DataPersistenceManager.instance.SaveGame();
     }
 
     public void OnRewardScrollClick()
     {
-        AudioManager.instance.musicEventInstance.setPaused(true);
         MyIronSource.instance.LoadRewardAds(RewardScroll);
-        Invoke("resumeMusic", 30f);
     }
 
     private void RewardScroll()
     {
         totalScroll += 5;
         scrollText.value = totalScroll;
-        AudioManager.instance.musicEventInstance.setPaused(false);
         DataPersistenceManager.instance.SaveGame();
     }
 
@@ -106,8 +100,5 @@ public class MainMenu : MonoBehaviour, IDataPersistence
         AudioManager.instance.PlayOneShot(FMODEvents.instance.buttonClick, Vector3.zero);
     }
 
-    private void resumeMusic()
-    {
-        AudioManager.instance.musicEventInstance.setPaused(false);
-    }
+
 }
